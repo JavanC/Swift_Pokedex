@@ -12,4 +12,10 @@ class PokedexCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pokeNumber: UILabel!
+    
+    var pokemon:Pokemon? {
+        didSet {
+            pokeNumber.text = pokemon?.number
+        }
+    }
 }

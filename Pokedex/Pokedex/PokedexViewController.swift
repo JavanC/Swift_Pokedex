@@ -8,39 +8,43 @@
 
 import UIKit
 
-class PokedexViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PokedexViewController: UIViewController {
+    
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //configureView()
-        print(UIScreen.mainScreen().bounds.size)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let cell = sender as? UICollectionViewCell {
+            let indexPath = collectionView.indexPathForCell(cell)!
+            let pokemon = pokemonData[indexPath.row]
+            let controller = segue.destinationViewController as! PokemonViewController
+            controller.pokemon = pokemon
+        }
     }
+}
 
+extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return pokemonData.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as! PokedexCollectionViewCell
-        
-        print(cell.frame.size)
-        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath)
+        if let cell = cell as? PokedexCollectionViewCell {
+            cell.pokemon = pokemonData[indexPath.row]
+        }
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         let frameWidth = UIScreen.mainScreen().bounds.size.width
+        print(UIScreen.mainScreen().bounds.size)
         let cellNumber = CGFloat(Int(frameWidth / 80))
-        print(cellNumber)
         let inset = (frameWidth % 80) / (cellNumber + 1)
-        print(inset)
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
 }
-
