@@ -15,6 +15,8 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var sliderArea: UIView!
     
+    let rangeSlider = RangeSlider(frame: CGRectZero)
+    
     var pokemon: Pokemon!
     
     override func viewDidLoad() {
@@ -27,8 +29,18 @@ class PokemonViewController: UIViewController {
         imageView.layer.addSublayer(emitter)
         
         // slider
-        self.buildCircleSlider()
+        rangeSlider.addTarget(self, action: #selector(self.rangeSliderValueChanged), forControlEvents: .ValueChanged)
+        ScrollView.addSubview(rangeSlider)
+    
     }
+    
+    override func viewDidLayoutSubviews() {
+        let margin: CGFloat = 20.0
+        let width = view.bounds.width - 2.0 * margin
+//        rangeSlider.backgroundColor = UIColor.redColor()
+        rangeSlider.frame = CGRect(x: margin, y: margin + topLayoutGuide.length, width: width, height: 31.0)
+    }
+    
     
     private func updateViewForPokemon() {
         if let pokemon = pokemon {
@@ -37,27 +49,7 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    private var valueLabel: UILabel!
-    private func buildCircleSlider() {
-        var circleSlider: CircleSlider!
-        let sliderOptions: [CircleSliderOption] = [
-                .BarColor(UIColor(red: 198/255, green: 244/255, blue: 23/255, alpha: 0.2)),
-                .ThumbColor(UIColor(red: 141/255, green: 185/255, blue: 204/255, alpha: 1)),
-                .TrackingColor(UIColor(red: 78/255, green: 136/255, blue: 185/255, alpha: 1)),
-                .BarWidth(20),
-                .StartAngle(-45),
-                .MaxValue(150),
-                .MinValue(20)
-            ]
-        circleSlider = CircleSlider(frame: self.sliderArea.bounds, options: sliderOptions)
-        circleSlider?.addTarget(self, action: #selector(self.valueChange(_:)), forControlEvents: .ValueChanged)
-        sliderArea.addSubview(circleSlider!)
-        valueLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        valueLabel.textAlignment = .Center
-        valueLabel.center = CGPoint(x: CGRectGetWidth(circleSlider.bounds) * 0.5, y: CGRectGetHeight(circleSlider.bounds) * 1.2)
-        circleSlider.addSubview(self.valueLabel)
-    }
-    func valueChange(sender: CircleSlider) {
-        self.valueLabel.text = "\(Int(sender.value))"
+    func rangeSliderValueChanged(rangeSlider: RangeSlider) {
+        print("value change: (\(rangeSlider.currentValue))")
     }
 }
