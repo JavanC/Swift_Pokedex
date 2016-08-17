@@ -123,11 +123,21 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zS1-v7-Fza" userLabel="Slider Area">
+                                                <rect key="frame" x="97" y="253" width="180" height="180"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="Y7b-Ct-W7y"/>
+                                                    <constraint firstAttribute="height" constant="180" id="ns6-Df-PoI"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="ye9-cx-jaQ" firstAttribute="top" secondItem="OQP-de-Xkl" secondAttribute="top" id="2Ak-qX-POD"/>
+                                            <constraint firstItem="zS1-v7-Fza" firstAttribute="centerX" secondItem="OQP-de-Xkl" secondAttribute="centerX" id="2e3-9K-XJi"/>
                                             <constraint firstItem="BEb-Vp-Ozo" firstAttribute="top" secondItem="OQP-de-Xkl" secondAttribute="top" constant="200" id="EwW-Wi-3NP"/>
+                                            <constraint firstItem="zS1-v7-Fza" firstAttribute="top" secondItem="BEb-Vp-Ozo" secondAttribute="bottom" constant="32" id="IFh-Db-BqM"/>
                                             <constraint firstItem="ye9-cx-jaQ" firstAttribute="top" secondItem="BEb-Vp-Ozo" secondAttribute="bottom" constant="61" id="V8P-Fd-mcp"/>
                                             <constraint firstAttribute="trailing" secondItem="ye9-cx-jaQ" secondAttribute="trailing" id="qOQ-9h-HXV"/>
                                             <constraint firstItem="ye9-cx-jaQ" firstAttribute="leading" secondItem="OQP-de-Xkl" secondAttribute="leading" id="vtw-KG-nsj"/>
@@ -167,6 +177,7 @@
                         <outlet property="ScrollView" destination="b6f-55-7lH" id="xY0-LB-rnD"/>
                         <outlet property="imageView" destination="ye9-cx-jaQ" id="aiP-Ti-Zka"/>
                         <outlet property="pokemonName" destination="BEb-Vp-Ozo" id="kwG-ek-OXY"/>
+                        <outlet property="sliderArea" destination="zS1-v7-Fza" id="1UL-15-S6o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cm6-qD-jvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
