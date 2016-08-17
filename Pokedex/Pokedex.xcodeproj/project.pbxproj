@@ -307,6 +307,7 @@
 				8DB69E241D636859006EF766 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
