@@ -32,7 +32,7 @@ class RangeSliderThumbLayer: CALayer {
             
             // Outline
             CGContextSetStrokeColorWithColor(ctx, shadowColor.CGColor)
-            CGContextSetLineWidth(ctx, 0.5)
+            CGContextSetLineWidth(ctx, 2.0)
             CGContextAddPath(ctx, thumbPath.CGPath)
             CGContextStrokePath(ctx)
             

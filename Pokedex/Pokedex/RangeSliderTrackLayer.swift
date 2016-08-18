@@ -23,12 +23,6 @@ class RangeSliderTrackLayer: CALayer {
             CGContextSetFillColorWithColor(ctx, slider.trackTintColor.CGColor)
             CGContextAddPath(ctx, path.CGPath)
             CGContextFillPath(ctx)
-            
-            // Fill the highlighted range
-            CGContextSetFillColorWithColor(ctx, slider.trackHighlightTintColor.CGColor)
-            let currentValuePosition = CGFloat(slider.positionForValue(slider.currentValue))
-            let rect = CGRect(x: 0.0, y: 0.0, width: currentValuePosition, height: bounds.height)
-            CGContextFillRect(ctx, rect)
         }
     }
 }

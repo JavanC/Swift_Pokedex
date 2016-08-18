@@ -9,12 +9,12 @@
 import UIKit
 
 class PokemonViewController: UIViewController {
-    
-    @IBOutlet weak var ScrollView: UIScrollView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var pokemonName: UILabel!
-    @IBOutlet weak var sliderArea: UIView!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var pokemonInfoView: UIView!
+    @IBOutlet weak var pokemonNameLabel: UILabel!
+    @IBOutlet weak var cpRangeValueLabel: UILabel!
+    @IBOutlet weak var hpRangeValueLabel: UILabel!
     let rangeSlider = RangeSlider(frame: CGRectZero)
     
     var pokemon: Pokemon!
@@ -23,33 +23,37 @@ class PokemonViewController: UIViewController {
         super.viewDidLoad()
         updateViewForPokemon()
         
-        // imageview background emitter
+        // background image emitter
         let rect = CGRect(x: 0.0, y: 180, width: view.bounds.width, height: 20.0)
         let emitter = EmitterLayer(rect: rect)
-        imageView.layer.addSublayer(emitter)
+        backgroundImage.layer.addSublayer(emitter)
+        
+        // pokemon info view
+        pokemonInfoView.backgroundColor = UIColor.clearColor()
         
         // slider
+        rangeSliderValueChanged(rangeSlider)
         rangeSlider.addTarget(self, action: #selector(self.rangeSliderValueChanged), forControlEvents: .ValueChanged)
-        ScrollView.addSubview(rangeSlider)
-    
+        scrollView.addSubview(rangeSlider)
+
     }
     
     override func viewDidLayoutSubviews() {
-        let margin: CGFloat = 20.0
+        let margin: CGFloat = 40.0
         let width = view.bounds.width - 2.0 * margin
-//        rangeSlider.backgroundColor = UIColor.redColor()
-        rangeSlider.frame = CGRect(x: margin, y: margin + topLayoutGuide.length, width: width, height: 31.0)
+        rangeSlider.frame = CGRect(x: margin, y: 200, width: width, height: 25.0)
     }
     
     
     private func updateViewForPokemon() {
         if let pokemon = pokemon {
-            pokemonName?.text = pokemon.number
+            pokemonNameLabel?.text = pokemon.name
             title = pokemon.name
         }
     }
     
     func rangeSliderValueChanged(rangeSlider: RangeSlider) {
-        print("value change: (\(rangeSlider.currentValue))")
+        cpRangeValueLabel.text = "\(Int(rangeSlider.currentValue * 80))-\(Int(rangeSlider.currentValue * 100))"
+        hpRangeValueLabel.text = "\(Int(rangeSlider.currentValue * 8))-\(Int(rangeSlider.currentValue * 10))"
     }
 }

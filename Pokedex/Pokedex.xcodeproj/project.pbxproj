@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D85FF921D649DDD002FD710 /* EmitterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FF911D649DDD002FD710 /* EmitterLayer.swift */; };
 		8D85FF941D649DE8002FD710 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D85FF931D649DE8002FD710 /* spark.png */; };
-		8D85FFA21D64A103002FD710 /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FF9F1D64A103002FD710 /* ASValuePopUpView.m */; };
-		8D85FFA31D64A103002FD710 /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FFA11D64A103002FD710 /* ASValueTrackingSlider.m */; };
 		8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FFA51D64A841002FD710 /* RangeSlider.swift */; };
 		8D85FFA81D64ADA6002FD710 /* RangeSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FFA71D64ADA6002FD710 /* RangeSliderThumbLayer.swift */; };
 		8D85FFAA1D64BC6F002FD710 /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FFA91D64BC6F002FD710 /* RangeSliderTrackLayer.swift */; };
@@ -27,11 +25,6 @@
 /* Begin PBXFileReference section */
 		8D85FF911D649DDD002FD710 /* EmitterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmitterLayer.swift; path = Content/EmitterLayer.swift; sourceTree = "<group>"; };
 		8D85FF931D649DE8002FD710 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Content/spark.png; sourceTree = "<group>"; };
-		8D85FF9D1D64A102002FD710 /* Pokedex-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pokedex-Bridging-Header.h"; sourceTree = "<group>"; };
-		8D85FF9E1D64A103002FD710 /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASValuePopUpView.h; path = Content/ASValueTrackingSlider/ASValuePopUpView.h; sourceTree = "<group>"; };
-		8D85FF9F1D64A103002FD710 /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASValuePopUpView.m; path = Content/ASValueTrackingSlider/ASValuePopUpView.m; sourceTree = "<group>"; };
-		8D85FFA01D64A103002FD710 /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASValueTrackingSlider.h; path = Content/ASValueTrackingSlider/ASValueTrackingSlider.h; sourceTree = "<group>"; };
-		8D85FFA11D64A103002FD710 /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASValueTrackingSlider.m; path = Content/ASValueTrackingSlider/ASValueTrackingSlider.m; sourceTree = "<group>"; };
 		8D85FFA51D64A841002FD710 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		8D85FFA71D64ADA6002FD710 /* RangeSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSliderThumbLayer.swift; sourceTree = "<group>"; };
 		8D85FFA91D64BC6F002FD710 /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
@@ -66,21 +59,8 @@
 				8D85FFA91D64BC6F002FD710 /* RangeSliderTrackLayer.swift */,
 				8D85FFA71D64ADA6002FD710 /* RangeSliderThumbLayer.swift */,
 				8D85FF931D649DE8002FD710 /* spark.png */,
-				8D85FFA41D64A152002FD710 /* ASValueTrackingSlider */,
 			);
 			name = Content;
-			sourceTree = "<group>";
-		};
-		8D85FFA41D64A152002FD710 /* ASValueTrackingSlider */ = {
-			isa = PBXGroup;
-			children = (
-				8D85FF9E1D64A103002FD710 /* ASValuePopUpView.h */,
-				8D85FF9F1D64A103002FD710 /* ASValuePopUpView.m */,
-				8D85FFA01D64A103002FD710 /* ASValueTrackingSlider.h */,
-				8D85FFA11D64A103002FD710 /* ASValueTrackingSlider.m */,
-				8D85FF9D1D64A102002FD710 /* Pokedex-Bridging-Header.h */,
-			);
-			name = ASValueTrackingSlider;
 			sourceTree = "<group>";
 		};
 		8DB69E071D636859006EF766 = {
@@ -206,13 +186,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB69E161D636859006EF766 /* PokedexViewController.swift in Sources */,
-				8D85FFA31D64A103002FD710 /* ASValueTrackingSlider.m in Sources */,
 				AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */,
 				8DB69E141D636859006EF766 /* AppDelegate.swift in Sources */,
 				8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */,
 				8D85FFA81D64ADA6002FD710 /* RangeSliderThumbLayer.swift in Sources */,
 				8DB69E271D63706F006EF766 /* PokedexCollectionViewCell.swift in Sources */,
-				8D85FFA21D64A103002FD710 /* ASValuePopUpView.m in Sources */,
 				8D85FF921D649DDD002FD710 /* EmitterLayer.swift in Sources */,
 				8D85FFAA1D64BC6F002FD710 /* RangeSliderTrackLayer.swift in Sources */,
 				AEE7C0CB1D6413DF00DD2480 /* PokemonData.swift in Sources */,
@@ -338,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pokedex/Pokedex-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -355,7 +333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pokedex/Pokedex-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
