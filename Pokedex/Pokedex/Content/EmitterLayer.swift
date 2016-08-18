@@ -23,7 +23,7 @@ class EmitterLayer: CAEmitterLayer {
         let emitterCell = CAEmitterCell()
         emitterCell.contents = UIImage(named: "spark")!.CGImage
         emitterCell.birthRate = 10                                      // 每秒產生10個粒子
-        emitterCell.lifetime = 8                                        // 存活8秒
+        emitterCell.lifetime = 10                                       // 存活10秒
         emitterCell.lifetimeRange = 1.0                                 // 存活時間範圍 7 --- 9
         self.emitterCells = [emitterCell]                               // 這裡可以設置多種粒子 目前為一種
         emitterCell.yAcceleration = -5.0                                // Y方向加速度
@@ -40,7 +40,7 @@ class EmitterLayer: CAEmitterLayer {
         emitterCell.scaleRange = 0.05                                   // 範圍大小 0.15 - 0.25
         emitterCell.scaleSpeed = -0.02                                  // 变小速度
         emitterCell.alphaRange = 0.75                                   // 随机透明度
-        emitterCell.alphaSpeed = -0.1                                   // 透明速度
+        emitterCell.alphaSpeed = -0.05                                  // 透明速度
     }
     
     required init?(coder aDecoder: NSCoder) {

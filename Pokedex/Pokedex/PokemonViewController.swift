@@ -29,7 +29,7 @@ class PokemonViewController: UIViewController {
         updateViewForPokemon()
         
         // background image emitter
-        let rect = CGRect(x: 0.0, y: 240, width: view.bounds.width, height: 20.0)
+        let rect = CGRect(x: 0.0, y: 240, width: view.bounds.width, height: 130.0)
         let emitter = EmitterLayer(rect: rect)
         backgroundImage.layer.addSublayer(emitter)
         
