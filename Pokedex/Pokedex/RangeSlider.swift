@@ -86,7 +86,8 @@ class RangeSlider: UIControl {
     }
     
     func positionForValue(value: Double) -> Double {
-        return Double(bounds.width) * (value - minimunValue) / (maximunValue - minimunValue)
+        let inset = maximunValue - minimunValue == 0 ? 1 : maximunValue - minimunValue
+        return Double(bounds.width) * (value - minimunValue) / inset
     }
     
     override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {

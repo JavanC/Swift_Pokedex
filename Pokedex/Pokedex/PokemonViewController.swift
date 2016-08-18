@@ -16,13 +16,20 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var hpRangeValueLabel: UILabel!
     let levelRangeSlider = RangeSlider(frame: CGRectZero)
     
+    @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var estimatedLevelLabel: UILabel!
     @IBOutlet weak var stardustLabel: UILabel!
     @IBOutlet weak var candyLabel: UILabel!
     
+    @IBOutlet weak var cpValueLabel: UILabel!
+    @IBOutlet weak var hpValueLabel: UILabel!
+    @IBOutlet weak var cpRangeValueLabel2: UILabel!
+    @IBOutlet weak var hpRangeValueLabel2: UILabel!
+    
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
     
+    @IBOutlet weak var ivStaLabel: UILabel!
     var pokemon: Pokemon!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +40,23 @@ class PokemonViewController: UIViewController {
         let emitter = EmitterLayer(rect: rect)
         backgroundImage.layer.addSublayer(emitter)
         
+        // pokemonImage
+        pokemonImage.image = UIImage(named: pokemon.number)
+        
         // slider
         levelRangeSliderValueChanged(levelRangeSlider)
         levelRangeSlider.addTarget(self, action: #selector(self.levelRangeSliderValueChanged), forControlEvents: .ValueChanged)
         scrollView.addSubview(levelRangeSlider)
 
+        // CP Slider
         scrollView.addSubview(pokemonCPSlider)
+        
+        // hp slider
+        hpRangeSliderValueChanged(pokemonHPSlider)
+        pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
+//        pokemonHPSlider.minimunValue = 50
+//        pokemonHPSlider.maximunValue = 100
+//        pokemonHPSlider.currentValue = 75
         scrollView.addSubview(pokemonHPSlider)
     }
     
@@ -57,8 +75,33 @@ class PokemonViewController: UIViewController {
     }
     
     func levelRangeSliderValueChanged(rangeSlider: RangeSlider) {
+        
+        pokemon.level = rangeSlider.currentValue / 2
+        estimatedLevelLabel.text = pokemon.level % 1 == 0 ? "\(Int(pokemon.level))" : "\(pokemon.level)"
+        
+        let CPM = CPMs[pokemon.level]!
+        let minHp = Int(pokemon.baseSta * CPM > 10 ? pokemon.baseSta * CPM : 10)
+        let maxHp = Int((pokemon.baseSta + 15) * CPM > 10 ? (pokemon.baseSta + 15) * CPM : 10)
+        hpRangeValueLabel.text = "\(minHp)-\(maxHp)"
+        hpRangeValueLabel2.text = "\(minHp) - \(maxHp)"
+        pokemonHPSlider.minimunValue = Double(minHp)
+        pokemonHPSlider.maximunValue = Double(maxHp)
+        pokemonHPSlider.currentValue = min(max(pokemonHPSlider.currentValue, Double(minHp)), Double(maxHp))
+        hpValueLabel.text = "\(Int(pokemonHPSlider.currentValue))"
+        
         cpRangeValueLabel.text = "\(Int(rangeSlider.currentValue * 80))-\(Int(rangeSlider.currentValue * 100))"
-        hpRangeValueLabel.text = "\(Int(rangeSlider.currentValue * 8))-\(Int(rangeSlider.currentValue * 10))"
-        estimatedLevelLabel.text = "\(Int(rangeSlider.currentValue) / 2)"
+        
+    }
+    
+    func hpRangeSliderValueChanged(rangeSlider: RangeSlider) {
+        hpValueLabel.text = "\(Int(rangeSlider.currentValue))"
+    }
+    
+    func calculateIV(level: Double, cp: Double, hp: Double) {
+//        let baseAtt = pokemon.baseAtt
+//        let baseDef = pokemon.baseDef
+//        let baseSta = pokemon.baseSta
+//        let CPM = CPMs[level]!
+//        pokemon.indiSta = hp / CPM - baseSta
     }
 }
