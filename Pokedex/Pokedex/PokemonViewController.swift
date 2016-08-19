@@ -28,10 +28,13 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var attDefValueLabel: UILabel!
     @IBOutlet weak var staValueLabel: UILabel!
     @IBOutlet weak var ivValueLabel: UILabel!
+    @IBOutlet weak var ivValueView: MyCustomView!
+    
     
     let levelRangeSlider = RangeSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
+    let ivValueCircleLayer = CAShapeLayer()
     
     @IBOutlet weak var ivStaLabel: UILabel!
     var pokemon: Pokemon!
@@ -58,18 +61,32 @@ class PokemonViewController: UIViewController {
             let margin: CGFloat = 30.0
             let width = view.bounds.width - 2.0 * margin
             
-            levelRangeSlider.frame = CGRect(x: margin, y: 180, width: width, height: 20.0)
+            levelRangeSlider.frame = CGRect(x: margin, y: 180, width: width, height: 25.0)
             levelRangeSliderValueChanged(levelRangeSlider)
             levelRangeSlider.addTarget(self, action: #selector(self.levelRangeSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(levelRangeSlider)
             
-            pokemonCPSlider.frame = CGRect(x: margin, y: 288, width: width, height: 20.0)
+            pokemonCPSlider.frame = CGRect(x: margin, y: 288, width: width, height: 25.0)
             pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(pokemonCPSlider)
             
-            pokemonHPSlider.frame = CGRect(x: margin, y: 338, width: width, height: 20.0)
+            pokemonHPSlider.frame = CGRect(x: margin, y: 338, width: width, height: 25.0)
             pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(pokemonHPSlider)
+            
+            // iv value circle
+            let arcCenter = CGPoint(x: view.bounds.width / 2, y: ivValueView.bounds.height / 2)
+            let startAngle: CGFloat = CGFloat(-M_PI_2)
+            let endAngle: CGFloat = CGFloat(M_PI_2 * 3)
+            let path = UIBezierPath(arcCenter: arcCenter, radius: 29, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            ivValueCircleLayer.path = path.CGPath
+            ivValueCircleLayer.lineWidth = 16
+            ivValueCircleLayer.fillColor = UIColor.clearColor().CGColor
+            ivValueCircleLayer.strokeColor = UIColor.init(colorLiteralRed: 0.966, green: 0.74, blue: 0.222, alpha: 1.0).CGColor
+            ivValueCircleLayer.opacity = 0.2
+            ivValueCircleLayer.zPosition = -1
+            ivValueCircleLayer.strokeEnd = 0.0
+            ivValueView.layer.addSublayer(ivValueCircleLayer)
         }
     }
     
@@ -109,8 +126,10 @@ class PokemonViewController: UIViewController {
     func updateIVView() {
         let attDef = pokemon.indiAtt + pokemon.indiDef
         let sta = pokemon.indiSta
+        let persent = (attDef + sta) / 45
         attDefValueLabel.text = "\(Int(attDef)) / 30"
         staValueLabel.text = "\(Int(sta)) / 15"
-        ivValueLabel.text = "\(Int((attDef + sta) / 45 * 100))%"
+        ivValueLabel.text = "\(Int(persent * 100))%"
+        ivValueCircleLayer.strokeEnd = CGFloat(persent)
     }
 }

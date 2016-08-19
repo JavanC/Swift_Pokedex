@@ -1208,6 +1208,7 @@
                         <outlet property="hpValueLabel" destination="J5S-n8-MyQ" id="Aon-ZF-Vfy"/>
                         <outlet property="ivStaLabel" destination="ujx-Xi-Afo" id="L7u-1P-Z3T"/>
                         <outlet property="ivValueLabel" destination="zIV-wg-Okf" id="woA-tM-GBy"/>
+                        <outlet property="ivValueView" destination="aaR-Lq-t7D" id="Pjv-sK-hvQ"/>
                         <outlet property="pokemonImage" destination="nJG-T7-Zac" id="A3O-e6-Ka2"/>
                         <outlet property="scrollView" destination="b6f-55-7lH" id="ycL-9i-NMZ"/>
                         <outlet property="staValueLabel" destination="ujx-Xi-Afo" id="Ah2-an-xEl"/>

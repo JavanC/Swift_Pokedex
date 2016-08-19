@@ -75,7 +75,7 @@ class RangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height / 3)
+        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height * 2 / 5)
         trackLayer.setNeedsDisplay()
         
         let currentThumbCenter = CGFloat(positionForValue(currentValue))
