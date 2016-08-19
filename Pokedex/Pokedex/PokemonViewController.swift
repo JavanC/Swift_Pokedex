@@ -46,7 +46,8 @@ class PokemonViewController: UIViewController {
             title = pokemon.name
             
             // background image emitter
-            let rect = CGRect(x: 0.0, y: 240, width: view.bounds.width, height: 130.0)
+            let halfHeight = view.bounds.height / 2
+            let rect = CGRect(x: 0.0, y: halfHeight, width: view.bounds.width, height: halfHeight)
             let emitter = EmitterLayer(rect: rect)
             backgroundImage.layer.addSublayer(emitter)
             
@@ -66,7 +67,7 @@ class PokemonViewController: UIViewController {
             pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(pokemonCPSlider)
             
-            pokemonHPSlider.frame = CGRect(x: margin, y: 333, width: width, height: 20.0)
+            pokemonHPSlider.frame = CGRect(x: margin, y: 338, width: width, height: 20.0)
             pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(pokemonHPSlider)
         }

@@ -58,7 +58,7 @@
 		8D85FF9C1D649DFA002FD710 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				AE3E1BE91D67024700840C4A /* Slider */,
+				AE3E1BE91D67024700840C4A /* RangeSlider */,
 				AE23B5631D66A7700002003E /* levelDataList.swift */,
 				8D85FF911D649DDD002FD710 /* EmitterLayer.swift */,
 				8D85FF931D649DE8002FD710 /* spark.png */,
@@ -106,14 +106,14 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
-		AE3E1BE91D67024700840C4A /* Slider */ = {
+		AE3E1BE91D67024700840C4A /* RangeSlider */ = {
 			isa = PBXGroup;
 			children = (
 				8D85FFA51D64A841002FD710 /* RangeSlider.swift */,
 				8D85FFA91D64BC6F002FD710 /* RangeSliderTrackLayer.swift */,
 				8D85FFA71D64ADA6002FD710 /* RangeSliderThumbLayer.swift */,
 			);
-			name = Slider;
+			name = RangeSlider;
 			sourceTree = "<group>";
 		};
 		AE3E1BEA1D67025500840C4A /* View */ = {
