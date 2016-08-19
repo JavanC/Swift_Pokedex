@@ -486,7 +486,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-KB-lOb" userLabel="Skill View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="457" width="375" height="230"/>
+                                                <rect key="frame" x="0.0" y="457" width="375" height="220"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g1X-nS-0Tl">
                                                         <rect key="frame" x="30" y="28" width="315" height="29"/>
@@ -903,7 +903,7 @@
                                                     <constraint firstItem="5Hv-2b-jWf" firstAttribute="leading" secondItem="g8p-KB-lOb" secondAttribute="leading" id="Fd6-Rb-ntj"/>
                                                     <constraint firstItem="1RB-No-Sy8" firstAttribute="leading" secondItem="g8p-KB-lOb" secondAttribute="leading" id="Foe-kD-nut"/>
                                                     <constraint firstItem="0sP-VB-M0F" firstAttribute="top" secondItem="g1X-nS-0Tl" secondAttribute="bottom" id="GmL-p6-Th2"/>
-                                                    <constraint firstAttribute="height" constant="230" id="H48-5Y-yKw"/>
+                                                    <constraint firstAttribute="height" constant="220" id="H48-5Y-yKw"/>
                                                     <constraint firstItem="nzQ-KZ-iaa" firstAttribute="width" secondItem="5Hv-2b-jWf" secondAttribute="width" id="IYv-Vl-tgd"/>
                                                     <constraint firstItem="D3o-uN-RVR" firstAttribute="top" secondItem="g1X-nS-0Tl" secondAttribute="bottom" id="KP9-34-nO3"/>
                                                     <constraint firstItem="L1X-it-PLg" firstAttribute="width" secondItem="5Hv-2b-jWf" secondAttribute="width" id="KPS-MP-uS9"/>
@@ -953,10 +953,10 @@
                                                 </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFu-nf-0TJ" userLabel="Gym View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="686" width="375" height="120"/>
+                                                <rect key="frame" x="0.0" y="676" width="375" height="120"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="854" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyJ-od-0GS">
-                                                        <rect key="frame" x="0.0" y="38" width="187.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="33" width="188" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="kq8-Zg-oki"/>
                                                         </constraints>
@@ -965,7 +965,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="291.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-AG-2xd">
-                                                        <rect key="frame" x="187" y="38" width="187.5" height="50"/>
+                                                        <rect key="frame" x="188" y="33" width="187" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="8rQ-1P-CFV"/>
                                                         </constraints>
@@ -974,7 +974,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATTACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktj-Uq-W6x">
-                                                        <rect key="frame" x="0.0" y="88" width="187.5" height="20"/>
+                                                        <rect key="frame" x="0.0" y="83" width="188" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="hfX-Hw-Bz8"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="nPW-4p-f3G"/>
@@ -984,7 +984,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEFEND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0k-DI-Ng4">
-                                                        <rect key="frame" x="187" y="88" width="187.5" height="20"/>
+                                                        <rect key="frame" x="188" y="83" width="187" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="C8L-MT-gLA"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="RvM-kT-faZ"/>
@@ -994,11 +994,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM 60 SECONDS POWER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHq-eE-k3F">
-                                                        <rect key="frame" x="0.0" y="8" width="375" height="30"/>
+                                                        <rect key="frame" x="0.0" y="8" width="375" height="25"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="0a4-Ac-hCV"/>
+                                                            <constraint firstAttribute="height" constant="25" id="0a4-Ac-hCV"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1034,7 +1034,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYW-uu-6zt">
-                                                <rect key="frame" x="27.5" y="10" width="320" height="30"/>
+                                                <rect key="frame" x="28" y="10" width="320" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888-8888" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCi-xj-4A7">
                                                         <rect key="frame" x="50" y="0.0" width="130" height="30"/>
@@ -1164,6 +1164,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="attDefValueLabel" destination="WDZ-57-Qoq" id="tN8-xM-Jly"/>
                         <outlet property="backgroundImage" destination="ye9-cx-jaQ" id="9fe-LE-QJw"/>
                         <outlet property="candyLabel" destination="8dV-l4-8EP" id="EGp-TX-ive"/>
                         <outlet property="cpRangeValueLabel" destination="SCi-xj-4A7" id="rAh-Ok-jU4"/>
@@ -1174,8 +1175,10 @@
                         <outlet property="hpRangeValueLabel2" destination="64z-qr-3os" id="mnD-Bj-XN1"/>
                         <outlet property="hpValueLabel" destination="J5S-n8-MyQ" id="Aon-ZF-Vfy"/>
                         <outlet property="ivStaLabel" destination="ujx-Xi-Afo" id="L7u-1P-Z3T"/>
+                        <outlet property="ivValueLabel" destination="zIV-wg-Okf" id="woA-tM-GBy"/>
                         <outlet property="pokemonImage" destination="nJG-T7-Zac" id="A3O-e6-Ka2"/>
                         <outlet property="scrollView" destination="b6f-55-7lH" id="ycL-9i-NMZ"/>
+                        <outlet property="staValueLabel" destination="ujx-Xi-Afo" id="Ah2-an-xEl"/>
                         <outlet property="stardustLabel" destination="cuN-4v-7z6" id="YnR-Ls-daS"/>
                     </connections>
                 </viewController>
