@@ -20,6 +20,7 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var stardustLabel: UILabel!
     @IBOutlet weak var candyLabel: UILabel!
     
+    @IBOutlet weak var CPHPView: MyCustomView!
     @IBOutlet weak var cpValueLabel: UILabel!
     @IBOutlet weak var hpValueLabel: UILabel!
     @IBOutlet weak var cpRangeValueLabel2: UILabel!
@@ -30,6 +31,8 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var ivValueLabel: UILabel!
     @IBOutlet weak var ivValueView: MyCustomView!
     
+    @IBOutlet weak var estimatedViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var powerUpViewTopConstraint: NSLayoutConstraint!
     
     let levelRangeSlider = RangeSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
@@ -45,6 +48,14 @@ class PokemonViewController: UIViewController {
     
     private func updateViewForPokemon() {
         if let pokemon = pokemon {
+            
+            // autolayout
+            if UIScreen.mainScreen().bounds.height > 796 + 64 {
+                let constant = UIScreen.mainScreen().bounds.height - 64 - 596
+                estimatedViewTopConstraint.constant = constant
+                powerUpViewTopConstraint.constant = constant
+            }
+            
             // update title name
             title = pokemon.name
             
@@ -66,13 +77,13 @@ class PokemonViewController: UIViewController {
             levelRangeSlider.addTarget(self, action: #selector(self.levelRangeSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(levelRangeSlider)
             
-            pokemonCPSlider.frame = CGRect(x: margin, y: 288, width: width, height: 25.0)
+            pokemonCPSlider.frame = CGRect(x: margin, y: 28, width: width, height: 25.0)
             pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
-            scrollView.addSubview(pokemonCPSlider)
+            CPHPView.addSubview(pokemonCPSlider)
             
-            pokemonHPSlider.frame = CGRect(x: margin, y: 338, width: width, height: 25.0)
+            pokemonHPSlider.frame = CGRect(x: margin, y: 78, width: width, height: 25.0)
             pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
-            scrollView.addSubview(pokemonHPSlider)
+            CPHPView.addSubview(pokemonHPSlider)
             
             // iv value circle
             let arcCenter = CGPoint(x: view.bounds.width / 2, y: ivValueView.bounds.height / 2)
