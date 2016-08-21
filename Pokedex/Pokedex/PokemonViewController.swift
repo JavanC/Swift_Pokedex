@@ -49,8 +49,9 @@ class PokemonViewController: UIViewController {
     private func updateViewForPokemon() {
         if let pokemon = pokemon {
             
-            // autolayout
+            // for ipad autolayout
             if UIScreen.mainScreen().bounds.height > 796 + 64 {
+                scrollView.scrollEnabled = false
                 let constant = UIScreen.mainScreen().bounds.height - 64 - 596
                 estimatedViewTopConstraint.constant = constant
                 powerUpViewTopConstraint.constant = constant
@@ -69,7 +70,7 @@ class PokemonViewController: UIViewController {
             pokemonImage.image = UIImage(named: pokemon.number)
             
             // slider
-            let margin: CGFloat = 30.0
+            let margin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
             let width = view.bounds.width - 2.0 * margin
             
             levelRangeSlider.frame = CGRect(x: margin, y: 180, width: width, height: 25.0)
