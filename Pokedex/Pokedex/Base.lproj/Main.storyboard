@@ -1209,9 +1209,15 @@
                                                     <constraint firstItem="nJG-T7-Zac" firstAttribute="top" secondItem="mYW-uu-6zt" secondAttribute="bottom" id="LLw-bT-VTm"/>
                                                     <constraint firstItem="mYW-uu-6zt" firstAttribute="centerX" secondItem="Lpt-Ke-DdT" secondAttribute="centerX" id="M8f-Vi-DBy"/>
                                                     <constraint firstItem="mYW-uu-6zt" firstAttribute="top" secondItem="Lpt-Ke-DdT" secondAttribute="top" constant="10" id="Qqp-Cg-2Zt"/>
+                                                    <constraint firstItem="nJG-T7-Zac" firstAttribute="centerY" secondItem="Lpt-Ke-DdT" secondAttribute="centerY" id="bNX-9U-10Z"/>
                                                     <constraint firstItem="nJG-T7-Zac" firstAttribute="height" secondItem="Lpt-Ke-DdT" secondAttribute="height" multiplier="0.6" id="grk-Mn-iba"/>
                                                     <constraint firstItem="nJG-T7-Zac" firstAttribute="centerX" secondItem="Lpt-Ke-DdT" secondAttribute="centerX" id="kr1-YN-B50"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="LLw-bT-VTm"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
