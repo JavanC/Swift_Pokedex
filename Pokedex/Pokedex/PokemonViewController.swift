@@ -31,10 +31,10 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var ivValueLabel: UILabel!
     @IBOutlet weak var ivValueView: MyCustomView!
     
-    @IBOutlet weak var estimatedViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var powerUpViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pokemonInfoView: UIView!
+    @IBOutlet weak var pokemonInfoViewHeightConstraint: NSLayoutConstraint!
     
-    let levelRangeSlider = RangeSlider(frame: CGRectZero)
+    let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
     let ivValueCircleLayer = CAShapeLayer()
@@ -53,8 +53,8 @@ class PokemonViewController: UIViewController {
             if UIScreen.mainScreen().bounds.height > 796 + 64 {
                 scrollView.scrollEnabled = false
                 let constant = UIScreen.mainScreen().bounds.height - 64 - 596
-                estimatedViewTopConstraint.constant = constant
-                powerUpViewTopConstraint.constant = constant
+                pokemonInfoViewHeightConstraint.constant = constant
+                pokemonInfoView.layoutIfNeeded()
             }
             
             // update title name
@@ -72,11 +72,12 @@ class PokemonViewController: UIViewController {
             // slider
             let margin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
             let width = view.bounds.width - 2.0 * margin
-            
-            levelRangeSlider.frame = CGRect(x: margin, y: 180, width: width, height: 25.0)
-            levelRangeSliderValueChanged(levelRangeSlider)
-            levelRangeSlider.addTarget(self, action: #selector(self.levelRangeSliderValueChanged), forControlEvents: .ValueChanged)
-            scrollView.addSubview(levelRangeSlider)
+            let pokemonInfoViewHeight = pokemonInfoView.frame.height
+    
+            levelRulerSlider.frame = CGRect(x: margin, y: pokemonInfoViewHeight - 25, width: width, height: 25.0)
+            levelRulerSliderValueChanged(levelRulerSlider)
+            levelRulerSlider.addTarget(self, action: #selector(self.levelRulerSliderValueChanged), forControlEvents: .ValueChanged)
+            scrollView.addSubview(levelRulerSlider)
             
             pokemonCPSlider.frame = CGRect(x: margin, y: 28, width: width, height: 25.0)
             pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
@@ -102,8 +103,8 @@ class PokemonViewController: UIViewController {
         }
     }
     
-    func levelRangeSliderValueChanged(rangeSlider: RangeSlider) {
-        pokemon.level = rangeSlider.currentValue / 2
+    func levelRulerSliderValueChanged(rulerSlider: RulerSlider) {
+        pokemon.level = rulerSlider.currentValue / 2
         estimatedLevelLabel.text = pokemon.level % 1 == 0 ? "\(Int(pokemon.level))" : "\(pokemon.level)"
         stardustLabel.text = "\(Int(pokemon.stardust))"
         candyLabel.text = "\(Int(pokemon.candy))"

@@ -46,9 +46,10 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-        let frameWidth = UIScreen.mainScreen().bounds.size.width
+        
         print(UIScreen.mainScreen().bounds.size)
-        print(UIScreen.mainScreen().scale)
+        
+        let frameWidth = UIScreen.mainScreen().bounds.size.width
         let cellNumber = CGFloat(Int(frameWidth / 80))
         let inset = (frameWidth % 80) / (cellNumber + 1)
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
