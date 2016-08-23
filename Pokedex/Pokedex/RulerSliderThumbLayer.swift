@@ -32,11 +32,17 @@ class RulerSliderThumbLayer: CALayer {
             thumbPath.addLineToPoint(CGPoint(x: 0, y: cornerRadius))
                         
             // Fill - tith a subtle shadow
-            let shadowColor = UIColor.lightGrayColor()
-            CGContextSetShadowWithColor(ctx, CGSize(width: 0.0, height: 1.0), 1.0, shadowColor.CGColor)
+//            let shadowColor = UIColor.lightGrayColor()
+//            CGContextSetShadowWithColor(ctx, CGSize(width: 0.0, height: 1.0), 1.0, color3.CGColor)
             CGContextSetFillColorWithColor(ctx, slider.thubTintColor.CGColor)
             CGContextAddPath(ctx, thumbPath.CGPath)
             CGContextFillPath(ctx)
+            
+            // Outline
+            CGContextSetStrokeColorWithColor(ctx, UIColor.whiteColor().CGColor)
+            CGContextSetLineWidth(ctx, 2.0)
+            CGContextAddPath(ctx, thumbPath.CGPath)
+            CGContextStrokePath(ctx)
             
             if highlighted {
                 CGContextSetFillColorWithColor(ctx, UIColor(white: 0.0, alpha: 0.1).CGColor)

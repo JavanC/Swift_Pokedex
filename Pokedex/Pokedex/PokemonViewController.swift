@@ -56,7 +56,6 @@ class PokemonViewController: UIViewController {
             NSUserDefaults.standardUserDefaults().setDouble(trainerLevel, forKey: "trainerLevel")
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -70,33 +69,44 @@ class PokemonViewController: UIViewController {
     
     private func updateViewForPokemon() {
         if let pokemon = pokemon {
-            
+
             // for ipad autolayout
             if UIScreen.mainScreen().bounds.height > 826 + 64 {
                 scrollView.scrollEnabled = false
                 let constant = UIScreen.mainScreen().bounds.height - 64 - 596
                 pokemonInfoViewHeightConstraint.constant = constant
                 pokemonInfoView.layoutIfNeeded()
+                print(constant)
             }
             
             // update title name
             title = pokemon.name
             
             // background image emitter
-            let halfHeight = view.bounds.height / 2
-            let rect = CGRect(x: 0.0, y: halfHeight, width: view.bounds.width, height: halfHeight)
+            pokemonInfoView.layer.zPosition = -1
+            let halfHeight = backgroundImage.frame.height
+            let rect = CGRect(x: 0.0, y: halfHeight, width: view.bounds.width, height: 100)
             let emitter = EmitterLayer(rect: rect)
             backgroundImage.layer.addSublayer(emitter)
             
             // pokemonImage
             pokemonImage.image = UIImage(named: pokemon.number)
             
-            // slider
-            let margin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
-            let width = view.bounds.width - 2.0 * margin
+            // cp value arc
+            drawCPValueArc()
+            
+            // iv value circle
+            drawIVValueCircle()
+            
+            // ruler slider
+            var rulerSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
+            if UIScreen.mainScreen().bounds.height > 826 + 64 {
+                rulerSliderMargin = UIScreen.mainScreen().bounds.width / 2 - pokemonImage.frame.width * 1.2
+            }
+            let rulerSliderWidth = view.bounds.width - 2.0 * rulerSliderMargin
             let pokemonInfoViewHeight = pokemonInfoView.frame.height
     
-            levelRulerSlider.frame = CGRect(x: margin, y: pokemonInfoViewHeight - 25, width: width, height: 25.0)
+            levelRulerSlider.frame = CGRect(x: rulerSliderMargin, y: pokemonInfoViewHeight - 25, width: rulerSliderWidth, height: 25.0)
             let maxLevel = trainerLevel * 2 + 3 > 80 ? 80 : trainerLevel * 2 + 3
             levelRulerSlider.maximunValue = maxLevel
             levelRulerSlider.currentValue = Double(Int((maxLevel + 4) / 2))
@@ -104,25 +114,22 @@ class PokemonViewController: UIViewController {
             levelRulerSlider.addTarget(self, action: #selector(self.levelRulerSliderValueChanged), forControlEvents: .ValueChanged)
             scrollView.addSubview(levelRulerSlider)
             
-            pokemonCPSlider.frame = CGRect(x: margin, y: 28, width: width, height: 25.0)
+            // range slider
+            let rangeSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
+            let rangeSliderWidth = view.bounds.width - 2.0 * rangeSliderMargin
+            pokemonCPSlider.frame = CGRect(x: rangeSliderMargin, y: 28, width: rangeSliderWidth, height: 25.0)
             let cpCurrentValue = Double(Int((pokemonCPSlider.minimunValue + pokemonCPSlider.maximunValue) / 2))
             pokemonCPSlider.currentValue = cpCurrentValue
             cpRangeSliderValueChanged(pokemonCPSlider)
             pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             CPHPView.addSubview(pokemonCPSlider)
             
-            pokemonHPSlider.frame = CGRect(x: margin, y: 78, width: width, height: 25.0)
+            pokemonHPSlider.frame = CGRect(x: rangeSliderMargin, y: 78, width: rangeSliderWidth, height: 25.0)
             let hpCurrentValue = Double(Int((pokemonHPSlider.minimunValue + pokemonHPSlider.maximunValue) / 2))
             pokemonHPSlider.currentValue = hpCurrentValue
             hpRangeSliderValueChanged(pokemonHPSlider)
             pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             CPHPView.addSubview(pokemonHPSlider)
-            
-            // cp value arc
-            drawCPValueArc()
-            
-            // iv value circle
-            drawIVValueCircle()
         }
     }
     
@@ -130,14 +137,14 @@ class PokemonViewController: UIViewController {
         let arcCenter = CGPoint(x: view.bounds.width / 2, y: pokemonInfoView.bounds.height - 28)
         let StartAngel: CGFloat = CGFloat(M_PI)
         let EndAngel: CGFloat = 0
-        let Radius: CGFloat = UIScreen.mainScreen().bounds.height > 796 + 64 ? view.bounds.width * 0.35 : view.bounds.width * 0.4
+        let Radius: CGFloat = UIScreen.mainScreen().bounds.height > 796 + 64 ? pokemonImage.frame.width * 1.2 : view.bounds.width * 0.4
         let path = UIBezierPath(arcCenter: arcCenter, radius: Radius, startAngle: StartAngel, endAngle: EndAngel, clockwise: true)
     
         let cpArcBackgroundLayer = CAShapeLayer()
         cpArcBackgroundLayer.path = path.CGPath
         cpArcBackgroundLayer.lineWidth = 2
         cpArcBackgroundLayer.fillColor = UIColor.clearColor().CGColor
-        cpArcBackgroundLayer.strokeColor = UIColor.lightGrayColor().CGColor
+        cpArcBackgroundLayer.strokeColor = UIColor(hex: 0xFFFFFF, alpha: 0.5).CGColor
         pokemonInfoView.layer.addSublayer(cpArcBackgroundLayer)
         
         cpValueArcLayer.path = path.CGPath
@@ -155,7 +162,7 @@ class PokemonViewController: UIViewController {
         ivValueCircleLayer.path = path.CGPath
         ivValueCircleLayer.lineWidth = 16
         ivValueCircleLayer.fillColor = UIColor.clearColor().CGColor
-        ivValueCircleLayer.strokeColor = UIColor.init(colorLiteralRed: 0.966, green: 0.74, blue: 0.222, alpha: 1.0).CGColor
+        ivValueCircleLayer.strokeColor = color4.CGColor
         ivValueCircleLayer.opacity = 0.2
         ivValueCircleLayer.zPosition = -1
         ivValueCircleLayer.strokeEnd = 0.0
