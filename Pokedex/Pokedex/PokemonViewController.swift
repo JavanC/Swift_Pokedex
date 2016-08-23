@@ -10,12 +10,16 @@ import UIKit
 
 class PokemonViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var backgroundImage: UIImageView!
+    
+    @IBOutlet weak var pokemonInfoView: UIView!
+    @IBOutlet weak var pokemonInfoViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trainerLevelLabel: UILabel!
+    
     @IBOutlet weak var cpRangeValueLabel: UILabel!
     @IBOutlet weak var hpRangeValueLabel: UILabel!
-    
     @IBOutlet weak var pokemonImage: UIImageView!
+    
     @IBOutlet weak var estimatedLevelLabel: UILabel!
     @IBOutlet weak var stardustLabel: UILabel!
     @IBOutlet weak var candyLabel: UILabel!
@@ -30,27 +34,40 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var staValueLabel: UILabel!
     @IBOutlet weak var ivValueLabel: UILabel!
     @IBOutlet weak var ivValueView: MyCustomView!
-    
-    @IBOutlet weak var pokemonInfoView: UIView!
-    @IBOutlet weak var pokemonInfoViewHeightConstraint: NSLayoutConstraint!
-    
+
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
     let ivValueCircleLayer = CAShapeLayer()
+    let cpValueArcLayer = CAShapeLayer()
+    var trainerLevel = 0.0 {
+        didSet {
+            trainerLevel = min(max(trainerLevel, 1),40)
+            trainerLevelLabel.text = "\(Int(trainerLevel))"
+            NSUserDefaults.standardUserDefaults().setDouble(trainerLevel, forKey: "trainerLevel")
+        }
+    }
     
     @IBOutlet weak var ivStaLabel: UILabel!
     var pokemon: Pokemon!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         updateViewForPokemon()
+    }
+    
+    private func loadData() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        trainerLevel = defaults.doubleForKey("trainerLevel") != 0 ? defaults.doubleForKey("trainerLevel") : 20
     }
     
     private func updateViewForPokemon() {
         if let pokemon = pokemon {
             
+            UIColor.lightGrayColor()
+            
             // for ipad autolayout
-            if UIScreen.mainScreen().bounds.height > 796 + 64 {
+            if UIScreen.mainScreen().bounds.height > 826 + 64 {
                 scrollView.scrollEnabled = false
                 let constant = UIScreen.mainScreen().bounds.height - 64 - 596
                 pokemonInfoViewHeightConstraint.constant = constant
@@ -87,6 +104,18 @@ class PokemonViewController: UIViewController {
             pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             CPHPView.addSubview(pokemonHPSlider)
             
+            // cp value arc
+            let cpArcCenter = CGPoint(x: view.bounds.width / 2, y: pokemonInfoView.bounds.height - 25)
+            let cpArcStartAngel: CGFloat = CGFloat(M_PI)
+            let cpArcEndAngel: CGFloat = 0
+            let cpArcRadius: CGFloat = UIScreen.mainScreen().bounds.height > 796 + 64 ? view.bounds.width * 0.35 : view.bounds.width * 0.4
+            let cpArcPath = UIBezierPath(arcCenter: cpArcCenter, radius: cpArcRadius, startAngle: cpArcStartAngel, endAngle: cpArcEndAngel, clockwise: true)
+            cpValueArcLayer.path = cpArcPath.CGPath
+            cpValueArcLayer.lineWidth = 3
+            cpValueArcLayer.fillColor = UIColor.clearColor().CGColor
+            cpValueArcLayer.strokeColor = UIColor.whiteColor().CGColor
+            pokemonInfoView.layer.addSublayer(cpValueArcLayer)
+            
             // iv value circle
             let arcCenter = CGPoint(x: view.bounds.width / 2, y: ivValueView.bounds.height / 2)
             let startAngle: CGFloat = CGFloat(-M_PI_2)
@@ -102,6 +131,9 @@ class PokemonViewController: UIViewController {
             ivValueView.layer.addSublayer(ivValueCircleLayer)
         }
     }
+    
+    @IBAction func trainerLevelMinus(sender: AnyObject) { trainerLevel -= 1 }
+    @IBAction func trainerLevelPlus(sender: AnyObject) { trainerLevel += 1 }
     
     func levelRulerSliderValueChanged(rulerSlider: RulerSlider) {
         pokemon.level = rulerSlider.currentValue / 2
