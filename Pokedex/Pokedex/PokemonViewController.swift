@@ -34,9 +34,19 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var staValueLabel: UILabel!
     @IBOutlet weak var ivValueLabel: UILabel!
     @IBOutlet weak var ivValueView: MyCustomView!
+    
     @IBOutlet weak var fastAttackSegmented: UISegmentedControl!
-
     @IBOutlet weak var chargeAttackSegmented: UISegmentedControl!
+    @IBOutlet weak var fastAttackTypeLabel: UILabel!
+    @IBOutlet weak var fastAttackPowerLabel: UILabel!
+    @IBOutlet weak var fastAttackSecondLabel: UILabel!
+    @IBOutlet weak var fastAttackDPSLabel: UILabel!
+    @IBOutlet weak var fastAttackEnergyLabel: UILabel!
+    @IBOutlet weak var chargeAttackTypeLabel: UILabel!
+    @IBOutlet weak var chargeAttackPowerLabel: UILabel!
+    @IBOutlet weak var chargeAttackSecondLabel: UILabel!
+    @IBOutlet weak var chargeAttackDPSLabel: UILabel!
+    @IBOutlet weak var chargeAttackEnergyLabel: UILabel!
 
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
@@ -154,6 +164,7 @@ class PokemonViewController: UIViewController {
                 }
             }
             fastAttackSegmented.selectedSegmentIndex = 0
+            fastAttackSegmentValueChange(fastAttackSegmented)
             
             chargeAttackSegmented.layoutIfNeeded()
             chargeAttackSegmented.removeAllSegments()
@@ -175,6 +186,7 @@ class PokemonViewController: UIViewController {
                 }
             }
             chargeAttackSegmented.selectedSegmentIndex = 0
+            chargeAttackSegmentValueChange(chargeAttackSegmented)
         }
     }
     
@@ -261,5 +273,31 @@ class PokemonViewController: UIViewController {
         staValueLabel.text = "\(Int(sta)) / 15"
         ivValueLabel.text = "\(Int(persent * 100))%"
         ivValueCircleLayer.strokeEnd = CGFloat(persent)
+    }
+    
+    @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
+        let attack = pokemon.fastAttacks[sender.selectedSegmentIndex]
+        let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
+        let second = attack.duration
+        let DPS = power / attack.duration
+        let energy = attack.energy
+        fastAttackTypeLabel.text = "\(attack.type)"
+        fastAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : String(format: "%.1f", power)
+        fastAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
+        fastAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
+        fastAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
+    }
+    
+    @IBAction func chargeAttackSegmentValueChange(sender: AnyObject) {
+        let attack = pokemon.chargeAttacks[sender.selectedSegmentIndex]
+        let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
+        let second = attack.duration
+        let DPS = power / attack.duration
+        let energy = attack.energy
+        chargeAttackTypeLabel.text = "\(attack.type)"
+        chargeAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : String(format: "%.1f", power)
+        chargeAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
+        chargeAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
+        chargeAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
     }
 }
