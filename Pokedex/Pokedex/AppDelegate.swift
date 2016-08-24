@@ -67,9 +67,18 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
+    // creat image with label
+    class func imageWithLabel(label: UILabel) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0.0)
+        label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }
 
 extension UISegmentedControl {
+    // replace segments title
     func replaceSegments(segments: Array<String>) {
         self.removeAllSegments()
         for segment in segments {
@@ -78,21 +87,26 @@ extension UISegmentedControl {
     }
 }
 
-extension UISegmentedControl {
-    func setFontSize(normalColor: UIColor, fontSize: CGFloat) {
-        
-        let normalTextAttributes: [NSObject : AnyObject] = [
-            NSForegroundColorAttributeName: normalColor,
-            NSFontAttributeName: UIFont.systemFontOfSize(fontSize, weight: UIFontWeightRegular)
-        ]
-        
-        let boldTextAttributes: [NSObject : AnyObject] = [
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName : UIFont.systemFontOfSize(fontSize, weight: UIFontWeightMedium),
-            ]
-        
-        self.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
-        self.setTitleTextAttributes(normalTextAttributes, forState: .Highlighted)
-        self.setTitleTextAttributes(boldTextAttributes, forState: .Selected)
+extension UILabel{
+    // require label height
+    func requiredHeight() -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = self.font
+        label.text = self.text
+        label.sizeToFit()
+        return label.frame.height
+    }
+    // require label size from text and font
+    func textSize(text: String, font: UIFont) -> CGSize {
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, self.frame.width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return label.frame.size
     }
 }
+

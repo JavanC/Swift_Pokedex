@@ -37,7 +37,7 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var fastAttackSegmented: UISegmentedControl!
 
     @IBOutlet weak var chargeAttackSegmented: UISegmentedControl!
-    
+
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
@@ -79,7 +79,6 @@ class PokemonViewController: UIViewController {
                 let constant = UIScreen.mainScreen().bounds.height - 64 - 596
                 pokemonInfoViewHeightConstraint.constant = constant
                 pokemonInfoView.layoutIfNeeded()
-                print(constant)
             }
             
             // update title name
@@ -135,75 +134,47 @@ class PokemonViewController: UIViewController {
             CPHPView.addSubview(pokemonHPSlider)
             
             // segmented
-            var fastAttackNames = [String]()
-            for fastAttack in pokemon.fastAttacks {
-                fastAttackNames.append(fastAttack.name)
+            fastAttackSegmented.layoutIfNeeded()
+            fastAttackSegmented.removeAllSegments()
+            for (index, fastAttack) in pokemon.fastAttacks.enumerate() {
+                let attackName = fastAttack.name
+                let segmementedWidth = fastAttackSegmented.frame.width
+                let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count)
+                let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
+                if textWidth > itemWidth {
+                    let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
+                    let label = UILabel(frame: CGRectMake(0, 0, itemWidth, 29))
+                    label.textAlignment = NSTextAlignment.Center
+                    label.numberOfLines = 0
+                    label.font = UIFont.systemFontOfSize(11)
+                    label.text = text
+                    fastAttackSegmented.insertSegmentWithImage(UIImage.imageWithLabel(label), atIndex: index, animated: false)
+                } else {
+                    fastAttackSegmented.insertSegmentWithTitle(attackName, atIndex: index, animated: false)
+                }
             }
-            fastAttackSegmented.replaceSegments(fastAttackNames)
             fastAttackSegmented.selectedSegmentIndex = 0
             
-            var chargeAttackNames = [String]()
-            for chargeAttack in pokemon.chargeAttacks {
-                var name = chargeAttack.name
-                if name == "Sludge Bomb" {
-                    name = "Sludge\nBomb"
+            chargeAttackSegmented.layoutIfNeeded()
+            chargeAttackSegmented.removeAllSegments()
+            for (index, chargeAttack) in pokemon.chargeAttacks.enumerate() {
+                let attackName = chargeAttack.name
+                let segmementedWidth = chargeAttackSegmented.frame.width
+                let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 2
+                let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
+                if textWidth > itemWidth {
+                    let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
+                    let label = UILabel(frame: CGRectMake(0, 0, itemWidth, 29))
+                    label.textAlignment = NSTextAlignment.Center
+                    label.numberOfLines = 0
+                    label.font = UIFont.systemFontOfSize(11)
+                    label.text = text
+                    chargeAttackSegmented.insertSegmentWithImage(UIImage.imageWithLabel(label), atIndex: index, animated: false)
+                } else {
+                    chargeAttackSegmented.insertSegmentWithTitle(attackName, atIndex: index, animated: false)
                 }
-                chargeAttackNames.append(name)
             }
-            chargeAttackSegmented.replaceSegments(chargeAttackNames)
             chargeAttackSegmented.selectedSegmentIndex = 0
-            
-            
-            chargeAttackSegmented.setFontSize(color4, fontSize: 5)
-            
-            
-            
-//            //Setting up the segmented control
-//            UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:trends];
-//            segmentedControl.tintColor = [UIColor colorWithRed:0.03 green:0.28 blue:0.51 alpha:1.0];
-//            
-//            for (id segment in [segmentedControl subviews]) {
-//                
-//                for (id label in [segment subviews]) {
-//                    
-//                    if ([label isKindOfClass:[UILabel class]]) {
-//                        
-//                        UILabel *titleLabel = (UILabel *) label;
-//                        
-//                        titleLabel.frame = CGRectMake(0, 0, 97, 50);
-//                        [titleLabel setFont:[UIFont boldSystemFontOfSize:10]];
-//                        titleLabel.adjustsFontSizeToFitWidth = YES;
-//                        titleLabel.numberOfLines = 0;
-//                    }
-//                }
-//            }
-//            [segmentedControl addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
-//            segmentedControl.frame = CGRectMake(20, 510, 720, 40);
-//            segmentedControl.selectedSegmentIndex = 0;
-//            [segmentedControl layoutIfNeeded];
-//            [self.view addSubview:segmentedControl];
-            
-            
-            for segment in chargeAttackSegmented.subviews {
-                
-                for label in segment.subviews {
-                    if label is UILabel {
-                        (label as! UILabel).numberOfLines = 2
-//                        let titleLabel: UILabel = label as! UILabel
-//                        titleLabel.numberOfLines = 2
-                        
-                    }
-                }
-//                let labels = segment.subviews.filter { $0 is UILabel }
-//                labels.map { ($0 as UILable).numberOfLines = 2 }
-//
-//                for subview in segment.subviews {
-//                    if let segmentLabel = subview as? UILabel {
-//                        segmentLabel.frame = CGRectMake(0, 0, 100, 50)
-//                        segmentLabel.numberOfLines = 2
-//                    }
-//                }
-            }
         }
     }
     
