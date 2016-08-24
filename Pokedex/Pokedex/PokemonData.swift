@@ -11,10 +11,13 @@ import Foundation
 struct Pokemon {
     let number:String
     let name:String
-    
     let baseAtt:Double
     let baseDef:Double
     let baseSta:Double
+    let type: [Type]
+    let fastAttacks: [Attack]
+    let chargeAttacks: [Attack]
+    
     var indiAtt:Double
     var indiDef:Double
     var indiSta:Double
@@ -36,7 +39,6 @@ struct Pokemon {
             calculateIndiValue()
         }
     }
-    
     var level:Double {
         didSet {
             CPM = levelData[level]!["CPM"]!
@@ -55,17 +57,22 @@ struct Pokemon {
             cp = min(max(cp, Double(minCp)), Double(maxCp))
         }
     }
+
+
     
-    init(number:String, name:String, baseAtt:Double, baseDef:Double, baseSta:Double){
+    init(number:String, name:String, baseAtt:Double, baseDef:Double, baseSta:Double, type:[Type], fastAttacks:[Attack], chargeAttacks:[Attack]){
         self.number = number
         self.name = name
         self.baseAtt = baseAtt
         self.baseDef = baseDef
         self.baseSta = baseSta
+        self.type = type
+        self.fastAttacks = fastAttacks
+        self.chargeAttacks = chargeAttacks
+        
         self.indiAtt = 0
         self.indiDef = 0
         self.indiSta = 0
-        
         self.CPM = 0.0
         self.stardust = 0.0
         self.candy = 0.0
@@ -113,11 +120,33 @@ struct Pokemon {
 }
 
 let pokemonData:[Pokemon] = [
-    Pokemon(number: "#001", name: "種子", baseAtt: 126, baseDef: 126, baseSta: 90),
-    Pokemon(number: "#001", name: "種子2", baseAtt: 126, baseDef: 126, baseSta: 90),
-    Pokemon(number: "#002", name: "種子3", baseAtt: 156, baseDef: 158, baseSta: 120),
-    Pokemon(number: "#003", name: "種子4", baseAtt: 198, baseDef: 200, baseSta: 160),
-    Pokemon(number: "#004", name: "種子5", baseAtt: 128, baseDef: 108, baseSta: 78),
-    Pokemon(number: "#005", name: "種子6", baseAtt: 160, baseDef: 140, baseSta: 116),
-    Pokemon(number: "#006", name: "種子7", baseAtt: 212, baseDef: 182, baseSta: 156)
+    Pokemon(number: "#001", name: "種子", baseAtt: 126, baseDef: 126, baseSta: 90,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!, FastAttacks["Vine Whip"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!, ChargeAttacks["Seed Bomb"]!, ChargeAttacks["Sludge Bomb"]!]),
+    Pokemon(number: "#001", name: "種子2", baseAtt: 126, baseDef: 126, baseSta: 90,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!, ChargeAttacks["Seed Bomb"]!, ChargeAttacks["Sludge Bomb"]!]),
+    Pokemon(number: "#002", name: "種子3", baseAtt: 156, baseDef: 158, baseSta: 120,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!, FastAttacks["Vine Whip"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!]),
+    Pokemon(number: "#003", name: "種子4", baseAtt: 198, baseDef: 200, baseSta: 160,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!, FastAttacks["Vine Whip"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!, ChargeAttacks["Sludge Bomb"]!]),
+    Pokemon(number: "#004", name: "種子5", baseAtt: 128, baseDef: 108, baseSta: 78,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!, FastAttacks["Vine Whip"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!, ChargeAttacks["Seed Bomb"]!, ChargeAttacks["Sludge Bomb"]!]),
+    Pokemon(number: "#005", name: "種子6", baseAtt: 160, baseDef: 140, baseSta: 116,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!, FastAttacks["Vine Whip"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!, ChargeAttacks["Seed Bomb"]!, ChargeAttacks["Sludge Bomb"]!]),
+    Pokemon(number: "#006", name: "種子7", baseAtt: 212, baseDef: 182, baseSta: 156,
+        type: [Type.GRASS, Type.POISON],
+        fastAttacks: [FastAttacks["Tackle"]!, FastAttacks["Vine Whip"]!],
+        chargeAttacks: [ChargeAttacks["Power Whip"]!, ChargeAttacks["Seed Bomb"]!, ChargeAttacks["Sludge Bomb"]!, ChargeAttacks["Sludge Bomb"]!]),
 ]
+

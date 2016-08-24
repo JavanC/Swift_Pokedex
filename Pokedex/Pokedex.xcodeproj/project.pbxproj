@@ -18,7 +18,8 @@
 		8DB69E1B1D636859006EF766 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB69E1A1D636859006EF766 /* Assets.xcassets */; };
 		8DB69E1E1D636859006EF766 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB69E1C1D636859006EF766 /* LaunchScreen.storyboard */; };
 		8DB69E271D63706F006EF766 /* PokedexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB69E261D63706F006EF766 /* PokedexCollectionViewCell.swift */; };
-		AE23B5641D66A7700002003E /* levelDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23B5631D66A7700002003E /* levelDataList.swift */; };
+		AE23B5641D66A7700002003E /* LevelDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23B5631D66A7700002003E /* LevelDataList.swift */; };
+		AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */; };
 		AE8C7F381D658E4E00BBE93E /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */; };
 		AE9918FA1D6A915900D6996C /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F71D6A915900D6996C /* RulerSlider.swift */; };
 		AE9918FB1D6A915900D6996C /* RulerSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */; };
@@ -41,7 +42,8 @@
 		8DB69E1D1D636859006EF766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DB69E1F1D636859006EF766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DB69E261D63706F006EF766 /* PokedexCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokedexCollectionViewCell.swift; sourceTree = "<group>"; };
-		AE23B5631D66A7700002003E /* levelDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = levelDataList.swift; sourceTree = "<group>"; };
+		AE23B5631D66A7700002003E /* LevelDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDataList.swift; sourceTree = "<group>"; };
+		AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovesDataList.swift; sourceTree = "<group>"; };
 		AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		AE9918F71D6A915900D6996C /* RulerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
 		AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSliderThumbLayer.swift; sourceTree = "<group>"; };
@@ -66,7 +68,8 @@
 			children = (
 				AE9918FD1D6A915E00D6996C /* RulerSlider */,
 				AE3E1BE91D67024700840C4A /* RangeSlider */,
-				AE23B5631D66A7700002003E /* levelDataList.swift */,
+				AE23B5631D66A7700002003E /* LevelDataList.swift */,
+				AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */,
 				8D85FF911D649DDD002FD710 /* EmitterLayer.swift */,
 				8D85FF931D649DE8002FD710 /* spark.png */,
 			);
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB69E161D636859006EF766 /* PokedexViewController.swift in Sources */,
+				AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */,
 				AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */,
 				8DB69E141D636859006EF766 /* AppDelegate.swift in Sources */,
 				8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */,
@@ -235,7 +239,7 @@
 				8D85FF921D649DDD002FD710 /* EmitterLayer.swift in Sources */,
 				AE9918FC1D6A915900D6996C /* RulerSliderTrackLayer.swift in Sources */,
 				AE8C7F381D658E4E00BBE93E /* MyCustomView.swift in Sources */,
-				AE23B5641D66A7700002003E /* levelDataList.swift in Sources */,
+				AE23B5641D66A7700002003E /* LevelDataList.swift in Sources */,
 				8D85FFAA1D64BC6F002FD710 /* RangeSliderTrackLayer.swift in Sources */,
 				AEE7C0CB1D6413DF00DD2480 /* PokemonData.swift in Sources */,
 			);

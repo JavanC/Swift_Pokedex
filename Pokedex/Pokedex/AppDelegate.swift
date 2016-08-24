@@ -68,3 +68,31 @@ extension UIImage {
         return image
     }
 }
+
+extension UISegmentedControl {
+    func replaceSegments(segments: Array<String>) {
+        self.removeAllSegments()
+        for segment in segments {
+            self.insertSegmentWithTitle(segment, atIndex: self.numberOfSegments, animated: false)
+        }
+    }
+}
+
+extension UISegmentedControl {
+    func setFontSize(normalColor: UIColor, fontSize: CGFloat) {
+        
+        let normalTextAttributes: [NSObject : AnyObject] = [
+            NSForegroundColorAttributeName: normalColor,
+            NSFontAttributeName: UIFont.systemFontOfSize(fontSize, weight: UIFontWeightRegular)
+        ]
+        
+        let boldTextAttributes: [NSObject : AnyObject] = [
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont.systemFontOfSize(fontSize, weight: UIFontWeightMedium),
+            ]
+        
+        self.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
+        self.setTitleTextAttributes(normalTextAttributes, forState: .Highlighted)
+        self.setTitleTextAttributes(boldTextAttributes, forState: .Selected)
+    }
+}

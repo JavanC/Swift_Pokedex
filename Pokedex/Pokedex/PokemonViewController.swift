@@ -34,7 +34,10 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var staValueLabel: UILabel!
     @IBOutlet weak var ivValueLabel: UILabel!
     @IBOutlet weak var ivValueView: MyCustomView!
+    @IBOutlet weak var fastAttackSegmented: UISegmentedControl!
 
+    @IBOutlet weak var chargeAttackSegmented: UISegmentedControl!
+    
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
@@ -130,6 +133,77 @@ class PokemonViewController: UIViewController {
             hpRangeSliderValueChanged(pokemonHPSlider)
             pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
             CPHPView.addSubview(pokemonHPSlider)
+            
+            // segmented
+            var fastAttackNames = [String]()
+            for fastAttack in pokemon.fastAttacks {
+                fastAttackNames.append(fastAttack.name)
+            }
+            fastAttackSegmented.replaceSegments(fastAttackNames)
+            fastAttackSegmented.selectedSegmentIndex = 0
+            
+            var chargeAttackNames = [String]()
+            for chargeAttack in pokemon.chargeAttacks {
+                var name = chargeAttack.name
+                if name == "Sludge Bomb" {
+                    name = "Sludge\nBomb"
+                }
+                chargeAttackNames.append(name)
+            }
+            chargeAttackSegmented.replaceSegments(chargeAttackNames)
+            chargeAttackSegmented.selectedSegmentIndex = 0
+            
+            
+            chargeAttackSegmented.setFontSize(color4, fontSize: 5)
+            
+            
+            
+//            //Setting up the segmented control
+//            UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:trends];
+//            segmentedControl.tintColor = [UIColor colorWithRed:0.03 green:0.28 blue:0.51 alpha:1.0];
+//            
+//            for (id segment in [segmentedControl subviews]) {
+//                
+//                for (id label in [segment subviews]) {
+//                    
+//                    if ([label isKindOfClass:[UILabel class]]) {
+//                        
+//                        UILabel *titleLabel = (UILabel *) label;
+//                        
+//                        titleLabel.frame = CGRectMake(0, 0, 97, 50);
+//                        [titleLabel setFont:[UIFont boldSystemFontOfSize:10]];
+//                        titleLabel.adjustsFontSizeToFitWidth = YES;
+//                        titleLabel.numberOfLines = 0;
+//                    }
+//                }
+//            }
+//            [segmentedControl addTarget:self action:@selector(segmentValueChanged:) forControlEvents:UIControlEventValueChanged];
+//            segmentedControl.frame = CGRectMake(20, 510, 720, 40);
+//            segmentedControl.selectedSegmentIndex = 0;
+//            [segmentedControl layoutIfNeeded];
+//            [self.view addSubview:segmentedControl];
+            
+            
+            for segment in chargeAttackSegmented.subviews {
+                
+                for label in segment.subviews {
+                    if label is UILabel {
+                        (label as! UILabel).numberOfLines = 2
+//                        let titleLabel: UILabel = label as! UILabel
+//                        titleLabel.numberOfLines = 2
+                        
+                    }
+                }
+//                let labels = segment.subviews.filter { $0 is UILabel }
+//                labels.map { ($0 as UILable).numberOfLines = 2 }
+//
+//                for subview in segment.subviews {
+//                    if let segmentLabel = subview as? UILabel {
+//                        segmentLabel.frame = CGRectMake(0, 0, 100, 50)
+//                        segmentLabel.numberOfLines = 2
+//                    }
+//                }
+            }
         }
     }
     
