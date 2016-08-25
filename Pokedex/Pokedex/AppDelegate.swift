@@ -26,8 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        loadUserData()
         configureAppearance()
         return true
+    }
+    
+    func loadUserData() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        userTeam = Team(rawValue: defaults.integerForKey("userTeam"))!
+        userLang = Lang(rawValue: defaults.integerForKey("userLang"))!
     }
     
     func configureAppearance() {

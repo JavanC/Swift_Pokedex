@@ -17,17 +17,17 @@
                         <viewControllerLayoutGuide type="bottom" id="47o-ix-eS1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7Iq-nd-Bri">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCv-ZH-G02">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="193"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlT-bL-Uuj">
-                                        <rect key="frame" x="0.0" y="0.0" width="961" height="228"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="961" height="193"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WfE-9e-ofp">
-                                                <rect key="frame" x="46" y="0.0" width="228" height="228"/>
+                                                <rect key="frame" x="64" y="0.0" width="193" height="193"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="WfE-9e-ofp" secondAttribute="height" multiplier="1:1" id="dyf-Ko-mJX"/>
@@ -50,23 +50,36 @@
                                     <constraint firstAttribute="bottom" secondItem="rlT-bL-Uuj" secondAttribute="bottom" id="oAy-dU-Q8O"/>
                                 </constraints>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-u3-3aB">
+                                <rect key="frame" x="141" y="193" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-GV-5hf">
-                                <rect key="frame" x="0.0" y="228" width="320" height="115"/>
+                                <rect key="frame" x="0.0" y="230" width="320" height="73"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SZE-16-56d">
-                                        <rect key="frame" x="32" y="79" width="257" height="29"/>
+                                        <rect key="frame" x="32" y="37" width="257" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SZE-16-56d" secondAttribute="height" multiplier="257:28" id="O2f-CU-M5w"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="English"/>
                                             <segment title="中文"/>
                                             <segment title="奧語"/>
                                         </segments>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="O2f-CU-M5w"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="languageSegmentValueChange:" destination="RQa-wL-wYL" eventType="valueChanged" id="gl2-kv-UcG"/>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVU-iG-IZB">
-                                        <rect key="frame" x="0.0" y="39" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="-3" width="320" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="KHo-sR-fEH"/>
                                             <constraint firstAttribute="height" constant="30" id="RNg-Xy-xvc"/>
@@ -91,20 +104,16 @@
                                     <constraint firstAttribute="trailing" secondItem="OVU-iG-IZB" secondAttribute="trailing" id="vjj-fT-W1O"/>
                                 </constraints>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-u3-3aB">
-                                <rect key="frame" x="141" y="228" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QCv-ZH-G02" firstAttribute="leading" secondItem="7Iq-nd-Bri" secondAttribute="leading" id="DDp-He-Tb9"/>
-                            <constraint firstItem="Em9-GV-5hf" firstAttribute="height" secondItem="7Iq-nd-Bri" secondAttribute="height" multiplier="0.2" constant="1" id="WZA-hF-Kil"/>
+                            <constraint firstItem="Em9-GV-5hf" firstAttribute="height" secondItem="7Iq-nd-Bri" secondAttribute="height" multiplier="0.15" constant="1" id="WZA-hF-Kil"/>
                             <constraint firstItem="rlT-bL-Uuj" firstAttribute="width" secondItem="7Iq-nd-Bri" secondAttribute="width" multiplier="3" constant="1" id="Xjs-nt-5p6"/>
                             <constraint firstItem="QCv-ZH-G02" firstAttribute="top" secondItem="7Iq-nd-Bri" secondAttribute="topMargin" id="YkZ-Si-wg3"/>
                             <constraint firstItem="Em9-GV-5hf" firstAttribute="leading" secondItem="7Iq-nd-Bri" secondAttribute="leading" id="fKV-mE-lMd"/>
                             <constraint firstItem="Y4w-u3-3aB" firstAttribute="centerX" secondItem="7Iq-nd-Bri" secondAttribute="centerX" id="fXC-t4-69A"/>
+                            <constraint firstItem="Em9-GV-5hf" firstAttribute="top" secondItem="Y4w-u3-3aB" secondAttribute="bottom" id="gUt-Hz-WTq"/>
                             <constraint firstItem="Y4w-u3-3aB" firstAttribute="top" secondItem="QCv-ZH-G02" secondAttribute="bottom" id="jNd-SA-Ce4"/>
                             <constraint firstItem="QCv-ZH-G02" firstAttribute="width" secondItem="7Iq-nd-Bri" secondAttribute="width" id="kD7-aO-4V0"/>
                             <constraint firstItem="rlT-bL-Uuj" firstAttribute="height" secondItem="7Iq-nd-Bri" secondAttribute="height" multiplier="0.4" constant="1" id="lG6-Dh-y30"/>
@@ -120,14 +129,16 @@
                                 <exclude reference="kD7-aO-4V0"/>
                                 <exclude reference="r5P-EF-HSO"/>
                                 <exclude reference="rc2-d1-mUt"/>
+                                <exclude reference="xx8-qz-gbU"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="AmK-Kv-nh9"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="campPageControl" destination="Y4w-u3-3aB" id="1AA-Wy-k92"/>
                         <outlet property="campScrollView" destination="QCv-ZH-G02" id="52V-qt-n7R"/>
+                        <outlet property="languageLabel" destination="OVU-iG-IZB" id="wsg-gz-eGG"/>
                         <outlet property="languageSegment" destination="SZE-16-56d" id="sR2-py-QE2"/>
                     </connections>
                 </viewController>
@@ -1512,37 +1523,59 @@
                     <size key="freeformSize" width="320" height="890"/>
                     <connections>
                         <outlet property="CPHPView" destination="AHD-Kn-hG7" id="F0C-h1-x9N"/>
+                        <outlet property="GYMAttackTitleLabel" destination="Ktj-Uq-W6x" id="JVs-4p-5z6"/>
+                        <outlet property="GYMDefendTitleLabel" destination="C0k-DI-Ng4" id="EWl-pP-H8n"/>
+                        <outlet property="GYMPowerTitleLabel" destination="EHq-eE-k3F" id="p1O-gb-tRG"/>
                         <outlet property="attDefValueLabel" destination="WDZ-57-Qoq" id="tN8-xM-Jly"/>
                         <outlet property="backgroundImage" destination="ye9-cx-jaQ" id="9fe-LE-QJw"/>
                         <outlet property="candyLabel" destination="8dV-l4-8EP" id="EGp-TX-ive"/>
+                        <outlet property="candyTitleLabel" destination="8UQ-3x-b91" id="wMc-lM-psF"/>
                         <outlet property="chargeAttackDPSLabel" destination="wnA-yz-Yc3" id="QKR-1w-5EC"/>
+                        <outlet property="chargeAttackDPSTitleLabel" destination="lDb-iI-AAS" id="y2Q-2r-RkH"/>
                         <outlet property="chargeAttackEnergyLabel" destination="3bk-r8-GEp" id="gLA-Bf-w3T"/>
+                        <outlet property="chargeAttackEnergyTitleLabel" destination="TYf-qE-RWO" id="VUI-aa-DfR"/>
                         <outlet property="chargeAttackPowerLabel" destination="0ih-6G-bb8" id="Ch9-7A-sP7"/>
+                        <outlet property="chargeAttackPowerTitleLabel" destination="dbG-Yh-1VJ" id="C1t-fW-WJn"/>
                         <outlet property="chargeAttackSecondLabel" destination="asE-Bc-nLD" id="xx0-3h-U2h"/>
+                        <outlet property="chargeAttackSecondTitleLabel" destination="PWf-6i-A68" id="2FU-Ak-P4W"/>
                         <outlet property="chargeAttackSegmented" destination="cmT-FW-C45" id="7Kt-OO-nxE"/>
                         <outlet property="chargeAttackTypeLabel" destination="W0t-Ce-Yhi" id="Scu-dD-aZd"/>
+                        <outlet property="chargeAttackTypeTitleLabel" destination="Syt-zX-Hjw" id="hkc-fR-MeG"/>
+                        <outlet property="chargeAttacksTitleLabel" destination="ffL-SQ-vPl" id="MM2-f6-waF"/>
                         <outlet property="cpRangeValueLabel" destination="SCi-xj-4A7" id="rAh-Ok-jU4"/>
                         <outlet property="cpRangeValueLabel2" destination="X4o-Wq-qfx" id="fac-1J-iJZ"/>
                         <outlet property="cpValueLabel" destination="TOu-p2-uKP" id="HyW-FD-yEy"/>
                         <outlet property="estimatedLevelLabel" destination="8n5-yu-ULJ" id="Imh-by-Sjs"/>
+                        <outlet property="estimatedLevelTitleLabel" destination="BIM-Ao-hFG" id="RQJ-ru-k2w"/>
                         <outlet property="fastAttackDPSLabel" destination="5kd-f4-663" id="dy5-Og-ucx"/>
+                        <outlet property="fastAttackDPSTitleLabel" destination="1cN-yF-8cg" id="uF5-IN-ZNE"/>
                         <outlet property="fastAttackEnergyLabel" destination="w73-YL-Nfo" id="024-ex-Cd7"/>
+                        <outlet property="fastAttackEnergyTitleLabel" destination="s8y-8n-3LV" id="pJb-kv-Ual"/>
                         <outlet property="fastAttackPowerLabel" destination="oyD-bp-VxA" id="EqV-s3-U4s"/>
+                        <outlet property="fastAttackPowerTitleLabel" destination="NXZ-jS-pGJ" id="X6B-o3-j6U"/>
                         <outlet property="fastAttackSecondLabel" destination="oc4-QA-saQ" id="CqB-Cn-eHp"/>
+                        <outlet property="fastAttackSecondTitleLabel" destination="97v-KM-PE4" id="9kf-mC-RfR"/>
                         <outlet property="fastAttackSegmented" destination="g1X-nS-0Tl" id="kaV-aN-mcw"/>
                         <outlet property="fastAttackTypeLabel" destination="TnL-65-ts3" id="nok-Rq-aJY"/>
+                        <outlet property="fastAttackTypeTitleLabel" destination="XdI-1Y-PfZ" id="y3X-0I-vl0"/>
+                        <outlet property="fastAttacksTitleLabel" destination="Dt5-Pl-KtA" id="Gma-po-xW3"/>
                         <outlet property="hpRangeValueLabel" destination="RFi-Gz-uch" id="YZZ-fj-Zom"/>
                         <outlet property="hpRangeValueLabel2" destination="64z-qr-3os" id="mnD-Bj-XN1"/>
                         <outlet property="hpValueLabel" destination="J5S-n8-MyQ" id="Aon-ZF-Vfy"/>
                         <outlet property="ivValueLabel" destination="zIV-wg-Okf" id="woA-tM-GBy"/>
                         <outlet property="ivValueView" destination="aaR-Lq-t7D" id="Pjv-sK-hvQ"/>
+                        <outlet property="pokemonCPTitleLabel" destination="icN-ce-iSe" id="F6w-5I-VJD"/>
+                        <outlet property="pokemonHPTitleLabel" destination="b8B-zr-29a" id="GHk-TZ-Rh5"/>
                         <outlet property="pokemonImage" destination="nJG-T7-Zac" id="A3O-e6-Ka2"/>
                         <outlet property="pokemonInfoView" destination="Lpt-Ke-DdT" id="Oib-Z7-gXi"/>
                         <outlet property="pokemonInfoViewHeightConstraint" destination="Dpg-17-d4s" id="kPK-Sl-3cU"/>
+                        <outlet property="powerUpTitleLabel" destination="vfg-4f-5Je" id="OYb-4b-058"/>
                         <outlet property="scrollView" destination="b6f-55-7lH" id="ycL-9i-NMZ"/>
                         <outlet property="staValueLabel" destination="ujx-Xi-Afo" id="Ah2-an-xEl"/>
                         <outlet property="stardustLabel" destination="cuN-4v-7z6" id="YnR-Ls-daS"/>
+                        <outlet property="stardustTitleLabel" destination="6Y5-i1-cy9" id="pUc-X7-At5"/>
                         <outlet property="trainerLevelLabel" destination="qIK-2q-UGk" id="ycS-Ys-oVh"/>
+                        <outlet property="trainerLevelTitleLabel" destination="Fqg-3A-90Q" id="7Ez-Lv-HTM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cm6-qD-jvP" userLabel="First Responder" sceneMemberID="firstResponder"/>

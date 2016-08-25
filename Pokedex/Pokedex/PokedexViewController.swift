@@ -14,10 +14,12 @@ class PokedexViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateLanguage()
         configureView()
     }
     
     private func configureView() {
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: .Plain, target: self, action: #selector(pushToSettingController))
     }
     
@@ -37,6 +39,17 @@ class PokedexViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    // update language
+    func updateLanguage() {
+        print(userLang)
+        switch userLang {
+        case .English:
+            title = "Pokedex"
+        case .Chinese, .Austrian:
+            title = "圖鑒"
+        }
     }
 }
 

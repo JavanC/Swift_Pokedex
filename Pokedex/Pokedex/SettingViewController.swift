@@ -21,6 +21,7 @@ class SettingViewController: UIViewController {
         configureView()
     }
     private func configureView() {
+        updateLanguage()
         languageSegment.selectedSegmentIndex = userLang.hashValue
         campPageControl.currentPage = userTeam.hashValue
         campScrollView.contentOffset.x = campScrollView.frame.size.width * CGFloat(userTeam.hashValue)
@@ -28,6 +29,21 @@ class SettingViewController: UIViewController {
     @IBAction func languageSegmentValueChange(sender: AnyObject) {
         if let lang = Lang(rawValue: sender.selectedSegmentIndex) {
             userLang = lang
+            updateLanguage()
+            NSUserDefaults.standardUserDefaults().setInteger(userLang.hashValue, forKey: "userLang")
+        }
+    }
+    
+    // update language
+    @IBOutlet weak var languageLabel: UILabel!
+    func updateLanguage() {
+        switch userLang {
+        case .English:
+            title = "Setting"
+            languageLabel.text = "Language"
+        case .Chinese, .Austrian:
+            title = "設定"
+            languageLabel.text = "語言"
         }
     }
 }
@@ -40,6 +56,7 @@ extension SettingViewController: UIScrollViewDelegate {
         if Int(currentPage) != userTeam.hashValue {
             if let team = Team(rawValue: Int(currentPage)) {
                 userTeam = team
+                NSUserDefaults.standardUserDefaults().setInteger(userTeam.hashValue, forKey: "userTeam")
             }
         }
     }

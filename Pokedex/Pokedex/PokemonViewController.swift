@@ -72,6 +72,7 @@ class PokemonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        updateLanguage()
         updateViewForPokemon()
     }
     
@@ -90,9 +91,6 @@ class PokemonViewController: UIViewController {
                 pokemonInfoViewHeightConstraint.constant = constant
                 pokemonInfoView.layoutIfNeeded()
             }
-            
-            // update title name
-            title = pokemon.name
             
             // background image and emitter
             pokemonInfoView.layer.zPosition = -1
@@ -299,5 +297,84 @@ class PokemonViewController: UIViewController {
         chargeAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
         chargeAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
         chargeAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
+    }
+    
+    // update language
+    
+    @IBOutlet weak var trainerLevelTitleLabel: UILabel!
+    @IBOutlet weak var estimatedLevelTitleLabel: UILabel!
+    @IBOutlet weak var powerUpTitleLabel: UILabel!
+    @IBOutlet weak var stardustTitleLabel: UILabel!
+    @IBOutlet weak var candyTitleLabel: UILabel!
+    @IBOutlet weak var pokemonCPTitleLabel: UILabel!
+    @IBOutlet weak var pokemonHPTitleLabel: UILabel!
+    @IBOutlet weak var fastAttacksTitleLabel: UILabel!
+    @IBOutlet weak var fastAttackTypeTitleLabel: UILabel!
+    @IBOutlet weak var fastAttackPowerTitleLabel: UILabel!
+    @IBOutlet weak var fastAttackSecondTitleLabel: UILabel!
+    @IBOutlet weak var fastAttackDPSTitleLabel: UILabel!
+    @IBOutlet weak var fastAttackEnergyTitleLabel: UILabel!
+    @IBOutlet weak var chargeAttacksTitleLabel: UILabel!
+    @IBOutlet weak var chargeAttackTypeTitleLabel: UILabel!
+    @IBOutlet weak var chargeAttackPowerTitleLabel: UILabel!
+    @IBOutlet weak var chargeAttackSecondTitleLabel: UILabel!
+    @IBOutlet weak var chargeAttackDPSTitleLabel: UILabel!
+    @IBOutlet weak var chargeAttackEnergyTitleLabel: UILabel!
+    @IBOutlet weak var GYMPowerTitleLabel: UILabel!
+    @IBOutlet weak var GYMAttackTitleLabel: UILabel!
+    @IBOutlet weak var GYMDefendTitleLabel: UILabel!
+    
+    func updateLanguage() {
+        switch userLang {
+        case .English:
+            title = pokemon.name
+            trainerLevelTitleLabel.text = "TRAINER LEVEL"
+            estimatedLevelTitleLabel.text = "ESTIMATED LEVEL"
+            powerUpTitleLabel.text = "POWER UP"
+            stardustTitleLabel.text = "STARDUST"
+            candyTitleLabel.text = "CANDY"
+            pokemonCPTitleLabel.text = "POKEMON CP"
+            pokemonHPTitleLabel.text = "POKEMON HP"
+            fastAttacksTitleLabel.text = "Fast Attacks"
+            fastAttackTypeTitleLabel.text = "TYPE"
+            fastAttackPowerTitleLabel.text = "POWER"
+            fastAttackSecondTitleLabel.text = "SECOND"
+            fastAttackDPSTitleLabel.text = "DPS"
+            fastAttackEnergyTitleLabel.text = "ENERGY"
+            chargeAttacksTitleLabel.text = "Charge Attacks"
+            chargeAttackTypeTitleLabel.text = "TYPE"
+            chargeAttackPowerTitleLabel.text = "POWER"
+            chargeAttackSecondTitleLabel.text = "SECOND"
+            chargeAttackDPSTitleLabel.text = "DPS"
+            chargeAttackEnergyTitleLabel.text = "ENERGY"
+            GYMPowerTitleLabel.text = "GYM 60 SECONDS POWER"
+            GYMAttackTitleLabel.text = "ATTACK"
+            GYMDefendTitleLabel.text = "DEFEND"
+
+        case .Chinese, .Austrian:
+            title = pokemon.name
+            trainerLevelTitleLabel.text = "訓練師等級"
+            estimatedLevelTitleLabel.text = "預估等級"
+            powerUpTitleLabel.text = "強化需求"
+            stardustTitleLabel.text = "星塵"
+            candyTitleLabel.text = "糖果"
+            pokemonCPTitleLabel.text = "當前CP值"
+            pokemonHPTitleLabel.text = "當前HP值"
+            fastAttacksTitleLabel.text = "快速攻擊"
+            fastAttackTypeTitleLabel.text = "屬性"
+            fastAttackPowerTitleLabel.text = "傷害"
+            fastAttackSecondTitleLabel.text = "攻速"
+            fastAttackDPSTitleLabel.text = "秒傷"
+            fastAttackEnergyTitleLabel.text = "能量"
+            chargeAttacksTitleLabel.text = "蓄力攻擊"
+            chargeAttackTypeTitleLabel.text = "屬性"
+            chargeAttackPowerTitleLabel.text = "傷害"
+            chargeAttackSecondTitleLabel.text = "攻速"
+            chargeAttackDPSTitleLabel.text = "秒傷"
+            chargeAttackEnergyTitleLabel.text = "能量"
+            GYMPowerTitleLabel.text = "道場60秒內傷害總量"
+            GYMAttackTitleLabel.text = "攻擊方"
+            GYMDefendTitleLabel.text = "防禦方"
+        }
     }
 }
