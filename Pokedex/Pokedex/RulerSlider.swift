@@ -34,8 +34,7 @@ class RulerSlider: UIControl {
             trackLayer.setNeedsDisplay()
         }
     }
-    //var thubTintColor = UIColor.init(colorLiteralRed: 0.966, green: 0.74, blue: 0.222, alpha: 1.0) {
-    var thubTintColor = color4 {
+    var thubTintColor = colorR {
         didSet {
             currentThumbLayer.setNeedsDisplay()
         }

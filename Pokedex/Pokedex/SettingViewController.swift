@@ -20,8 +20,25 @@ class SettingViewController: UIViewController {
         campScrollView.layoutIfNeeded()
         configureView()
     }
-    private func configureView() {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTeamColor()
         updateLanguage()
+    }
+    private func configureView() {
+        // Initial navigation bar
+        self.navigationController?.navigationBar.translucent = false
+        let navigationBarFrame = self.navigationController!.navigationBar.frame
+        let shadowView = UIView(frame: navigationBarFrame)
+        shadowView.backgroundColor = UIColor.whiteColor()
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowOpacity = 0.4
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        shadowView.layer.shadowRadius =  4
+        shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
+        self.view.addSubview(shadowView)
+        
+        // initial page
         languageSegment.selectedSegmentIndex = userLang.hashValue
         campPageControl.currentPage = userTeam.hashValue
         campScrollView.contentOffset.x = campScrollView.frame.size.width * CGFloat(userTeam.hashValue)
@@ -34,15 +51,31 @@ class SettingViewController: UIViewController {
         }
     }
     
-    // update language
+    // update team and language
+    @IBOutlet weak var teamLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
+    func updateTeamColor() {
+        switch userTeam {
+        case .Instinct:
+            languageSegment.tintColor = colorY
+            self.navigationController?.navigationBar.barTintColor = colorY
+        case .Mystic:
+            languageSegment.tintColor = colorB
+            self.navigationController?.navigationBar.barTintColor = colorB
+        case .Valor:
+            languageSegment.tintColor = colorR
+            self.navigationController?.navigationBar.barTintColor = colorR
+        }
+    }
     func updateLanguage() {
         switch userLang {
         case .English:
             title = "Setting"
+            teamLabel.text = "Team"
             languageLabel.text = "Language"
         case .Chinese, .Austrian:
             title = "設定"
+            teamLabel.text = "陣營"
             languageLabel.text = "語言"
         }
     }
@@ -56,6 +89,7 @@ extension SettingViewController: UIScrollViewDelegate {
         if Int(currentPage) != userTeam.hashValue {
             if let team = Team(rawValue: Int(currentPage)) {
                 userTeam = team
+                updateTeamColor()
                 NSUserDefaults.standardUserDefaults().setInteger(userTeam.hashValue, forKey: "userTeam")
             }
         }

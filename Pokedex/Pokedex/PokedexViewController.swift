@@ -14,12 +14,26 @@ class PokedexViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateLanguage()
         configureView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        updateTeamColor()
+        updateLanguage()
+    }
+    
     private func configureView() {
-        
+        // Initial navigation bar
+        self.navigationController?.navigationBar.translucent = false
+        let navigationBarFrame = self.navigationController!.navigationBar.frame
+        let shadowView = UIView(frame: navigationBarFrame)
+        shadowView.backgroundColor = UIColor.whiteColor()
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowOpacity = 0.4
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        shadowView.layer.shadowRadius =  4
+        shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
+        self.view.addSubview(shadowView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: .Plain, target: self, action: #selector(pushToSettingController))
     }
     
@@ -41,9 +55,25 @@ class PokedexViewController: UIViewController {
         // Release any cached data, images, etc that aren't in use.
     }
     
-    // update language
+    // update team and language
+    @IBOutlet weak var backgroundImage: UIImageView!
+    func updateTeamColor() {
+        switch userTeam {
+        case .Instinct:
+            backgroundImage.image = UIImage(named: "team-instinct")
+            collectionView.backgroundColor = colorBGY
+            self.navigationController?.navigationBar.barTintColor = colorY
+        case .Mystic:
+            backgroundImage.image = UIImage(named: "team-mystic")
+            collectionView.backgroundColor = colorBGB
+            self.navigationController?.navigationBar.barTintColor = colorB
+        case .Valor:
+            backgroundImage.image = UIImage(named: "team-valor")
+            collectionView.backgroundColor = colorBGR
+            self.navigationController?.navigationBar.barTintColor = colorR
+        }
+    }
     func updateLanguage() {
-        print(userLang)
         switch userLang {
         case .English:
             title = "Pokedex"

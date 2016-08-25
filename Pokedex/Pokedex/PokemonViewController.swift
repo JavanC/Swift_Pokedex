@@ -72,8 +72,11 @@ class PokemonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        configureView()
+    }
+    override func viewWillAppear(animated: Bool) {
+        updateTeamColor()
         updateLanguage()
-        updateViewForPokemon()
     }
     
     private func loadData() {
@@ -81,111 +84,122 @@ class PokemonViewController: UIViewController {
         trainerLevel = defaults.doubleForKey("trainerLevel") != 0 ? defaults.doubleForKey("trainerLevel") : 20
     }
     
-    private func updateViewForPokemon() {
-        if let pokemon = pokemon {
-
-            // for ipad autolayout
-            if UIScreen.mainScreen().bounds.height > 826 + 64 {
-                scrollView.scrollEnabled = false
-                let constant = UIScreen.mainScreen().bounds.height - 64 - 596
-                pokemonInfoViewHeightConstraint.constant = constant
-                pokemonInfoView.layoutIfNeeded()
-            }
-            
-            // background image and emitter
-            pokemonInfoView.layer.zPosition = -1
-            backgroundImage.image = UIImage(named: "\(pokemon.type[0])")
-            let rect = CGRect(x: 0.0, y: backgroundImage.frame.height, width: view.bounds.width, height: 100)
-            let emitter = EmitterLayer(rect: rect)
-            backgroundImage.layer.addSublayer(emitter)
-            
-            // pokemonImage
-            pokemonImage.image = UIImage(named: pokemon.number)
-            
-            // cp value arc
-            drawCPValueArc()
-            
-            // iv value circle
-            drawIVValueCircle()
-            
-            // ruler slider
-            var rulerSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
-            if UIScreen.mainScreen().bounds.height > 826 + 64 {
-                rulerSliderMargin = UIScreen.mainScreen().bounds.width / 2 - pokemonImage.frame.width * 1.2
-            }
-            let rulerSliderWidth = view.bounds.width - 2.0 * rulerSliderMargin
-            let pokemonInfoViewHeight = pokemonInfoView.frame.height
-    
-            levelRulerSlider.frame = CGRect(x: rulerSliderMargin, y: pokemonInfoViewHeight - 25, width: rulerSliderWidth, height: 25.0)
-            let maxLevel = trainerLevel * 2 + 3 > 80 ? 80 : trainerLevel * 2 + 3
-            levelRulerSlider.maximunValue = maxLevel
-            levelRulerSlider.currentValue = Double(Int((maxLevel + 4) / 2))
-            levelRulerSliderValueChanged(levelRulerSlider)
-            levelRulerSlider.addTarget(self, action: #selector(self.levelRulerSliderValueChanged), forControlEvents: .ValueChanged)
-            scrollView.addSubview(levelRulerSlider)
-            
-            // range slider
-            let rangeSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
-            let rangeSliderWidth = view.bounds.width - 2.0 * rangeSliderMargin
-            pokemonCPSlider.frame = CGRect(x: rangeSliderMargin, y: 28, width: rangeSliderWidth, height: 25.0)
-            let cpCurrentValue = Double(Int((pokemonCPSlider.minimunValue + pokemonCPSlider.maximunValue) / 2))
-            pokemonCPSlider.currentValue = cpCurrentValue
-            cpRangeSliderValueChanged(pokemonCPSlider)
-            pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
-            CPHPView.addSubview(pokemonCPSlider)
-            
-            pokemonHPSlider.frame = CGRect(x: rangeSliderMargin, y: 78, width: rangeSliderWidth, height: 25.0)
-            let hpCurrentValue = Double(Int((pokemonHPSlider.minimunValue + pokemonHPSlider.maximunValue) / 2))
-            pokemonHPSlider.currentValue = hpCurrentValue
-            hpRangeSliderValueChanged(pokemonHPSlider)
-            pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
-            CPHPView.addSubview(pokemonHPSlider)
-            
-            // segmented
-            fastAttackSegmented.layoutIfNeeded()
-            fastAttackSegmented.removeAllSegments()
-            for (index, fastAttack) in pokemon.fastAttacks.enumerate() {
-                let attackName = fastAttack.name
-                let segmementedWidth = fastAttackSegmented.frame.width
-                let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count)
-                let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
-                if textWidth > itemWidth {
-                    let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
-                    let label = UILabel(frame: CGRectMake(0, 0, itemWidth, 29))
-                    label.textAlignment = NSTextAlignment.Center
-                    label.numberOfLines = 0
-                    label.font = UIFont.systemFontOfSize(11)
-                    label.text = text
-                    fastAttackSegmented.insertSegmentWithImage(UIImage.imageWithLabel(label), atIndex: index, animated: false)
-                } else {
-                    fastAttackSegmented.insertSegmentWithTitle(attackName, atIndex: index, animated: false)
-                }
-            }
-            fastAttackSegmented.selectedSegmentIndex = 0
-            fastAttackSegmentValueChange(fastAttackSegmented)
-            
-            chargeAttackSegmented.layoutIfNeeded()
-            chargeAttackSegmented.removeAllSegments()
-            for (index, chargeAttack) in pokemon.chargeAttacks.enumerate() {
-                let attackName = chargeAttack.name
-                let segmementedWidth = chargeAttackSegmented.frame.width
-                let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 2
-                let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
-                if textWidth > itemWidth {
-                    let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
-                    let label = UILabel(frame: CGRectMake(0, 0, itemWidth, 29))
-                    label.textAlignment = NSTextAlignment.Center
-                    label.numberOfLines = 0
-                    label.font = UIFont.systemFontOfSize(11)
-                    label.text = text
-                    chargeAttackSegmented.insertSegmentWithImage(UIImage.imageWithLabel(label), atIndex: index, animated: false)
-                } else {
-                    chargeAttackSegmented.insertSegmentWithTitle(attackName, atIndex: index, animated: false)
-                }
-            }
-            chargeAttackSegmented.selectedSegmentIndex = 0
-            chargeAttackSegmentValueChange(chargeAttackSegmented)
+    private func configureView() {
+        
+        // Initial navigation bar
+        self.navigationController?.navigationBar.translucent = false
+        let navigationBarFrame = self.navigationController!.navigationBar.frame
+        let shadowView = UIView(frame: navigationBarFrame)
+        shadowView.backgroundColor = UIColor.whiteColor()
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowOpacity = 0.4
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        shadowView.layer.shadowRadius =  4
+        shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
+        self.view.addSubview(shadowView)
+        
+        // for ipad autolayout
+        if UIScreen.mainScreen().bounds.height > 826 + 64 {
+            scrollView.scrollEnabled = false
+            let constant = UIScreen.mainScreen().bounds.height - 64 - 596
+            pokemonInfoViewHeightConstraint.constant = constant
+            pokemonInfoView.layoutIfNeeded()
         }
+        
+        // background image and emitter
+        pokemonInfoView.layer.zPosition = -1
+        backgroundImage.image = UIImage(named: "\(pokemon.type[0])")
+        let rect = CGRect(x: 0.0, y: backgroundImage.frame.height, width: view.bounds.width, height: 100)
+        let emitter = EmitterLayer(rect: rect)
+        backgroundImage.layer.addSublayer(emitter)
+        
+        // pokemonImage
+        pokemonImage.image = UIImage(named: pokemon.number)
+        
+        // cp value arc
+        drawCPValueArc()
+        
+        // iv value circle
+        drawIVValueCircle()
+        
+        // ruler slider
+        var rulerSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
+        if UIScreen.mainScreen().bounds.height > 826 + 64 {
+            rulerSliderMargin = UIScreen.mainScreen().bounds.width / 2 - pokemonImage.frame.width * 1.2
+        }
+        let rulerSliderWidth = view.bounds.width - 2.0 * rulerSliderMargin
+        let pokemonInfoViewHeight = pokemonInfoView.frame.height
+        
+        levelRulerSlider.frame = CGRect(x: rulerSliderMargin, y: pokemonInfoViewHeight - 25, width: rulerSliderWidth, height: 25.0)
+        let maxLevel = trainerLevel * 2 + 3 > 80 ? 80 : trainerLevel * 2 + 3
+        levelRulerSlider.maximunValue = maxLevel
+        levelRulerSlider.currentValue = Double(Int((maxLevel + 4) / 2))
+        levelRulerSliderValueChanged(levelRulerSlider)
+        levelRulerSlider.addTarget(self, action: #selector(self.levelRulerSliderValueChanged), forControlEvents: .ValueChanged)
+        scrollView.addSubview(levelRulerSlider)
+        
+        // range slider
+        let rangeSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
+        let rangeSliderWidth = view.bounds.width - 2.0 * rangeSliderMargin
+        pokemonCPSlider.frame = CGRect(x: rangeSliderMargin, y: 28, width: rangeSliderWidth, height: 25.0)
+        let cpCurrentValue = Double(Int((pokemonCPSlider.minimunValue + pokemonCPSlider.maximunValue) / 2))
+        pokemonCPSlider.currentValue = cpCurrentValue
+        cpRangeSliderValueChanged(pokemonCPSlider)
+        pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
+        CPHPView.addSubview(pokemonCPSlider)
+        
+        pokemonHPSlider.frame = CGRect(x: rangeSliderMargin, y: 78, width: rangeSliderWidth, height: 25.0)
+        let hpCurrentValue = Double(Int((pokemonHPSlider.minimunValue + pokemonHPSlider.maximunValue) / 2))
+        pokemonHPSlider.currentValue = hpCurrentValue
+        hpRangeSliderValueChanged(pokemonHPSlider)
+        pokemonHPSlider.addTarget(self, action: #selector(self.hpRangeSliderValueChanged), forControlEvents: .ValueChanged)
+        CPHPView.addSubview(pokemonHPSlider)
+        
+        // segmented
+        fastAttackSegmented.layoutIfNeeded()
+        fastAttackSegmented.removeAllSegments()
+        for (index, fastAttack) in pokemon.fastAttacks.enumerate() {
+            let attackName = fastAttack.name
+            let segmementedWidth = fastAttackSegmented.frame.width
+            let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count)
+            let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
+            if textWidth > itemWidth {
+                let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
+                let label = UILabel(frame: CGRectMake(0, 0, itemWidth, 29))
+                label.textAlignment = NSTextAlignment.Center
+                label.numberOfLines = 0
+                label.font = UIFont.systemFontOfSize(11)
+                label.text = text
+                fastAttackSegmented.insertSegmentWithImage(UIImage.imageWithLabel(label), atIndex: index, animated: false)
+            } else {
+                fastAttackSegmented.insertSegmentWithTitle(attackName, atIndex: index, animated: false)
+            }
+        }
+        fastAttackSegmented.selectedSegmentIndex = 0
+        fastAttackSegmentValueChange(fastAttackSegmented)
+        
+        chargeAttackSegmented.layoutIfNeeded()
+        chargeAttackSegmented.removeAllSegments()
+        for (index, chargeAttack) in pokemon.chargeAttacks.enumerate() {
+            let attackName = chargeAttack.name
+            let segmementedWidth = chargeAttackSegmented.frame.width
+            let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 2
+            let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
+            if textWidth > itemWidth {
+                let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
+                let label = UILabel(frame: CGRectMake(0, 0, itemWidth, 29))
+                label.textAlignment = NSTextAlignment.Center
+                label.numberOfLines = 0
+                label.font = UIFont.systemFontOfSize(11)
+                label.text = text
+                chargeAttackSegmented.insertSegmentWithImage(UIImage.imageWithLabel(label), atIndex: index, animated: false)
+            } else {
+                chargeAttackSegmented.insertSegmentWithTitle(attackName, atIndex: index, animated: false)
+            }
+        }
+        chargeAttackSegmented.selectedSegmentIndex = 0
+        chargeAttackSegmentValueChange(chargeAttackSegmented)
+        
     }
     
     private func drawCPValueArc() {
@@ -214,10 +228,11 @@ class PokemonViewController: UIViewController {
         let startAngle: CGFloat = CGFloat(-M_PI_2)
         let endAngle: CGFloat = CGFloat(M_PI_2 * 3)
         let path = UIBezierPath(arcCenter: arcCenter, radius: 29, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let strokeColor = userTeam == .Instinct ? colorY : userTeam == .Mystic ? colorB : colorR
         ivValueCircleLayer.path = path.CGPath
         ivValueCircleLayer.lineWidth = 16
         ivValueCircleLayer.fillColor = UIColor.clearColor().CGColor
-        ivValueCircleLayer.strokeColor = color4.CGColor
+        ivValueCircleLayer.strokeColor = strokeColor.CGColor
         ivValueCircleLayer.opacity = 0.2
         ivValueCircleLayer.zPosition = -1
         ivValueCircleLayer.strokeEnd = 0.0
@@ -299,7 +314,7 @@ class PokemonViewController: UIViewController {
         chargeAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
     }
     
-    // update language
+    // update team and language
     
     @IBOutlet weak var trainerLevelTitleLabel: UILabel!
     @IBOutlet weak var estimatedLevelTitleLabel: UILabel!
@@ -307,7 +322,9 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var stardustTitleLabel: UILabel!
     @IBOutlet weak var candyTitleLabel: UILabel!
     @IBOutlet weak var pokemonCPTitleLabel: UILabel!
+    @IBOutlet weak var pokemonCPTitleWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var pokemonHPTitleLabel: UILabel!
+    @IBOutlet weak var pokemonHPTitleWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var fastAttacksTitleLabel: UILabel!
     @IBOutlet weak var fastAttackTypeTitleLabel: UILabel!
     @IBOutlet weak var fastAttackPowerTitleLabel: UILabel!
@@ -323,7 +340,31 @@ class PokemonViewController: UIViewController {
     @IBOutlet weak var GYMPowerTitleLabel: UILabel!
     @IBOutlet weak var GYMAttackTitleLabel: UILabel!
     @IBOutlet weak var GYMDefendTitleLabel: UILabel!
-    
+    func updateTeamColor() {
+        switch userTeam {
+        case .Instinct:
+            levelRulerSlider.thubTintColor = colorY
+            pokemonCPSlider.trackTintColor = colorY
+            pokemonHPSlider.trackTintColor = colorY
+            fastAttackSegmented.tintColor = colorY
+            chargeAttackSegmented.tintColor = colorY
+            self.navigationController?.navigationBar.barTintColor = colorY
+        case .Mystic:
+            levelRulerSlider.thubTintColor = colorB
+            pokemonCPSlider.trackTintColor = colorB
+            pokemonHPSlider.trackTintColor = colorB
+            fastAttackSegmented.tintColor = colorB
+            chargeAttackSegmented.tintColor = colorB
+            self.navigationController?.navigationBar.barTintColor = colorB
+        case .Valor:
+            levelRulerSlider.thubTintColor = colorR
+            pokemonCPSlider.trackTintColor = colorR
+            pokemonHPSlider.trackTintColor = colorR
+            fastAttackSegmented.tintColor = colorR
+            chargeAttackSegmented.tintColor = colorR
+            self.navigationController?.navigationBar.barTintColor = colorR
+        }
+    }
     func updateLanguage() {
         switch userLang {
         case .English:
@@ -334,7 +375,9 @@ class PokemonViewController: UIViewController {
             stardustTitleLabel.text = "STARDUST"
             candyTitleLabel.text = "CANDY"
             pokemonCPTitleLabel.text = "POKEMON CP"
+            pokemonCPTitleWidthConstraint.constant = 120
             pokemonHPTitleLabel.text = "POKEMON HP"
+            pokemonHPTitleWidthConstraint.constant = 120
             fastAttacksTitleLabel.text = "Fast Attacks"
             fastAttackTypeTitleLabel.text = "TYPE"
             fastAttackPowerTitleLabel.text = "POWER"
@@ -359,7 +402,9 @@ class PokemonViewController: UIViewController {
             stardustTitleLabel.text = "星塵"
             candyTitleLabel.text = "糖果"
             pokemonCPTitleLabel.text = "當前CP值"
+            pokemonCPTitleWidthConstraint.constant = 80
             pokemonHPTitleLabel.text = "當前HP值"
+            pokemonHPTitleWidthConstraint.constant = 80
             fastAttacksTitleLabel.text = "快速攻擊"
             fastAttackTypeTitleLabel.text = "屬性"
             fastAttackPowerTitleLabel.text = "傷害"
@@ -372,9 +417,9 @@ class PokemonViewController: UIViewController {
             chargeAttackSecondTitleLabel.text = "攻速"
             chargeAttackDPSTitleLabel.text = "秒傷"
             chargeAttackEnergyTitleLabel.text = "能量"
-            GYMPowerTitleLabel.text = "道場60秒內傷害總量"
+            GYMPowerTitleLabel.text = "攻守道館能力 - 60秒傷害"
             GYMAttackTitleLabel.text = "攻擊方"
-            GYMDefendTitleLabel.text = "防禦方"
+            GYMDefendTitleLabel.text = "防守方"
         }
     }
 }

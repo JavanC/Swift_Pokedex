@@ -30,7 +30,7 @@ class RangeSlider: UIControl {
         }
     }
 //    var trackTintColor = UIColor.init(colorLiteralRed: 0.966, green: 0.74, blue: 0.222, alpha: 1.0) {
-    var trackTintColor = color4 {
+    var trackTintColor = colorR {
         didSet {
             trackLayer.setNeedsDisplay()
         }

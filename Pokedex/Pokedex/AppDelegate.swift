@@ -12,13 +12,12 @@ enum Team : Int { case Instinct, Mystic, Valor }
 enum Lang : Int { case English, Chinese, Austrian }
 var userTeam = Team.Instinct
 var userLang = Lang.English
-let color1 = UIColor(hex: 0xDB2B39, alpha: 1)
-let color2 = UIColor(hex: 0xFF4B3E, alpha: 1)
-let color3 = UIColor(hex: 0x832232, alpha: 1)
-let color4 = UIColor(hex: 0xFF7768, alpha: 1)
-let color5 = UIColor(hex: 0xF6BD39, alpha: 1)
-let color6 = UIColor(hex: 0x4B3B47, alpha: 1)
-let color7 = UIColor(hex: 0xC3423F, alpha: 1)
+let colorR = UIColor(hex: 0xFF7768, alpha: 1)
+let colorY = UIColor(hex: 0xF9CB11, alpha: 1)
+let colorB = UIColor(hex: 0x0091E5, alpha: 1)
+let colorBGR = UIColor(hex: 0xFF7768, alpha: 0.01)
+let colorBGY = UIColor(hex: 0xF9CB11, alpha: 0.01)
+let colorBGB = UIColor(hex: 0x0091E5, alpha: 0.01)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,19 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func configureAppearance() {
-        
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().translucent = false
-        
-        let imageSize = CGSize(width: 1, height: 1)
-        let shadowColor = color3
-        let barColor = color2
-        let backgroundImage = UIImage.imageWithColor(barColor, size: imageSize)
-        UINavigationBar.appearance().setBackgroundImage(backgroundImage, forBarMetrics: .Default)
-        
-        let shadowImage = UIImage.imageWithColor(shadowColor, size: imageSize)
-        UINavigationBar.appearance().shadowImage = shadowImage
+        UINavigationBar.appearance().opaque = false
     }
 }
 
@@ -63,37 +52,6 @@ extension UIColor{
             blue: CGFloat(hex & 0x0000FF) / 255.0,
             alpha: alpha
         )
-    }
-}
-
-extension UIImage {
-    // create image of solid color
-    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
-        let context = UIGraphicsGetCurrentContext()
-        color.setFill()
-        CGContextFillRect(context, CGRect(origin: .zero, size: size))
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
-    // creat image with label
-    class func imageWithLabel(label: UILabel) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0.0)
-        label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
-}
-
-extension UISegmentedControl {
-    // replace segments title
-    func replaceSegments(segments: Array<String>) {
-        self.removeAllSegments()
-        for segment in segments {
-            self.insertSegmentWithTitle(segment, atIndex: self.numberOfSegments, animated: false)
-        }
     }
 }
 
@@ -120,3 +78,23 @@ extension UILabel{
     }
 }
 
+extension UIImage {
+    // creat image with label
+    class func imageWithLabel(label: UILabel) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0.0)
+        label.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+
+extension UISegmentedControl {
+    // replace segments title
+    func replaceSegments(segments: Array<String>) {
+        self.removeAllSegments()
+        for segment in segments {
+            self.insertSegmentWithTitle(segment, atIndex: self.numberOfSegments, animated: false)
+        }
+    }
+}
