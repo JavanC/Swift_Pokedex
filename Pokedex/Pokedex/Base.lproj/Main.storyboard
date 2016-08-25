@@ -204,14 +204,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team-instinct" translatesAutoresizingMaskIntoConstraints="NO" id="Na8-Ae-gzt">
-                                <rect key="frame" x="36.5" y="183.5" width="301" height="301"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="team-instinct" translatesAutoresizingMaskIntoConstraints="NO" id="Na8-Ae-gzt">
+                                <rect key="frame" x="36" y="183" width="301" height="301"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Na8-Ae-gzt" secondAttribute="height" multiplier="1:1" id="kh4-43-gXx"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oQU-sE-SoZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.90980392156862744" blue="0.92156862745098034" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="OyT-di-anY">
                                     <size key="itemSize" width="80" height="90"/>
@@ -257,10 +257,39 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="RsQ-Cn-jRS"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9L-mJ-efr" customClass="GADBannerView">
+                                <rect key="frame" x="1" y="617" width="374" height="50"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Y0B-2x-z3a"/>
+                                    <constraint firstAttribute="height" constant="50" id="wZk-XK-PPf"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Y0B-2x-z3a"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X Click to hide Ad 24 hour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpt-QE-adB">
+                                <rect key="frame" x="246" y="648" width="130" height="20"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="5ge-0n-VY1"/>
+                                    <constraint firstAttribute="height" constant="20" id="sH7-NC-ONn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="9"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Fpt-QE-adB" secondAttribute="trailing" constant="-1" id="0Mb-Oa-1DT"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Dr-xj-svz"/>
+                            <constraint firstAttribute="trailing" secondItem="A9L-mJ-efr" secondAttribute="trailing" id="3qx-4w-WxZ"/>
                             <constraint firstItem="oQU-sE-SoZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5AC-xF-YFA"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Nsl-Z9-Z3P"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="O4V-3z-RsQ"/>
                             <constraint firstItem="oQU-sE-SoZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OZh-aj-QOY"/>
                             <constraint firstItem="oQU-sE-SoZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Srp-5X-pRO"/>
                             <constraint firstItem="Na8-Ae-gzt" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" constant="1" id="Uav-GP-7aP"/>
@@ -268,14 +297,34 @@
                             <constraint firstAttribute="trailing" secondItem="Na8-Ae-gzt" secondAttribute="trailing" id="WmQ-w9-bnK"/>
                             <constraint firstItem="Na8-Ae-gzt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XJ7-1Z-r55"/>
                             <constraint firstAttribute="trailing" secondItem="oQU-sE-SoZ" secondAttribute="trailing" id="Yw2-vk-4Z0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oQU-sE-SoZ" secondAttribute="bottom" id="qap-2w-x3T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A9L-mJ-efr" secondAttribute="trailing" id="ca3-xP-Foe"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ea4-zk-Wz5"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f4q-Yk-EV0"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Fpt-QE-adB" secondAttribute="bottom" constant="-1" id="fng-WB-41g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="A9L-mJ-efr" secondAttribute="bottom" id="iB2-Kd-i56"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="A9L-mJ-efr" secondAttribute="bottom" id="kf5-wc-j1N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fpt-QE-adB" secondAttribute="trailing" constant="-1" id="kzs-PM-GN5"/>
+                            <constraint firstAttribute="trailing" secondItem="A9L-mJ-efr" secondAttribute="trailing" id="lu1-tF-2aB"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qBp-se-IUG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="oQU-sE-SoZ" secondAttribute="bottom" constant="50" id="qap-2w-x3T"/>
                             <constraint firstItem="Na8-Ae-gzt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qgo-Mf-tB6"/>
+                            <constraint firstItem="A9L-mJ-efr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ucE-iA-L2U"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="5AC-xF-YFA"/>
                                 <exclude reference="WmQ-w9-bnK"/>
                                 <exclude reference="qgo-Mf-tB6"/>
+                                <exclude reference="kzs-PM-GN5"/>
+                                <exclude reference="3Dr-xj-svz"/>
+                                <exclude reference="3qx-4w-WxZ"/>
+                                <exclude reference="Nsl-Z9-Z3P"/>
+                                <exclude reference="O4V-3z-RsQ"/>
+                                <exclude reference="ca3-xP-Foe"/>
+                                <exclude reference="ea4-zk-Wz5"/>
+                                <exclude reference="f4q-Yk-EV0"/>
+                                <exclude reference="ucE-iA-L2U"/>
+                                <exclude reference="kf5-wc-j1N"/>
                             </mask>
                         </variation>
                     </view>
@@ -284,7 +333,9 @@
                     <connections>
                         <outlet property="CollectionView" destination="oQU-sE-SoZ" id="q7b-xh-Rci"/>
                         <outlet property="backgroundImage" destination="Na8-Ae-gzt" id="O3m-Un-cvQ"/>
+                        <outlet property="bannerView" destination="A9L-mJ-efr" id="R1W-NK-TV3"/>
                         <outlet property="collectionView" destination="oQU-sE-SoZ" id="onS-kW-yzn"/>
+                        <outlet property="hideAdLabel" destination="Fpt-QE-adB" id="RCb-BL-4Kc"/>
                         <segue destination="RQa-wL-wYL" kind="show" identifier="toSettingVController" id="2sd-DA-6Di"/>
                     </connections>
                 </viewController>
