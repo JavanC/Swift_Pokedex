@@ -14,7 +14,15 @@ class PokedexViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //configureView()
+        configureView()
+    }
+    
+    private func configureView() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: .Plain, target: self, action: #selector(pushToSettingController))
+    }
+    
+    func pushToSettingController() {
+        self.performSegueWithIdentifier("toSettingVController", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

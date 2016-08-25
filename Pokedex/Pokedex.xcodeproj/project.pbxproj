@@ -26,6 +26,7 @@
 		AE9918FC1D6A915900D6996C /* RulerSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */; };
 		AEE7C0CB1D6413DF00DD2480 /* PokemonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7C0CA1D6413DF00DD2480 /* PokemonData.swift */; };
 		AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */; };
+		AEF8A2231D6E972600C94E21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF8A2221D6E972600C94E21 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSliderTrackLayer.swift; sourceTree = "<group>"; };
 		AEE7C0CA1D6413DF00DD2480 /* PokemonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonData.swift; sourceTree = "<group>"; };
 		AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonViewController.swift; sourceTree = "<group>"; };
+		AEF8A2221D6E972600C94E21 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				8DB69E151D636859006EF766 /* PokedexViewController.swift */,
 				8DB69E261D63706F006EF766 /* PokedexCollectionViewCell.swift */,
 				AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */,
+				AEF8A2221D6E972600C94E21 /* SettingViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				8DB69E161D636859006EF766 /* PokedexViewController.swift in Sources */,
 				AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */,
 				AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */,
+				AEF8A2231D6E972600C94E21 /* SettingViewController.swift in Sources */,
 				8DB69E141D636859006EF766 /* AppDelegate.swift in Sources */,
 				8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */,
 				8D85FFA81D64ADA6002FD710 /* RangeSliderThumbLayer.swift in Sources */,

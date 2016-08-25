@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum Team : Int { case Instinct, Mystic, Valor }
+enum Lang : Int { case English, Chinese, Austrian }
+var userTeam = Team.Instinct
+var userLang = Lang.English
 let color1 = UIColor(hex: 0xDB2B39, alpha: 1)
 let color2 = UIColor(hex: 0xFF4B3E, alpha: 1)
 let color3 = UIColor(hex: 0x832232, alpha: 1)
@@ -15,7 +19,6 @@ let color4 = UIColor(hex: 0xFF7768, alpha: 1)
 let color5 = UIColor(hex: 0xF6BD39, alpha: 1)
 let color6 = UIColor(hex: 0x4B3B47, alpha: 1)
 let color7 = UIColor(hex: 0xC3423F, alpha: 1)
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

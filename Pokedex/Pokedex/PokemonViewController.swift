@@ -94,10 +94,10 @@ class PokemonViewController: UIViewController {
             // update title name
             title = pokemon.name
             
-            // background image emitter
+            // background image and emitter
             pokemonInfoView.layer.zPosition = -1
-            let halfHeight = backgroundImage.frame.height
-            let rect = CGRect(x: 0.0, y: halfHeight, width: view.bounds.width, height: 100)
+            backgroundImage.image = UIImage(named: "\(pokemon.type[0])")
+            let rect = CGRect(x: 0.0, y: backgroundImage.frame.height, width: view.bounds.width, height: 100)
             let emitter = EmitterLayer(rect: rect)
             backgroundImage.layer.addSublayer(emitter)
             
