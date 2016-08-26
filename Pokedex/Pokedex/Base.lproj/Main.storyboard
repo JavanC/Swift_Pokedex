@@ -199,7 +199,191 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mj2-91-ScM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="1234"/>
+            <point key="canvasLocation" x="916" y="1196"/>
+        </scene>
+        <!--Teach View Controller-->
+        <scene sceneID="h1Q-6Q-PtG">
+            <objects>
+                <viewController id="H7Y-Ev-2Ur" customClass="TeachViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c1i-rc-ZSh"/>
+                        <viewControllerLayoutGuide type="bottom" id="hoF-RJ-HBG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JxX-ow-Rex">
+                        <rect key="frame" x="0.0" y="0.0" width="960" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-sS-LMp">
+                                <rect key="frame" x="0.0" y="0.0" width="960" height="531"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dzo-6m-hRv">
+                                        <rect key="frame" x="644" y="0.0" width="316" height="531"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-SS-gIU">
+                                                <rect key="frame" x="41" y="191" width="253" height="200"/>
+                                                <string key="text">Different moves sets to let you know that this pokemon for attack or defense. Good mix of skills is key to attack and defend GYM.
+
+Select your Fast attack and Charge attacks, will be calculated attack and defend damage at GYM for 60 seconds.</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9u-k4-gn9">
+                                                <rect key="frame" x="113" y="439" width="90" height="30"/>
+                                                <state key="normal" title="Okay, I got it!"/>
+                                                <connections>
+                                                    <action selector="touchUpTeachDoneButton:" destination="H7Y-Ev-2Ur" eventType="touchUpInside" id="nmB-BV-fSm"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MOVES ABILITY?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMR-w9-SOB">
+                                                <rect key="frame" x="31" y="133" width="199" height="33"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="sMR-w9-SOB" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="1sE-LK-P15"/>
+                                            <constraint firstAttribute="bottom" secondItem="T9u-k4-gn9" secondAttribute="bottom" constant="50" id="4lA-RY-se2"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="A4x-JY-cye"/>
+                                            <constraint firstItem="sMR-w9-SOB" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" multiplier="0.7" constant="1" id="Mi9-QZ-1BX"/>
+                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="top" secondItem="8ue-SS-gIU" secondAttribute="bottom" constant="30" id="YL8-bg-6IN"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="centerY" secondItem="Dzo-6m-hRv" secondAttribute="centerY" id="fmh-jf-Tth"/>
+                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="fsQ-CG-4DE"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" multiplier="0.7" constant="1" id="iim-ke-hPz"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="top" secondItem="sMR-w9-SOB" secondAttribute="bottom" constant="15" id="sbH-QW-tZS"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4lA-RY-se2"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PdL-zR-zvF">
+                                        <rect key="frame" x="347" y="0.0" width="289" height="531"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HOW TO GET IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mic-T5-s8X">
+                                                <rect key="frame" x="37" y="133" width="234" height="33"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm9-SE-Zci">
+                                                <rect key="frame" x="-561" y="220" width="844" height="200"/>
+                                                <string key="text">Step 1. Set your trainer level.
+
+Step 2. Slide the Arc Into position, you can double check CP, HP is in the range and needed for power up is correct.
+
+Step 3. Slide your pokemon current CP and HP value.</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Mic-T5-s8X" firstAttribute="centerX" secondItem="PdL-zR-zvF" secondAttribute="centerX" id="7lH-NA-Lkz"/>
+                                            <constraint firstItem="Tm9-SE-Zci" firstAttribute="centerX" secondItem="PdL-zR-zvF" secondAttribute="centerX" id="Oaj-Ud-BMF"/>
+                                            <constraint firstItem="Mic-T5-s8X" firstAttribute="width" secondItem="PdL-zR-zvF" secondAttribute="width" multiplier="0.7" constant="1" id="ggB-8v-f5x"/>
+                                            <constraint firstItem="Tm9-SE-Zci" firstAttribute="width" secondItem="PdL-zR-zvF" secondAttribute="width" multiplier="0.7" constant="1" id="loX-6n-CCM"/>
+                                            <constraint firstItem="Tm9-SE-Zci" firstAttribute="centerY" secondItem="PdL-zR-zvF" secondAttribute="centerY" id="oV8-cs-ehz"/>
+                                            <constraint firstItem="Tm9-SE-Zci" firstAttribute="top" secondItem="Mic-T5-s8X" secondAttribute="bottom" constant="15" id="pMP-sR-VCM"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKe-eA-4A2">
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="531"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WHAT ARE IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-K0-0h8">
+                                                <rect key="frame" x="66" y="136" width="234" height="21"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ae-aX-TVZ">
+                                                <rect key="frame" x="43" y="198" width="272" height="200"/>
+                                                <string key="text">Each Pokemon in the game is unique. Not only does each distinct species have "base" stats for attack, defence, and stamina, but each individual Pokemon has additional unique values for those three stats. These are called 'Individual Values' or IV's and range from 0-15 for each stat.</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" red="0.33333333333333331" green="0.32010221775720449" blue="0.2450375419208739" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="sFW-K0-0h8" firstAttribute="centerX" secondItem="pKe-eA-4A2" secondAttribute="centerX" id="92N-1z-8RN"/>
+                                            <constraint firstItem="sFW-K0-0h8" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" multiplier="0.7" constant="1" id="I80-Lx-hYi"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="top" secondItem="sFW-K0-0h8" secondAttribute="bottom" constant="15" id="Tdm-Ao-c8u"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="centerY" secondItem="pKe-eA-4A2" secondAttribute="centerY" id="aJh-J1-mR2"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" multiplier="0.7" constant="1" id="sXB-zP-2qi"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="centerX" secondItem="pKe-eA-4A2" secondAttribute="centerX" id="yX1-zB-vfs"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pKe-eA-4A2" firstAttribute="leading" secondItem="b7T-sS-LMp" secondAttribute="leading" id="0Ib-Dl-Fzi"/>
+                                    <constraint firstItem="PdL-zR-zvF" firstAttribute="leading" secondItem="pKe-eA-4A2" secondAttribute="trailing" id="2u4-U9-RD7"/>
+                                    <constraint firstAttribute="bottom" secondItem="pKe-eA-4A2" secondAttribute="bottom" id="DGs-kj-Ytp"/>
+                                    <constraint firstItem="PdL-zR-zvF" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="NtK-3s-XNW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dzo-6m-hRv" secondAttribute="trailing" id="PC3-el-xLV"/>
+                                    <constraint firstItem="PdL-zR-zvF" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="R8r-iY-0Kf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dzo-6m-hRv" secondAttribute="bottom" id="SxG-wX-FzZ"/>
+                                    <constraint firstItem="PdL-zR-zvF" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="TXM-gw-GJ9"/>
+                                    <constraint firstItem="Dzo-6m-hRv" firstAttribute="leading" secondItem="PdL-zR-zvF" secondAttribute="trailing" id="UGK-Ng-MUE"/>
+                                    <constraint firstAttribute="bottom" secondItem="PdL-zR-zvF" secondAttribute="bottom" id="XKW-Wd-9ch"/>
+                                    <constraint firstItem="pKe-eA-4A2" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="eeI-dr-3UB"/>
+                                    <constraint firstItem="Dzo-6m-hRv" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="fiA-2d-UfH"/>
+                                    <constraint firstItem="Dzo-6m-hRv" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="l9L-fj-DDI"/>
+                                    <constraint firstItem="Dzo-6m-hRv" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="qvL-H6-3E5"/>
+                                    <constraint firstItem="pKe-eA-4A2" firstAttribute="centerY" secondItem="b7T-sS-LMp" secondAttribute="centerY" id="uAx-38-QR9"/>
+                                </constraints>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VNv-Fs-aHh">
+                                <rect key="frame" x="460.5" y="531" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b7T-sS-LMp" firstAttribute="top" secondItem="c1i-rc-ZSh" secondAttribute="bottom" id="4by-Tr-prP"/>
+                            <constraint firstItem="pKe-eA-4A2" firstAttribute="height" secondItem="JxX-ow-Rex" secondAttribute="height" id="Ep9-na-ofb"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="b7T-sS-LMp" secondAttribute="bottom" id="X2z-4r-eag"/>
+                            <constraint firstItem="b7T-sS-LMp" firstAttribute="leading" secondItem="JxX-ow-Rex" secondAttribute="leading" id="Xvc-FQ-Uo6"/>
+                            <constraint firstItem="pKe-eA-4A2" firstAttribute="width" secondItem="JxX-ow-Rex" secondAttribute="width" id="bNZ-RQ-0kF"/>
+                            <constraint firstItem="b7T-sS-LMp" firstAttribute="top" secondItem="JxX-ow-Rex" secondAttribute="topMargin" id="eXJ-kf-YFj"/>
+                            <constraint firstItem="hoF-RJ-HBG" firstAttribute="top" secondItem="VNv-Fs-aHh" secondAttribute="bottom" id="lic-Ds-dQb"/>
+                            <constraint firstAttribute="bottom" secondItem="b7T-sS-LMp" secondAttribute="bottom" constant="50" id="n23-6E-sQd"/>
+                            <constraint firstItem="VNv-Fs-aHh" firstAttribute="centerX" secondItem="JxX-ow-Rex" secondAttribute="centerX" id="n43-zS-ixr"/>
+                            <constraint firstItem="VNv-Fs-aHh" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="bottom" id="xJs-tY-Pg8"/>
+                            <constraint firstAttribute="trailing" secondItem="b7T-sS-LMp" secondAttribute="trailing" id="ywf-xg-0gP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4by-Tr-prP"/>
+                                <exclude reference="n23-6E-sQd"/>
+                                <exclude reference="Ep9-na-ofb"/>
+                                <exclude reference="xJs-tY-Pg8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="960" height="568"/>
+                    <connections>
+                        <outlet property="page1Label" destination="0ae-aX-TVZ" id="Hcp-Ev-xsh"/>
+                        <outlet property="page1TitleLabel" destination="sFW-K0-0h8" id="NPj-GC-7sS"/>
+                        <outlet property="page2Label" destination="Tm9-SE-Zci" id="0vy-4v-0wY"/>
+                        <outlet property="page2TitleLabel" destination="Mic-T5-s8X" id="0aQ-tS-sB6"/>
+                        <outlet property="page3Label" destination="8ue-SS-gIU" id="ore-cu-Ld4"/>
+                        <outlet property="page3TitleLabel" destination="sMR-w9-SOB" id="iH5-SB-bpe"/>
+                        <outlet property="pageController" destination="VNv-Fs-aHh" id="WiT-ot-Qmd"/>
+                        <outlet property="scrollView" destination="b7T-sS-LMp" id="Y3h-zq-9va"/>
+                        <outlet property="teachDoneButton" destination="T9u-k4-gn9" id="6Ux-k2-mvX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24e-zW-drV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1674" y="1398"/>
         </scene>
         <!--Pokedex-->
         <scene sceneID="tne-QT-ifu">
@@ -294,7 +478,7 @@
                         <outlet property="CollectionView" destination="oQU-sE-SoZ" id="q7b-xh-Rci"/>
                         <outlet property="backgroundImage" destination="Na8-Ae-gzt" id="O3m-Un-cvQ"/>
                         <outlet property="collectionView" destination="oQU-sE-SoZ" id="onS-kW-yzn"/>
-                        <segue destination="RQa-wL-wYL" kind="show" identifier="toSettingVController" id="2sd-DA-6Di"/>
+                        <segue destination="RQa-wL-wYL" kind="show" identifier="toSettingViewController" id="2sd-DA-6Di"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1710,11 +1894,12 @@
                         <outlet property="stardustTitleLabel" destination="6Y5-i1-cy9" id="pUc-X7-At5"/>
                         <outlet property="trainerLevelLabel" destination="qIK-2q-UGk" id="ycS-Ys-oVh"/>
                         <outlet property="trainerLevelTitleLabel" destination="Fqg-3A-90Q" id="7Ez-Lv-HTM"/>
+                        <segue destination="H7Y-Ev-2Ur" kind="presentation" identifier="toTeachViewController" id="NBl-W6-LdB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cm6-qD-jvP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1368" y="464"/>
+            <point key="canvasLocation" x="1354" y="465"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PMc-my-9sn">

@@ -38,7 +38,7 @@ class PokedexViewController: UIViewController {
     }
     
     func pushToSettingController() {
-        self.performSegueWithIdentifier("toSettingVController", sender: self)
+        self.performSegueWithIdentifier("toSettingViewController", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

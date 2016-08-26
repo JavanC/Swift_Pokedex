@@ -87,9 +87,11 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func pushToTipController() {
-        hasTeach = true
-        print("has teach")
-//        self.performSegueWithIdentifier("toSettingVController", sender: self)
+//        hasTeach = true
+        print("to teach view")
+        self.performSegueWithIdentifier("toTeachViewController", sender: self)
+        
+        //        self.performSegueWithIdentifier("toSettingVController", sender: self)
     }
     
     private func loadData() {

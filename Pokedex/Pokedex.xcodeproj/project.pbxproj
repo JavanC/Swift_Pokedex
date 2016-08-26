@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D5A31DB1D70A52E00B8CE55 /* TeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5A31DA1D70A52E00B8CE55 /* TeachViewController.swift */; };
 		8D83C21D1D6F1E1A00CE3C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D83C21C1D6F1E1A00CE3C51 /* Assets.xcassets */; };
 		8D83C2211D6F587000CE3C51 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2201D6F587000CE3C51 /* AdSupport.framework */; };
 		8D83C2231D6F587B00CE3C51 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2221D6F587B00CE3C51 /* AudioToolbox.framework */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D5A31DA1D70A52E00B8CE55 /* TeachViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController.swift; sourceTree = "<group>"; };
 		8D83C21C1D6F1E1A00CE3C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pokedex/Assets.xcassets; sourceTree = "<group>"; };
 		8D83C21E1D6F586100CE3C51 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../../../Downloads/GoogleMobileAdsSdkiOS-7.10.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		8D83C2201D6F587000CE3C51 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -210,6 +212,7 @@
 				8DB69E261D63706F006EF766 /* PokedexCollectionViewCell.swift */,
 				AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */,
 				AEF8A2221D6E972600C94E21 /* SettingViewController.swift */,
+				8D5A31DA1D70A52E00B8CE55 /* TeachViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				AE8C7F381D658E4E00BBE93E /* MyCustomView.swift in Sources */,
 				AE23B5641D66A7700002003E /* LevelDataList.swift in Sources */,
 				8D85FFAA1D64BC6F002FD710 /* RangeSliderTrackLayer.swift in Sources */,
+				8D5A31DB1D70A52E00B8CE55 /* TeachViewController.swift in Sources */,
 				AEE7C0CB1D6413DF00DD2480 /* PokemonData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
