@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import GoogleMobileAds
 
-class PokedexViewController: UIViewController, GADBannerViewDelegate {
+class PokedexViewController: UIViewController {
     
-    @IBOutlet weak var hideAdLabel: UILabel!
-    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -38,20 +35,6 @@ class PokedexViewController: UIViewController, GADBannerViewDelegate {
         shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
         self.view.addSubview(shadowView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: .Plain, target: self, action: #selector(pushToSettingController))
-    
-        // google mobile ad
-        self.bannerView.delegate = self
-        self.bannerView.adUnitID = "ca-app-pub-6777277453719401/7684779573"
-        self.bannerView.rootViewController = self
-        self.bannerView.loadRequest(GADRequest())
-        // hide Ad Label
-        hideAdLabel.layer.borderWidth = 1
-        hideAdLabel.layer.borderColor = UIColor.whiteColor().CGColor
-    }
-    
-    func adViewDidReceiveAd(bannerView: GADBannerView!) {
-        self.hideAdLabel.highlighted = false
-        self.bannerView.hidden = false
     }
     
     func pushToSettingController() {

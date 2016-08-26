@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class PokemonViewController: UIViewController {
+class PokemonViewController: UIViewController, GADBannerViewDelegate {
+    
+    @IBOutlet weak var hideAdLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var pokemonInfoView: UIView!
@@ -73,10 +79,17 @@ class PokemonViewController: UIViewController {
         super.viewDidLoad()
         loadData()
         configureView()
+        
     }
     override func viewWillAppear(animated: Bool) {
         updateTeamColor()
         updateLanguage()
+    }
+    
+    func pushToTipController() {
+        hasTeach = true
+        print("has teach")
+//        self.performSegueWithIdentifier("toSettingVController", sender: self)
     }
     
     private func loadData() {
@@ -85,6 +98,35 @@ class PokemonViewController: UIViewController {
     }
     
     private func configureView() {
+        
+        // google mobile ad and hide ad Label
+        self.bannerView.delegate = self
+        self.bannerView.adUnitID = "ca-app-pub-6777277453719401/7684779573"
+        self.bannerView.rootViewController = self
+        self.bannerView.loadRequest(GADRequest())
+        hideAdLabel.layer.borderWidth = 1
+        hideAdLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        // nas no teach, no ad time half hour
+        if !hasTeach {
+            print("has no teach, set no ad time half hour")
+            let now = NSDate(timeInterval: 10 - 60, sinceDate: NSDate())
+            NSUserDefaults.standardUserDefaults().setObject(now, forKey: "adDate")
+        }
+        // check ad time is over 24 hour
+        let lastADDate = NSUserDefaults.standardUserDefaults().objectForKey("adDate") as? NSDate
+        if let intervall = lastADDate?.timeIntervalSinceNow {
+            let pastSeconds = -Int(intervall)
+            print("ad past seconds: \(pastSeconds)")
+            if pastSeconds <= 60 {
+                print("this time need No AD")
+                hasTouchAd = true
+            } else {
+                print("this time need Show AD")
+                hasTouchAd = false
+            }
+        }
+        // show ad
+        showAdSpace(isShow: !hasTouchAd && Reachability.isConnectedToNetwork())
         
         // Initial navigation bar
         self.navigationController?.navigationBar.translucent = false
@@ -97,7 +139,8 @@ class PokemonViewController: UIViewController {
         shadowView.layer.shadowRadius =  4
         shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
         self.view.addSubview(shadowView)
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "tips"), style: .Plain, target: self, action: #selector(pushToTipController))
+    
         // for ipad autolayout
         if UIScreen.mainScreen().bounds.height > 826 + 64 {
             scrollView.scrollEnabled = false
@@ -288,6 +331,25 @@ class PokemonViewController: UIViewController {
         ivValueCircleLayer.strokeEnd = CGFloat(persent)
     }
     
+    func adViewWillLeaveApplication(bannerView: GADBannerView!) {
+        // touch ad
+        print("has touch ad")
+        hasTouchAd = true
+        showAdSpace(isShow: false)
+        
+        // save new ad date
+        print("reset ad time")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let now = NSDate(timeInterval: 0, sinceDate: NSDate())
+        defaults.setObject(now, forKey: "adDate")
+    }
+    
+    func showAdSpace(isShow isShow: Bool) {
+        scrollViewBottomConstraint.constant = isShow ? 50 : 0
+        bannerView.hidden = isShow ? false : true
+        hideAdLabel.hidden = isShow ? false : true
+    }
+    
     @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
         let attack = pokemon.fastAttacks[sender.selectedSegmentIndex]
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
@@ -315,7 +377,6 @@ class PokemonViewController: UIViewController {
     }
     
     // update team and language
-    
     @IBOutlet weak var trainerLevelTitleLabel: UILabel!
     @IBOutlet weak var estimatedLevelTitleLabel: UILabel!
     @IBOutlet weak var powerUpTitleLabel: UILabel!
@@ -369,6 +430,7 @@ class PokemonViewController: UIViewController {
         switch userLang {
         case .English:
             title = pokemon.name
+            hideAdLabel.text = "X Click to hide Ad 24 hour"
             trainerLevelTitleLabel.text = "TRAINER LEVEL"
             estimatedLevelTitleLabel.text = "ESTIMATED LEVEL"
             powerUpTitleLabel.text = "POWER UP"
@@ -396,6 +458,7 @@ class PokemonViewController: UIViewController {
 
         case .Chinese, .Austrian:
             title = pokemon.name
+            hideAdLabel.text = "X 點擊可以隱藏廣告24小時"
             trainerLevelTitleLabel.text = "訓練師等級"
             estimatedLevelTitleLabel.text = "預估等級"
             powerUpTitleLabel.text = "強化需求"
@@ -417,7 +480,7 @@ class PokemonViewController: UIViewController {
             chargeAttackSecondTitleLabel.text = "攻速"
             chargeAttackDPSTitleLabel.text = "秒傷"
             chargeAttackEnergyTitleLabel.text = "能量"
-            GYMPowerTitleLabel.text = "攻守道館能力 - 60秒傷害"
+            GYMPowerTitleLabel.text = "道館攻守能力 - 60秒傷害"
             GYMAttackTitleLabel.text = "攻擊方"
             GYMDefendTitleLabel.text = "防守方"
         }

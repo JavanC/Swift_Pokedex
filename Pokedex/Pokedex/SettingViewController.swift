@@ -54,16 +54,20 @@ class SettingViewController: UIViewController {
     // update team and language
     @IBOutlet weak var teamLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
     func updateTeamColor() {
         switch userTeam {
         case .Instinct:
             languageSegment.tintColor = colorY
+            backgroundView.backgroundColor = colorBGY
             self.navigationController?.navigationBar.barTintColor = colorY
         case .Mystic:
             languageSegment.tintColor = colorB
+            backgroundView.backgroundColor = colorBGB
             self.navigationController?.navigationBar.barTintColor = colorB
         case .Valor:
             languageSegment.tintColor = colorR
+            backgroundView.backgroundColor = colorBGR
             self.navigationController?.navigationBar.barTintColor = colorR
         }
     }

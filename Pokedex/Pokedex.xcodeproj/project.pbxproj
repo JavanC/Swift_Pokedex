@@ -32,6 +32,7 @@
 		AE23B5641D66A7700002003E /* LevelDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23B5631D66A7700002003E /* LevelDataList.swift */; };
 		AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */; };
 		AE8C7F381D658E4E00BBE93E /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */; };
+		AE922B3F1D6FE7C70015CAC5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE922B3E1D6FE7C70015CAC5 /* Reachability.swift */; };
 		AE9918FA1D6A915900D6996C /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F71D6A915900D6996C /* RulerSlider.swift */; };
 		AE9918FB1D6A915900D6996C /* RulerSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */; };
 		AE9918FC1D6A915900D6996C /* RulerSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */; };
@@ -69,6 +70,7 @@
 		AE23B5631D66A7700002003E /* LevelDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDataList.swift; sourceTree = "<group>"; };
 		AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovesDataList.swift; sourceTree = "<group>"; };
 		AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
+		AE922B3E1D6FE7C70015CAC5 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AE9918F71D6A915900D6996C /* RulerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
 		AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSliderThumbLayer.swift; sourceTree = "<group>"; };
 		AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSliderTrackLayer.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				AE23B5631D66A7700002003E /* LevelDataList.swift */,
 				AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */,
 				8D85FF911D649DDD002FD710 /* EmitterLayer.swift */,
+				AE922B3E1D6FE7C70015CAC5 /* Reachability.swift */,
 				8D85FF931D649DE8002FD710 /* spark.png */,
 			);
 			name = Content;
@@ -290,6 +293,7 @@
 				AEF8A2231D6E972600C94E21 /* SettingViewController.swift in Sources */,
 				8DB69E141D636859006EF766 /* AppDelegate.swift in Sources */,
 				8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */,
+				AE922B3F1D6FE7C70015CAC5 /* Reachability.swift in Sources */,
 				8D85FFA81D64ADA6002FD710 /* RangeSliderThumbLayer.swift in Sources */,
 				AE9918FA1D6A915900D6996C /* RulerSlider.swift in Sources */,
 				AE9918FB1D6A915900D6996C /* RulerSliderThumbLayer.swift in Sources */,
