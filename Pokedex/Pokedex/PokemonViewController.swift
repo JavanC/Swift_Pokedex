@@ -202,7 +202,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         fastAttackSegmented.layoutIfNeeded()
         fastAttackSegmented.removeAllSegments()
         for (index, fastAttack) in pokemon.fastAttacks.enumerate() {
-            let attackName = fastAttack.name
+            let attackName = fastAttack
             let segmementedWidth = fastAttackSegmented.frame.width
             let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count)
             let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
@@ -224,7 +224,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         chargeAttackSegmented.layoutIfNeeded()
         chargeAttackSegmented.removeAllSegments()
         for (index, chargeAttack) in pokemon.chargeAttacks.enumerate() {
-            let attackName = chargeAttack.name
+            let attackName = chargeAttack
             let segmementedWidth = chargeAttackSegmented.frame.width
             let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 2
             let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
@@ -351,7 +351,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
-        let attack = pokemon.fastAttacks[sender.selectedSegmentIndex]
+        let attack = FastAttacks[pokemon.fastAttacks[sender.selectedSegmentIndex]]!
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
         let second = attack.duration
         let DPS = power / attack.duration
@@ -364,7 +364,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     @IBAction func chargeAttackSegmentValueChange(sender: AnyObject) {
-        let attack = pokemon.chargeAttacks[sender.selectedSegmentIndex]
+        let attack = ChargeAttacks[pokemon.chargeAttacks[sender.selectedSegmentIndex]]!
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
         let second = attack.duration
         let DPS = power / attack.duration
@@ -427,9 +427,9 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         }
     }
     func updateLanguage() {
+        title = pokemon.name[userLang.hashValue]
         switch userLang {
         case .English:
-            title = pokemon.name
             hideAdLabel.text = "X Click to hide Ad 24 hour"
             trainerLevelTitleLabel.text = "TRAINER LEVEL"
             estimatedLevelTitleLabel.text = "ESTIMATED LEVEL"
@@ -455,9 +455,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             GYMPowerTitleLabel.text = "GYM 60 SECONDS POWER"
             GYMAttackTitleLabel.text = "ATTACK"
             GYMDefendTitleLabel.text = "DEFEND"
-
         case .Chinese, .Austrian:
-            title = pokemon.name
             hideAdLabel.text = "X 點擊可以隱藏廣告24小時"
             trainerLevelTitleLabel.text = "訓練師等級"
             estimatedLevelTitleLabel.text = "預估等級"
