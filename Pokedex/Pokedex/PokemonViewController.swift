@@ -204,7 +204,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         for (index, fastAttack) in pokemon.fastAttacks.enumerate() {
             let attackName = fastAttack
             let segmementedWidth = fastAttackSegmented.frame.width
-            let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count)
+            let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count) - 5
             let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
             if textWidth > itemWidth {
                 let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
@@ -226,7 +226,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         for (index, chargeAttack) in pokemon.chargeAttacks.enumerate() {
             let attackName = chargeAttack
             let segmementedWidth = chargeAttackSegmented.frame.width
-            let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 2
+            let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 5
             let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
             if textWidth > itemWidth {
                 let text = attackName.stringByReplacingOccurrencesOfString(" ", withString: "\n")
@@ -357,7 +357,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let DPS = power / attack.duration
         let energy = attack.energy
         fastAttackTypeLabel.text = "\(attack.type)"
-        fastAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : String(format: "%.1f", power)
+        fastAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : "\(power)"
         fastAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
         fastAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
         fastAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
@@ -370,7 +370,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let DPS = power / attack.duration
         let energy = attack.energy
         chargeAttackTypeLabel.text = "\(attack.type)"
-        chargeAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : String(format: "%.1f", power)
+        chargeAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : "\(power)"
         chargeAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
         chargeAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
         chargeAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
