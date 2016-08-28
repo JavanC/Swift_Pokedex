@@ -92,7 +92,7 @@
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-u3-3aB">
                                 <rect key="frame" x="141" y="258" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="pageIndicatorTintColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Em9-GV-5hf">
@@ -210,67 +210,50 @@
                         <viewControllerLayoutGuide type="bottom" id="hoF-RJ-HBG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JxX-ow-Rex">
-                        <rect key="frame" x="0.0" y="0.0" width="960" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-sS-LMp">
-                                <rect key="frame" x="0.0" y="0.0" width="960" height="531"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-sS-LMp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dzo-6m-hRv">
-                                        <rect key="frame" x="644" y="0.0" width="316" height="531"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKe-eA-4A2" userLabel="page 1">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-SS-gIU">
-                                                <rect key="frame" x="41" y="191" width="253" height="200"/>
-                                                <string key="text">Different moves sets to let you know that this pokemon for attack or defense. Good mix of skills is key to attack and defend GYM.
-
-Select your Fast attack and Charge attacks, will be calculated attack and defend damage at GYM for 60 seconds.</string>
-                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                                <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9u-k4-gn9">
-                                                <rect key="frame" x="113" y="439" width="90" height="30"/>
-                                                <state key="normal" title="Okay, I got it!"/>
-                                                <connections>
-                                                    <action selector="touchUpTeachDoneButton:" destination="H7Y-Ev-2Ur" eventType="touchUpInside" id="nmB-BV-fSm"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MOVES ABILITY?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMR-w9-SOB">
-                                                <rect key="frame" x="31" y="133" width="199" height="33"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT ARE IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-K0-0h8">
+                                                <rect key="frame" x="47" y="132" width="225" height="32.5"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ae-aX-TVZ">
+                                                <rect key="frame" x="47" y="180" width="225" height="208"/>
+                                                <string key="text">Each Pokemon in the game is unique. Not only does each distinct species have "base" stats for attack, defence, and stamina, but each individual Pokemon has additional unique values for those three stats. These are called 'Individual Values' or IV's and range from 0-15 for each stat.</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" red="0.33333333333333331" green="0.32010221775720449" blue="0.2450375419208739" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="sMR-w9-SOB" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="1sE-LK-P15"/>
-                                            <constraint firstAttribute="bottom" secondItem="T9u-k4-gn9" secondAttribute="bottom" constant="50" id="4lA-RY-se2"/>
-                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="A4x-JY-cye"/>
-                                            <constraint firstItem="sMR-w9-SOB" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" multiplier="0.7" constant="1" id="Mi9-QZ-1BX"/>
-                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="top" secondItem="8ue-SS-gIU" secondAttribute="bottom" constant="30" id="YL8-bg-6IN"/>
-                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="centerY" secondItem="Dzo-6m-hRv" secondAttribute="centerY" id="fmh-jf-Tth"/>
-                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="fsQ-CG-4DE"/>
-                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" multiplier="0.7" constant="1" id="iim-ke-hPz"/>
-                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="top" secondItem="sMR-w9-SOB" secondAttribute="bottom" constant="15" id="sbH-QW-tZS"/>
+                                            <constraint firstItem="sFW-K0-0h8" firstAttribute="centerX" secondItem="pKe-eA-4A2" secondAttribute="centerX" id="92N-1z-8RN"/>
+                                            <constraint firstItem="sFW-K0-0h8" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" multiplier="0.7" constant="1" id="I80-Lx-hYi"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="top" secondItem="sFW-K0-0h8" secondAttribute="bottom" constant="15" id="Tdm-Ao-c8u"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="centerY" secondItem="pKe-eA-4A2" secondAttribute="centerY" id="aJh-J1-mR2"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" multiplier="0.7" constant="1" id="sXB-zP-2qi"/>
+                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="centerX" secondItem="pKe-eA-4A2" secondAttribute="centerX" id="yX1-zB-vfs"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="4lA-RY-se2"/>
-                                            </mask>
-                                        </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PdL-zR-zvF">
-                                        <rect key="frame" x="347" y="0.0" width="289" height="531"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdL-zR-zvF" userLabel="page 2">
+                                        <rect key="frame" x="320" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HOW TO GET IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mic-T5-s8X">
-                                                <rect key="frame" x="37" y="133" width="234" height="33"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO GET IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mic-T5-s8X">
+                                                <rect key="frame" x="47" y="132" width="225" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm9-SE-Zci">
-                                                <rect key="frame" x="-561" y="220" width="844" height="200"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm9-SE-Zci">
+                                                <rect key="frame" x="47" y="180" width="225" height="208"/>
                                                 <string key="text">Step 1. Set your trainer level.
 
 Step 2. Slide the Arc Into position, you can double check CP, HP is in the range and needed for power up is correct.
@@ -291,31 +274,75 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                             <constraint firstItem="Tm9-SE-Zci" firstAttribute="top" secondItem="Mic-T5-s8X" secondAttribute="bottom" constant="15" id="pMP-sR-VCM"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKe-eA-4A2">
-                                        <rect key="frame" x="0.0" y="0.0" width="339" height="531"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzo-6m-hRv" userLabel="page 3">
+                                        <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WHAT ARE IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-K0-0h8">
-                                                <rect key="frame" x="66" y="136" width="234" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-SS-gIU">
+                                                <rect key="frame" x="47" y="190" width="225" height="187"/>
+                                                <string key="text">Choose your "Fast attack" and "Charge attack", different combinations let you know that your ability to pekemon.
+
+Attack and Defensive values are calculated from the Gym 60 seconds. Default opponent is LV.20 Pikachu (IV Max).</string>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM ABILITY?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMR-w9-SOB">
+                                                <rect key="frame" x="47" y="142" width="225" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ae-aX-TVZ">
-                                                <rect key="frame" x="43" y="198" width="272" height="200"/>
-                                                <string key="text">Each Pokemon in the game is unique. Not only does each distinct species have "base" stats for attack, defence, and stamina, but each individual Pokemon has additional unique values for those three stats. These are called 'Individual Values' or IV's and range from 0-15 for each stat.</string>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="sMR-w9-SOB" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="1sE-LK-P15"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="centerX" secondItem="Dzo-6m-hRv" secondAttribute="centerX" id="A4x-JY-cye"/>
+                                            <constraint firstItem="sMR-w9-SOB" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" multiplier="0.7" constant="1" id="Mi9-QZ-1BX"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="centerY" secondItem="Dzo-6m-hRv" secondAttribute="centerY" id="fmh-jf-Tth"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" multiplier="0.7" constant="1" id="iim-ke-hPz"/>
+                                            <constraint firstItem="8ue-SS-gIU" firstAttribute="top" secondItem="sMR-w9-SOB" secondAttribute="bottom" constant="15" id="sbH-QW-tZS"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4m-mk-eQu" userLabel="page 4">
+                                        <rect key="frame" x="960" y="0.0" width="320" height="568"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyT-ee-jG3">
+                                                <rect key="frame" x="47" y="169" width="225" height="229"/>
+                                                <string key="text">Become attacks: Charge attack Seconds +0.5
+Become defend: All attacks Seconds + 2.0, HP x 2
+
+Damage = Floor(½ Power * Attacker's_Attack/Defender's_Defense * STAB * Effectiveness)+ 1
+Here we'll ignore STAB and Effectiveness.</string>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
-                                                <color key="textColor" red="0.33333333333333331" green="0.32010221775720449" blue="0.2450375419208739" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE FORMULA?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0W-J3-4vu">
+                                                <rect key="frame" x="47.5" y="121" width="225" height="33"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9u-k4-gn9">
+                                                <rect key="frame" x="0.0" y="428" width="320" height="32"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                <state key="normal" title="Okay, I got it !"/>
+                                                <connections>
+                                                    <action selector="touchUpTeachDoneButton:" destination="H7Y-Ev-2Ur" eventType="touchUpInside" id="nmB-BV-fSm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="sFW-K0-0h8" firstAttribute="centerX" secondItem="pKe-eA-4A2" secondAttribute="centerX" id="92N-1z-8RN"/>
-                                            <constraint firstItem="sFW-K0-0h8" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" multiplier="0.7" constant="1" id="I80-Lx-hYi"/>
-                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="top" secondItem="sFW-K0-0h8" secondAttribute="bottom" constant="15" id="Tdm-Ao-c8u"/>
-                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="centerY" secondItem="pKe-eA-4A2" secondAttribute="centerY" id="aJh-J1-mR2"/>
-                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" multiplier="0.7" constant="1" id="sXB-zP-2qi"/>
-                                            <constraint firstItem="0ae-aX-TVZ" firstAttribute="centerX" secondItem="pKe-eA-4A2" secondAttribute="centerX" id="yX1-zB-vfs"/>
+                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="top" secondItem="VyT-ee-jG3" secondAttribute="bottom" constant="30" id="66c-LY-8gU"/>
+                                            <constraint firstItem="VyT-ee-jG3" firstAttribute="width" secondItem="r4m-mk-eQu" secondAttribute="width" multiplier="0.7" constant="1" id="LRx-e9-iBE"/>
+                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="width" secondItem="r4m-mk-eQu" secondAttribute="width" id="Ox7-ER-f8q"/>
+                                            <constraint firstItem="x0W-J3-4vu" firstAttribute="centerX" secondItem="r4m-mk-eQu" secondAttribute="centerX" id="PfP-f5-vub"/>
+                                            <constraint firstItem="VyT-ee-jG3" firstAttribute="centerX" secondItem="r4m-mk-eQu" secondAttribute="centerX" id="VHy-as-vkY"/>
+                                            <constraint firstItem="x0W-J3-4vu" firstAttribute="width" secondItem="r4m-mk-eQu" secondAttribute="width" multiplier="0.7" constant="1" id="hwC-3D-wje"/>
+                                            <constraint firstItem="VyT-ee-jG3" firstAttribute="top" secondItem="x0W-J3-4vu" secondAttribute="bottom" constant="15" id="jLd-Gd-SAh"/>
+                                            <constraint firstItem="T9u-k4-gn9" firstAttribute="centerX" secondItem="r4m-mk-eQu" secondAttribute="centerX" id="rH9-Dc-HwM"/>
+                                            <constraint firstItem="VyT-ee-jG3" firstAttribute="centerY" secondItem="r4m-mk-eQu" secondAttribute="centerY" id="re1-cZ-z4H"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -323,23 +350,33 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                 <constraints>
                                     <constraint firstItem="pKe-eA-4A2" firstAttribute="leading" secondItem="b7T-sS-LMp" secondAttribute="leading" id="0Ib-Dl-Fzi"/>
                                     <constraint firstItem="PdL-zR-zvF" firstAttribute="leading" secondItem="pKe-eA-4A2" secondAttribute="trailing" id="2u4-U9-RD7"/>
+                                    <constraint firstItem="r4m-mk-eQu" firstAttribute="width" secondItem="Dzo-6m-hRv" secondAttribute="width" id="5Q0-vd-g9a"/>
                                     <constraint firstAttribute="bottom" secondItem="pKe-eA-4A2" secondAttribute="bottom" id="DGs-kj-Ytp"/>
                                     <constraint firstItem="PdL-zR-zvF" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="NtK-3s-XNW"/>
                                     <constraint firstAttribute="trailing" secondItem="Dzo-6m-hRv" secondAttribute="trailing" id="PC3-el-xLV"/>
                                     <constraint firstItem="PdL-zR-zvF" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="R8r-iY-0Kf"/>
+                                    <constraint firstAttribute="trailing" secondItem="r4m-mk-eQu" secondAttribute="trailing" id="SjS-vF-ZF1"/>
                                     <constraint firstAttribute="bottom" secondItem="Dzo-6m-hRv" secondAttribute="bottom" id="SxG-wX-FzZ"/>
                                     <constraint firstItem="PdL-zR-zvF" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="TXM-gw-GJ9"/>
                                     <constraint firstItem="Dzo-6m-hRv" firstAttribute="leading" secondItem="PdL-zR-zvF" secondAttribute="trailing" id="UGK-Ng-MUE"/>
                                     <constraint firstAttribute="bottom" secondItem="PdL-zR-zvF" secondAttribute="bottom" id="XKW-Wd-9ch"/>
                                     <constraint firstItem="pKe-eA-4A2" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="eeI-dr-3UB"/>
                                     <constraint firstItem="Dzo-6m-hRv" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="fiA-2d-UfH"/>
+                                    <constraint firstAttribute="bottom" secondItem="r4m-mk-eQu" secondAttribute="bottom" id="jjZ-h6-51s"/>
                                     <constraint firstItem="Dzo-6m-hRv" firstAttribute="width" secondItem="pKe-eA-4A2" secondAttribute="width" id="l9L-fj-DDI"/>
+                                    <constraint firstItem="r4m-mk-eQu" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="nEy-bu-9rc"/>
                                     <constraint firstItem="Dzo-6m-hRv" firstAttribute="top" secondItem="b7T-sS-LMp" secondAttribute="top" id="qvL-H6-3E5"/>
                                     <constraint firstItem="pKe-eA-4A2" firstAttribute="centerY" secondItem="b7T-sS-LMp" secondAttribute="centerY" id="uAx-38-QR9"/>
+                                    <constraint firstItem="r4m-mk-eQu" firstAttribute="leading" secondItem="Dzo-6m-hRv" secondAttribute="trailing" id="ywm-81-1Oy"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PC3-el-xLV"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VNv-Fs-aHh">
-                                <rect key="frame" x="460.5" y="531" width="39" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="VNv-Fs-aHh">
+                                <rect key="frame" x="132" y="531" width="55" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
@@ -368,7 +405,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="960" height="568"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="page1Label" destination="0ae-aX-TVZ" id="Hcp-Ev-xsh"/>
                         <outlet property="page1TitleLabel" destination="sFW-K0-0h8" id="NPj-GC-7sS"/>
@@ -376,6 +413,8 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                         <outlet property="page2TitleLabel" destination="Mic-T5-s8X" id="0aQ-tS-sB6"/>
                         <outlet property="page3Label" destination="8ue-SS-gIU" id="ore-cu-Ld4"/>
                         <outlet property="page3TitleLabel" destination="sMR-w9-SOB" id="iH5-SB-bpe"/>
+                        <outlet property="page4Label" destination="VyT-ee-jG3" id="a3g-R5-gYS"/>
+                        <outlet property="page4TitleLabel" destination="x0W-J3-4vu" id="Bzi-uN-Z1c"/>
                         <outlet property="pageController" destination="VNv-Fs-aHh" id="WiT-ot-Qmd"/>
                         <outlet property="scrollView" destination="b7T-sS-LMp" id="Y3h-zq-9va"/>
                         <outlet property="teachDoneButton" destination="T9u-k4-gn9" id="6Ux-k2-mvX"/>
@@ -500,14 +539,14 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6f-55-7lH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="890"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQP-de-Xkl">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="826"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQP-de-Xkl">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="826"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-cB-56x" userLabel="Estimated View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="230" width="161" height="60"/>
+                                                <rect key="frame" x="0.0" y="230" width="160.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n5-yu-ULJ">
-                                                        <rect key="frame" x="0.0" y="20" width="161" height="40"/>
+                                                        <rect key="frame" x="0.0" y="20" width="160.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="d7y-Ul-F5N"/>
                                                         </constraints>
@@ -516,7 +555,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESTIMATED LEVLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-Ao-hFG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="HMV-qS-4k2"/>
                                                         </constraints>
@@ -545,10 +584,10 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-Qb-icG" userLabel="Power Up View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="230" width="161" height="60"/>
+                                                <rect key="frame" x="159" y="230" width="160.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWER UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-4f-5Je">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="dCW-y2-oZ0"/>
                                                         </constraints>
@@ -557,7 +596,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STARDUST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y5-i1-cy9">
-                                                        <rect key="frame" x="0.0" y="45" width="81" height="15"/>
+                                                        <rect key="frame" x="0.0" y="45" width="80.5" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="UNq-qB-4IZ"/>
                                                         </constraints>
@@ -575,7 +614,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuN-4v-7z6">
-                                                        <rect key="frame" x="0.0" y="20" width="81" height="25"/>
+                                                        <rect key="frame" x="0.0" y="20" width="80.5" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="G7E-al-tn8"/>
                                                         </constraints>
@@ -747,10 +786,10 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                 <rect key="frame" x="0.0" y="398" width="320" height="90"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-ZO-UUH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="90"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATT+DEF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-7Y-06L">
-                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="byH-1f-SaB"/>
                                                                 </constraints>
@@ -759,7 +798,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 / 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDZ-57-Qoq">
-                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="bXa-uJ-Tjd"/>
                                                                     <constraint firstAttribute="height" constant="30" id="jGG-gF-mWM"/>
@@ -784,10 +823,10 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                             <constraint firstItem="WDZ-57-Qoq" firstAttribute="top" secondItem="IxS-7Y-06L" secondAttribute="bottom" constant="-2" id="tSK-mQ-uIj"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-mE-QAJ">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-mE-QAJ">
                                                         <rect key="frame" x="107" y="0.0" width="106" height="90"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-86-Eas">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-86-Eas">
                                                                 <rect key="frame" x="0.0" y="15" width="106" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="3aB-W3-sLq"/>
@@ -796,7 +835,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-wg-Okf">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-wg-Okf">
                                                                 <rect key="frame" x="0.0" y="38" width="106" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="HaR-40-ybg"/>
@@ -829,10 +868,10 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                         </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-HG-HCn">
-                                                        <rect key="frame" x="213" y="0.0" width="107" height="90"/>
+                                                        <rect key="frame" x="213" y="0.0" width="106.5" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwv-2z-gZG">
-                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="c2a-D7-yXP"/>
                                                                 </constraints>
@@ -841,7 +880,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 / 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Xi-Afo">
-                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="NyS-Fa-Ol3"/>
                                                                     <constraint firstAttribute="height" constant="30" id="pUv-Eh-OH5"/>
@@ -1410,6 +1449,12 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFu-nf-0TJ" userLabel="Gym View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="706" width="320" height="120"/>
                                                 <subviews>
+                                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sword" translatesAutoresizingMaskIntoConstraints="NO" id="iaQ-D7-iee">
+                                                        <rect key="frame" x="0.0" y="33" width="160" height="50"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-XP-51B">
+                                                        <rect key="frame" x="160" y="33" width="160" height="50"/>
+                                                    </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="854" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyJ-od-0GS">
                                                         <rect key="frame" x="0.0" y="33" width="160" height="50"/>
                                                         <constraints>
@@ -1434,7 +1479,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                             <constraint firstAttribute="height" constant="20" id="hfX-Hw-Bz8"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="nPW-4p-f3G"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1444,16 +1489,16 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                             <constraint firstAttribute="height" constant="20" id="C8L-MT-gLA"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="RvM-kT-faZ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM 60 SECONDS POWER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHq-eE-k3F">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM STRENGTH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHq-eE-k3F">
                                                         <rect key="frame" x="0.0" y="8" width="320" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="0a4-Ac-hCV"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1461,7 +1506,10 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="ntI-AG-2xd" secondAttribute="trailing" id="0ud-Xo-24c"/>
+                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="60C-IG-IBD"/>
+                                                    <constraint firstItem="ntI-AG-2xd" firstAttribute="leading" secondItem="iaQ-D7-iee" secondAttribute="trailing" id="67P-Xp-8vg"/>
                                                     <constraint firstItem="C0k-DI-Ng4" firstAttribute="width" secondItem="Ktj-Uq-W6x" secondAttribute="width" id="AlV-eo-02w"/>
+                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="leading" secondItem="TyJ-od-0GS" secondAttribute="trailing" id="Ca2-da-ey6"/>
                                                     <constraint firstItem="EHq-eE-k3F" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="Iut-SG-J9e"/>
                                                     <constraint firstItem="C0k-DI-Ng4" firstAttribute="leading" secondItem="Ktj-Uq-W6x" secondAttribute="trailing" id="M9U-zC-ojW"/>
                                                     <constraint firstItem="ntI-AG-2xd" firstAttribute="width" secondItem="TyJ-od-0GS" secondAttribute="width" id="MZB-Lk-2oc"/>
@@ -1471,10 +1519,16 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                     <constraint firstAttribute="height" constant="120" id="VHG-Fz-yaf"/>
                                                     <constraint firstItem="TyJ-od-0GS" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="YKA-41-WAa"/>
                                                     <constraint firstItem="EHq-eE-k3F" firstAttribute="top" secondItem="uFu-nf-0TJ" secondAttribute="top" constant="8" id="akR-ER-5Ut"/>
+                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="bTH-Gl-DE4"/>
+                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="width" secondItem="iaQ-D7-iee" secondAttribute="width" id="csk-fd-G48"/>
                                                     <constraint firstItem="C0k-DI-Ng4" firstAttribute="width" secondItem="Ktj-Uq-W6x" secondAttribute="width" id="fCj-xv-vYs"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="top" secondItem="Lpc-XP-51B" secondAttribute="bottom" id="iP5-CY-s4L"/>
                                                     <constraint firstItem="TyJ-od-0GS" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="kwe-JL-yN6"/>
                                                     <constraint firstItem="Ktj-Uq-W6x" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="mZs-7i-buT"/>
+                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="top" secondItem="iaQ-D7-iee" secondAttribute="bottom" id="mx9-WH-jg9"/>
                                                     <constraint firstItem="C0k-DI-Ng4" firstAttribute="leading" secondItem="Ktj-Uq-W6x" secondAttribute="trailing" id="nTE-W8-3ea"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Lpc-XP-51B" secondAttribute="trailing" id="ql8-Ef-vID"/>
+                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="qqX-Rq-wf6"/>
                                                     <constraint firstItem="C0k-DI-Ng4" firstAttribute="top" secondItem="ntI-AG-2xd" secondAttribute="bottom" id="shb-fl-Qh9"/>
                                                     <constraint firstItem="ntI-AG-2xd" firstAttribute="leading" secondItem="TyJ-od-0GS" secondAttribute="trailing" id="vb0-XB-RbO"/>
                                                     <constraint firstAttribute="trailing" secondItem="C0k-DI-Ng4" secondAttribute="trailing" id="zfN-Ec-TeC"/>
@@ -1683,7 +1737,7 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                                         </variation>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-50-Tbi" userLabel="pokemon background">
-                                                        <rect key="frame" x="103" y="153" width="115" height="57"/>
+                                                        <rect key="frame" x="103" y="152" width="115" height="57.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="A5p-Pm-IMb"/>
                                                             <constraint firstAttribute="width" secondItem="CZY-50-Tbi" secondAttribute="height" multiplier="2:1" id="Z5a-4t-S2F"/>
@@ -1873,6 +1927,8 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                         <outlet property="fastAttackTypeLabel" destination="TnL-65-ts3" id="nok-Rq-aJY"/>
                         <outlet property="fastAttackTypeTitleLabel" destination="XdI-1Y-PfZ" id="y3X-0I-vl0"/>
                         <outlet property="fastAttacksTitleLabel" destination="Dt5-Pl-KtA" id="Gma-po-xW3"/>
+                        <outlet property="gymAttackValueLabel" destination="TyJ-od-0GS" id="ZFn-qz-eAX"/>
+                        <outlet property="gymDefendValueLabel" destination="ntI-AG-2xd" id="5mJ-l9-unZ"/>
                         <outlet property="hideAdLabel" destination="5yW-KV-raq" id="OC9-YC-CQk"/>
                         <outlet property="hpRangeValueLabel" destination="RFi-Gz-uch" id="YZZ-fj-Zom"/>
                         <outlet property="hpRangeValueLabel2" destination="64z-qr-3os" id="mnD-Bj-XN1"/>
@@ -1925,6 +1981,8 @@ Step 3. Slide your pokemon current CP and HP value.</string>
         <image name="Water" width="640" height="360"/>
         <image name="cellBackground" width="158" height="158"/>
         <image name="shadow" width="158" height="158"/>
+        <image name="shield" width="50" height="50"/>
+        <image name="sword" width="50" height="50"/>
         <image name="team-instinct" width="360" height="360"/>
         <image name="team-mystic" width="360" height="360"/>
         <image name="team-valor" width="360" height="360"/>

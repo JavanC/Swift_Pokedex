@@ -14,14 +14,40 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_corner" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-qc-AMB">
+                                <rect key="frame" x="137" y="284" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Gra-9Y-WUu"/>
+                                    <constraint firstAttribute="height" constant="100" id="nPe-L4-haf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JavanLab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qch-fN-81m">
+                                <rect key="frame" x="-0.5" y="394" width="375" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qch-fN-81m" firstAttribute="top" secondItem="OmK-qc-AMB" secondAttribute="bottom" constant="10" id="N96-L8-Mel"/>
+                            <constraint firstItem="OmK-qc-AMB" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="c6p-v4-BJm"/>
+                            <constraint firstItem="OmK-qc-AMB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mpz-Mn-WPP"/>
+                            <constraint firstItem="Qch-fN-81m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="myI-qa-HaQ"/>
+                            <constraint firstItem="Qch-fN-81m" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="nlr-OH-kDk"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="8.5" y="344.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_corner" width="120" height="120"/>
+    </resources>
 </document>

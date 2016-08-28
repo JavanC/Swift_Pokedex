@@ -53,6 +53,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var chargeAttackSecondLabel: UILabel!
     @IBOutlet weak var chargeAttackDPSLabel: UILabel!
     @IBOutlet weak var chargeAttackEnergyLabel: UILabel!
+    @IBOutlet weak var gymAttackValueLabel: UILabel!
+    @IBOutlet weak var gymDefendValueLabel: UILabel!
 
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
@@ -87,11 +89,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func pushToTipController() {
-//        hasTeach = true
-        print("to teach view")
         self.performSegueWithIdentifier("toTeachViewController", sender: self)
-        
-        //        self.performSegueWithIdentifier("toSettingVController", sender: self)
     }
     
     private func loadData() {
@@ -315,12 +313,14 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         pokemon.cp = rangeSlider.currentValue
         cpValueLabel.text = "\(Int(pokemon.cp))"
         updateIVView()
+        updateGymStrength()
     }
     
     func hpRangeSliderValueChanged(rangeSlider: RangeSlider) {
         pokemon.hp = rangeSlider.currentValue
         hpValueLabel.text = "\(Int(pokemon.hp))"
         updateIVView()
+        updateGymStrength()
     }
     
     func updateIVView() {
@@ -331,6 +331,82 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         staValueLabel.text = "\(Int(sta)) / 15"
         ivValueLabel.text = "\(Int(persent * 100))%"
         ivValueCircleLayer.strokeEnd = CGFloat(persent)
+    }
+
+    @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
+        let attack = FastAttacks[pokemon.fastAttacks[sender.selectedSegmentIndex]]!
+        let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
+        let second = attack.duration
+        let DPS = power / attack.duration
+        let energy = attack.energy
+        fastAttackTypeLabel.text = "\(attack.type)"
+        fastAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : "\(power)"
+        fastAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
+        fastAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
+        fastAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
+        updateGymStrength()
+    }
+    
+    @IBAction func chargeAttackSegmentValueChange(sender: AnyObject) {
+        let attack = ChargeAttacks[pokemon.chargeAttacks[sender.selectedSegmentIndex]]!
+        let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
+        let second = attack.duration
+        let DPS = power / attack.duration
+        let energy = attack.energy
+        chargeAttackTypeLabel.text = "\(attack.type)"
+        chargeAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : "\(power)"
+        chargeAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
+        chargeAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
+        chargeAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
+        updateGymStrength()
+    }
+    
+    func updateGymStrength() {
+        let fastAttack = FastAttacks[pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]]!
+        let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
+        let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
+        let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
+        let att = (pokemon.baseAtt + pokemon.indiAtt) * pokemon.CPM
+        let def = (108 + 15) * 0.59740001
+        let fastDamage = Int(0.5 * fastPower * att / def) + 1
+        let chargeDamage = Int(0.5 * chargePower * att / def) + 1
+        
+        var damage = 0
+        var second = 0.0
+        var energy = 0.0
+        while(true) {
+            if energy < chargeAttack.energy {
+                second += fastAttack.duration
+                if second > 60 { break }
+                damage += fastDamage
+                energy += fastAttack.energy
+                energy = min(energy, 100)
+            } else {
+                second += chargeAttack.duration + 0.5
+                if second > 60 { break }
+                damage += chargeDamage
+                energy -= chargeAttack.energy
+            }
+        }
+        gymAttackValueLabel.text = "\(damage)"
+        damage = 0
+        second = 0.0
+        energy = 0.0
+        while(true) {
+            if energy < chargeAttack.energy {
+                second += fastAttack.duration + 2.0
+                if second > 60 { break }
+                damage += fastDamage
+                energy += fastAttack.energy
+                energy = min(energy, 100)
+            } else {
+                second += chargeAttack.duration + 2.0
+                if second > 60 { break }
+                damage += chargeDamage
+                energy -= chargeAttack.energy
+            }
+        }
+        gymDefendValueLabel.text = "\(damage)"
     }
     
     func adViewWillLeaveApplication(bannerView: GADBannerView!) {
@@ -350,32 +426,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         scrollViewBottomConstraint.constant = isShow ? 50 : 0
         bannerView.hidden = isShow ? false : true
         hideAdLabel.hidden = isShow ? false : true
-    }
-    
-    @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
-        let attack = FastAttacks[pokemon.fastAttacks[sender.selectedSegmentIndex]]!
-        let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
-        let second = attack.duration
-        let DPS = power / attack.duration
-        let energy = attack.energy
-        fastAttackTypeLabel.text = "\(attack.type)"
-        fastAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : "\(power)"
-        fastAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
-        fastAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
-        fastAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
-    }
-    
-    @IBAction func chargeAttackSegmentValueChange(sender: AnyObject) {
-        let attack = ChargeAttacks[pokemon.chargeAttacks[sender.selectedSegmentIndex]]!
-        let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
-        let second = attack.duration
-        let DPS = power / attack.duration
-        let energy = attack.energy
-        chargeAttackTypeLabel.text = "\(attack.type)"
-        chargeAttackPowerLabel.text = power % 1 == 0 ? "\(Int(power))" : "\(power)"
-        chargeAttackSecondLabel.text = second % 1 == 0 ? "\(Int(second))" : "\(second)"
-        chargeAttackDPSLabel.text = DPS % 1 == 0 ? "\(Int(DPS))" : String(format: "%.1f", DPS)
-        chargeAttackEnergyLabel.text = energy % 1 == 0 ? "\(Int(energy))" : "\(energy)"
     }
     
     // update team and language
@@ -454,7 +504,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             chargeAttackSecondTitleLabel.text = "SECOND"
             chargeAttackDPSTitleLabel.text = "DPS"
             chargeAttackEnergyTitleLabel.text = "ENERGY"
-            GYMPowerTitleLabel.text = "GYM 60 SECONDS POWER"
+            GYMPowerTitleLabel.text = "GYM STRENGTH"
             GYMAttackTitleLabel.text = "ATTACK"
             GYMDefendTitleLabel.text = "DEFEND"
         case .Chinese, .Austrian:
@@ -480,7 +530,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             chargeAttackSecondTitleLabel.text = "攻速"
             chargeAttackDPSTitleLabel.text = "秒傷"
             chargeAttackEnergyTitleLabel.text = "能量"
-            GYMPowerTitleLabel.text = "道館攻守能力 - 60秒傷害"
+            GYMPowerTitleLabel.text = "道館攻守傷害"
             GYMAttackTitleLabel.text = "攻擊方"
             GYMDefendTitleLabel.text = "防守方"
         }
