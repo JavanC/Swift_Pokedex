@@ -12,7 +12,6 @@ enum Team : Int { case Instinct, Mystic, Valor }
 enum Lang : Int { case English, Chinese, Austrian }
 var userTeam = Team.Instinct
 var userLang = Lang.English
-var hasTouchAd = false
 var hasTeach = false
 let colorR = UIColor(hex: 0xFF7768, alpha: 1)
 let colorY = UIColor(hex: 0xF9CB11, alpha: 1)
@@ -36,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         userTeam = Team(rawValue: defaults.integerForKey("userTeam"))!
         userLang = Lang(rawValue: defaults.integerForKey("userLang"))!
-        hasTouchAd = defaults.boolForKey("hasTouchAd")
         hasTeach = defaults.boolForKey("hasTeach")
     }
     

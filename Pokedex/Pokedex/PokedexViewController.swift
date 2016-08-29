@@ -15,6 +15,16 @@ class PokedexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        if !hasTeach {
+            let alertController = UIAlertController(title: "Welcome!!", message: "You can choose your team and language, or later you can set in the \"Setting\" inside.", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "Later", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let okAction = UIAlertAction(title: "Choose my team", style: .Default, handler: { (action:UIAlertAction!) -> Void in
+                self.pushToSettingController()
+            })
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,9 +86,11 @@ class PokedexViewController: UIViewController {
     func updateLanguage() {
         switch userLang {
         case .English:
-            title = "Pokedex"
+            title = "Poke Booklet"
+            navigationItem.backBarButtonItem?.title = "Back"
         case .Chinese, .Austrian:
-            title = "圖鑒"
+            title = "陣營手冊"
+            navigationItem.backBarButtonItem?.title = "返回"
         }
     }
 }
@@ -87,7 +99,16 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pokemonData.count
     }
-    
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PokedexCollectionViewCell {
+            cell.imageView.frame = CGRect(x: 5, y: 5, width: 70, height: 70)
+        }
+    }
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PokedexCollectionViewCell {
+            cell.imageView.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
+        }
+    }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath)
         if let cell = cell as? PokedexCollectionViewCell {
@@ -95,7 +116,6 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
         }
         return cell
     }
-    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         
         print(UIScreen.mainScreen().bounds.size)

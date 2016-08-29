@@ -11,7 +11,7 @@
         <!--Setting View Controller-->
         <scene sceneID="QD7-Yd-3Ph">
             <objects>
-                <viewController id="RQa-wL-wYL" customClass="SettingViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RQa-wL-wYL" customClass="SettingViewController" customModule="Poke_Booklet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IPv-US-YmS"/>
                         <viewControllerLayoutGuide type="bottom" id="47o-ix-eS1"/>
@@ -204,7 +204,7 @@
         <!--Teach View Controller-->
         <scene sceneID="h1Q-6Q-PtG">
             <objects>
-                <viewController id="H7Y-Ev-2Ur" customClass="TeachViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="H7Y-Ev-2Ur" customClass="TeachViewController" customModule="Poke_Booklet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c1i-rc-ZSh"/>
                         <viewControllerLayoutGuide type="bottom" id="hoF-RJ-HBG"/>
@@ -220,7 +220,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT ARE IV'S?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFW-K0-0h8">
-                                                <rect key="frame" x="47" y="132" width="225" height="32.5"/>
+                                                <rect key="frame" x="47" y="132" width="225" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -278,16 +278,16 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                         <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-SS-gIU">
-                                                <rect key="frame" x="47" y="190" width="225" height="187"/>
+                                                <rect key="frame" x="47" y="180" width="225" height="208"/>
                                                 <string key="text">Choose your "Fast attack" and "Charge attack", different combinations let you know that your ability to pekemon.
 
-Attack and Defensive values are calculated from the Gym 60 seconds. Default opponent is LV.20 Pikachu (IV Max).</string>
+Attack and Defensive values are calculated from the Gym "60 seconds". Default opponent is LV.20 Pikachu (IV Max).</string>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                 <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM ABILITY?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMR-w9-SOB">
-                                                <rect key="frame" x="47" y="142" width="225" height="33"/>
+                                                <rect key="frame" x="47" y="132" width="225" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -318,7 +318,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE FORMULA?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0W-J3-4vu">
-                                                <rect key="frame" x="47.5" y="121" width="225" height="33"/>
+                                                <rect key="frame" x="48" y="121" width="225" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -427,7 +427,7 @@ Here we'll ignore STAB and Effectiveness.</string>
         <!--Pokedex-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Pokedex" id="BYZ-38-t0r" userLabel="Pokedex" customClass="PokedexViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pokedex" id="BYZ-38-t0r" userLabel="Pokedex" customClass="PokedexViewController" customModule="Poke_Booklet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -452,7 +452,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="621-an-7hL" customClass="PokedexCollectionViewCell" customModule="Pokedex" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="621-an-7hL" customClass="PokedexCollectionViewCell" customModule="Poke_Booklet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -511,7 +511,9 @@ Here we'll ignore STAB and Effectiveness.</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Pokedex" id="DFH-gE-pNF"/>
+                    <navigationItem key="navigationItem" title="Poke Booklet" id="DFH-gE-pNF">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Mx4-TR-hva"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="CollectionView" destination="oQU-sE-SoZ" id="q7b-xh-Rci"/>
@@ -527,7 +529,7 @@ Here we'll ignore STAB and Effectiveness.</string>
         <!--Pokemon-->
         <scene sceneID="bQ0-dz-TJl">
             <objects>
-                <viewController title="Pokemon" id="d1a-w0-VeU" userLabel="Pokemon" customClass="PokemonViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pokemon" id="d1a-w0-VeU" userLabel="Pokemon" customClass="PokemonViewController" customModule="Poke_Booklet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s4i-bF-xNm"/>
                         <viewControllerLayoutGuide type="bottom" id="5dr-hd-cFn"/>
@@ -542,11 +544,11 @@ Here we'll ignore STAB and Effectiveness.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQP-de-Xkl">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="826"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-cB-56x" userLabel="Estimated View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="230" width="160.5" height="60"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-cB-56x" userLabel="Estimated View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="230" width="161" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n5-yu-ULJ">
-                                                        <rect key="frame" x="0.0" y="20" width="160.5" height="40"/>
+                                                        <rect key="frame" x="0.0" y="20" width="161" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="d7y-Ul-F5N"/>
                                                         </constraints>
@@ -555,7 +557,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESTIMATED LEVLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-Ao-hFG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="HMV-qS-4k2"/>
                                                         </constraints>
@@ -583,11 +585,11 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-Qb-icG" userLabel="Power Up View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="230" width="160.5" height="60"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-Qb-icG" userLabel="Power Up View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
+                                                <rect key="frame" x="160" y="230" width="160" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWER UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-4f-5Je">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="dCW-y2-oZ0"/>
                                                         </constraints>
@@ -596,7 +598,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STARDUST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y5-i1-cy9">
-                                                        <rect key="frame" x="0.0" y="45" width="80.5" height="15"/>
+                                                        <rect key="frame" x="0.0" y="45" width="80" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="UNq-qB-4IZ"/>
                                                         </constraints>
@@ -614,7 +616,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuN-4v-7z6">
-                                                        <rect key="frame" x="0.0" y="20" width="80.5" height="25"/>
+                                                        <rect key="frame" x="0.0" y="20" width="80" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="G7E-al-tn8"/>
                                                         </constraints>
@@ -669,7 +671,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHD-Kn-hG7" userLabel="CP/HP View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHD-Kn-hG7" userLabel="CP/HP View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="289" width="320" height="110"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POKEMON CP: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icN-ce-iSe">
@@ -782,14 +784,14 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaR-Lq-t7D" userLabel="IV View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaR-Lq-t7D" userLabel="IV View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="398" width="320" height="90"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-ZO-UUH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="90"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATT+DEF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-7Y-06L">
-                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="byH-1f-SaB"/>
                                                                 </constraints>
@@ -798,7 +800,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 / 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDZ-57-Qoq">
-                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="bXa-uJ-Tjd"/>
                                                                     <constraint firstAttribute="height" constant="30" id="jGG-gF-mWM"/>
@@ -868,10 +870,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-HG-HCn">
-                                                        <rect key="frame" x="213" y="0.0" width="106.5" height="90"/>
+                                                        <rect key="frame" x="213" y="0.0" width="107" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwv-2z-gZG">
-                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="c2a-D7-yXP"/>
                                                                 </constraints>
@@ -880,7 +882,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 / 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Xi-Afo">
-                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="NyS-Fa-Ol3"/>
                                                                     <constraint firstAttribute="height" constant="30" id="pUv-Eh-OH5"/>
@@ -931,7 +933,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-KB-lOb" userLabel="Skill View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-KB-lOb" userLabel="Skill View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="487" width="320" height="220"/>
                                                 <subviews>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g1X-nS-0Tl">
@@ -1446,7 +1448,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFu-nf-0TJ" userLabel="Gym View" customClass="MyCustomView" customModule="Pokedex" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFu-nf-0TJ" userLabel="Gym View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="706" width="320" height="120"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sword" translatesAutoresizingMaskIntoConstraints="NO" id="iaQ-D7-iee">
@@ -1737,7 +1739,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </variation>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-50-Tbi" userLabel="pokemon background">
-                                                        <rect key="frame" x="103" y="152" width="115" height="57.5"/>
+                                                        <rect key="frame" x="103" y="153" width="115" height="57"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="A5p-Pm-IMb"/>
                                                             <constraint firstAttribute="width" secondItem="CZY-50-Tbi" secondAttribute="height" multiplier="2:1" id="Z5a-4t-S2F"/>

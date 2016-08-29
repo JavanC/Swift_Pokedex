@@ -81,7 +81,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         super.viewDidLoad()
         loadData()
         configureView()
-        
+        if !hasTeach { pushToTipController() }
     }
     override func viewWillAppear(animated: Bool) {
         updateTeamColor()
@@ -108,8 +108,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         hideAdLabel.layer.borderColor = UIColor.whiteColor().CGColor
         // nas no teach, no ad time half hour
         if !hasTeach {
-            print("has no teach, set no ad time half hour")
-            let now = NSDate(timeInterval: 10 - 60, sinceDate: NSDate())
+            print("has no teach, set no ad time 10 min")
+            let now = NSDate(timeInterval: 600 - 86400, sinceDate: NSDate())
             NSUserDefaults.standardUserDefaults().setObject(now, forKey: "adDate")
         }
         // check ad time is over 24 hour
@@ -117,16 +117,14 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         if let intervall = lastADDate?.timeIntervalSinceNow {
             let pastSeconds = -Int(intervall)
             print("ad past seconds: \(pastSeconds)")
-            if pastSeconds <= 60 {
+            if pastSeconds <= 86400 {
                 print("this time need No AD")
-                hasTouchAd = true
+                showAdSpace(isShow: false)
             } else {
-                print("this time need Show AD")
-                hasTouchAd = false
+                print("this time need Show AD (if have network)")
+                showAdSpace(isShow: true && Reachability.isConnectedToNetwork())
             }
         }
-        // show ad
-        showAdSpace(isShow: !hasTouchAd && Reachability.isConnectedToNetwork())
         
         // Initial navigation bar
         self.navigationController?.navigationBar.translucent = false
@@ -412,7 +410,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     func adViewWillLeaveApplication(bannerView: GADBannerView!) {
         // touch ad
         print("has touch ad")
-        hasTouchAd = true
         showAdSpace(isShow: false)
         
         // save new ad date

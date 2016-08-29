@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8DB69E0F1D636859006EF766"
-               BuildableName = "Pokedex.app"
-               BlueprintName = "Pokedex"
-               ReferencedContainer = "container:Pokedex.xcodeproj">
+               BuildableName = "Poke Booklet.app"
+               BlueprintName = "Poke Booklet"
+               ReferencedContainer = "container:Poke Booklet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DB69E0F1D636859006EF766"
-            BuildableName = "Pokedex.app"
-            BlueprintName = "Pokedex"
-            ReferencedContainer = "container:Pokedex.xcodeproj">
+            BuildableName = "Poke Booklet.app"
+            BlueprintName = "Poke Booklet"
+            ReferencedContainer = "container:Poke Booklet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DB69E0F1D636859006EF766"
-            BuildableName = "Pokedex.app"
-            BlueprintName = "Pokedex"
-            ReferencedContainer = "container:Pokedex.xcodeproj">
+            BuildableName = "Poke Booklet.app"
+            BlueprintName = "Poke Booklet"
+            ReferencedContainer = "container:Poke Booklet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DB69E0F1D636859006EF766"
-            BuildableName = "Pokedex.app"
-            BlueprintName = "Pokedex"
-            ReferencedContainer = "container:Pokedex.xcodeproj">
+            BuildableName = "Poke Booklet.app"
+            BlueprintName = "Poke Booklet"
+            ReferencedContainer = "container:Poke Booklet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

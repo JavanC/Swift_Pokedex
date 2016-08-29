@@ -19,7 +19,6 @@
 		8D83C22F1D6F58B000CE3C51 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */; };
 		8D83C2311D6F58B700CE3C51 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2301D6F58B700CE3C51 /* StoreKit.framework */; };
 		8D83C2331D6F58BF00CE3C51 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */; };
-		8D83C2351D6F5C6000CE3C51 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */; };
 		8D85FF921D649DDD002FD710 /* EmitterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FF911D649DDD002FD710 /* EmitterLayer.swift */; };
 		8D85FF941D649DE8002FD710 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D85FF931D649DE8002FD710 /* spark.png */; };
 		8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FFA51D64A841002FD710 /* RangeSlider.swift */; };
@@ -39,13 +38,13 @@
 		AE9918FC1D6A915900D6996C /* RulerSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */; };
 		AEE7C0CB1D6413DF00DD2480 /* PokemonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7C0CA1D6413DF00DD2480 /* PokemonData.swift */; };
 		AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */; };
+		AEECE4691D74270C0018C4B8 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */; };
 		AEF8A2231D6E972600C94E21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF8A2221D6E972600C94E21 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D5A31DA1D70A52E00B8CE55 /* TeachViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeachViewController.swift; sourceTree = "<group>"; };
 		8D83C21C1D6F1E1A00CE3C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pokedex/Assets.xcassets; sourceTree = "<group>"; };
-		8D83C21E1D6F586100CE3C51 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../../../Downloads/GoogleMobileAdsSdkiOS-7.10.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		8D83C2201D6F587000CE3C51 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8D83C2221D6F587B00CE3C51 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8D83C2241D6F588400CE3C51 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -62,7 +61,7 @@
 		8D85FFA51D64A841002FD710 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		8D85FFA71D64ADA6002FD710 /* RangeSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSliderThumbLayer.swift; sourceTree = "<group>"; };
 		8D85FFA91D64BC6F002FD710 /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
-		8DB69E101D636859006EF766 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB69E101D636859006EF766 /* Poke Booklet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poke Booklet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DB69E131D636859006EF766 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DB69E151D636859006EF766 /* PokedexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewController.swift; sourceTree = "<group>"; };
 		8DB69E181D636859006EF766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEECE4691D74270C0018C4B8 /* GoogleMobileAds.framework in Frameworks */,
 				8D83C2331D6F58BF00CE3C51 /* SystemConfiguration.framework in Frameworks */,
 				8D83C2311D6F58B700CE3C51 /* StoreKit.framework in Frameworks */,
 				8D83C22F1D6F58B000CE3C51 /* MessageUI.framework in Frameworks */,
@@ -96,7 +96,6 @@
 				8D83C2251D6F588400CE3C51 /* AVFoundation.framework in Frameworks */,
 				8D83C2231D6F587B00CE3C51 /* AudioToolbox.framework in Frameworks */,
 				8D83C2211D6F587000CE3C51 /* AdSupport.framework in Frameworks */,
-				8D83C2351D6F5C6000CE3C51 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +116,6 @@
 				8D83C2241D6F588400CE3C51 /* AVFoundation.framework */,
 				8D83C2221D6F587B00CE3C51 /* AudioToolbox.framework */,
 				8D83C2201D6F587000CE3C51 /* AdSupport.framework */,
-				8D83C21E1D6F586100CE3C51 /* GoogleMobileAds.framework */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -140,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				8D83C2361D6F6DED00CE3C51 /* Framework */,
-				8DB69E121D636859006EF766 /* Pokedex */,
+				8DB69E121D636859006EF766 /* Poke Booklet */,
 				8D83C21C1D6F1E1A00CE3C51 /* Assets.xcassets */,
 				8DB69E111D636859006EF766 /* Products */,
 			);
@@ -149,12 +147,12 @@
 		8DB69E111D636859006EF766 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DB69E101D636859006EF766 /* Pokedex.app */,
+				8DB69E101D636859006EF766 /* Poke Booklet.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8DB69E121D636859006EF766 /* Pokedex */ = {
+		8DB69E121D636859006EF766 /* Poke Booklet */ = {
 			isa = PBXGroup;
 			children = (
 				8DB69E131D636859006EF766 /* AppDelegate.swift */,
@@ -165,6 +163,7 @@
 				8D85FF9C1D649DFA002FD710 /* Content */,
 				8DB69E1F1D636859006EF766 /* Info.plist */,
 			);
+			name = "Poke Booklet";
 			path = Pokedex;
 			sourceTree = "<group>";
 		};
@@ -220,9 +219,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DB69E0F1D636859006EF766 /* Pokedex */ = {
+		8DB69E0F1D636859006EF766 /* Poke Booklet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8DB69E221D636859006EF766 /* Build configuration list for PBXNativeTarget "Pokedex" */;
+			buildConfigurationList = 8DB69E221D636859006EF766 /* Build configuration list for PBXNativeTarget "Poke Booklet" */;
 			buildPhases = (
 				8DB69E0C1D636859006EF766 /* Sources */,
 				8DB69E0D1D636859006EF766 /* Frameworks */,
@@ -232,9 +231,9 @@
 			);
 			dependencies = (
 			);
-			name = Pokedex;
+			name = "Poke Booklet";
 			productName = Pokedex;
-			productReference = 8DB69E101D636859006EF766 /* Pokedex.app */;
+			productReference = 8DB69E101D636859006EF766 /* Poke Booklet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -249,11 +248,11 @@
 				TargetAttributes = {
 					8DB69E0F1D636859006EF766 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = DXW4P24PDX;
+						DevelopmentTeam = 5332NKLEL7;
 					};
 				};
 			};
-			buildConfigurationList = 8DB69E0B1D636859006EF766 /* Build configuration list for PBXProject "Pokedex" */;
+			buildConfigurationList = 8DB69E0B1D636859006EF766 /* Build configuration list for PBXProject "Poke Booklet" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -266,7 +265,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DB69E0F1D636859006EF766 /* Pokedex */,
+				8DB69E0F1D636859006EF766 /* Poke Booklet */,
 			);
 		};
 /* End PBXProject section */
@@ -431,8 +430,8 @@
 				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.Pokedex;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.PokeBooklet;
+				PRODUCT_NAME = "Poke Booklet";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -453,8 +452,8 @@
 				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.Pokedex;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.PokeBooklet;
+				PRODUCT_NAME = "Poke Booklet";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +463,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8DB69E0B1D636859006EF766 /* Build configuration list for PBXProject "Pokedex" */ = {
+		8DB69E0B1D636859006EF766 /* Build configuration list for PBXProject "Poke Booklet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DB69E201D636859006EF766 /* Debug */,
@@ -473,7 +472,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8DB69E221D636859006EF766 /* Build configuration list for PBXNativeTarget "Pokedex" */ = {
+		8DB69E221D636859006EF766 /* Build configuration list for PBXNativeTarget "Poke Booklet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DB69E231D636859006EF766 /* Debug */,
