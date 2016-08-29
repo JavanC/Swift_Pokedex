@@ -103,7 +103,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         self.bannerView.delegate = self
         self.bannerView.adUnitID = "ca-app-pub-6777277453719401/7684779573"
         self.bannerView.rootViewController = self
-        self.bannerView.loadRequest(GADRequest())
         hideAdLabel.layer.borderWidth = 1
         hideAdLabel.layer.borderColor = UIColor.whiteColor().CGColor
         // nas no teach, no ad time half hour
@@ -420,6 +419,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func showAdSpace(isShow isShow: Bool) {
+        if isShow { self.bannerView.loadRequest(GADRequest()) }
         scrollViewBottomConstraint.constant = isShow ? 50 : 0
         bannerView.hidden = isShow ? false : true
         hideAdLabel.hidden = isShow ? false : true
