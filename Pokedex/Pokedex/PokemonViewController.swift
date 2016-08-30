@@ -14,6 +14,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var hideAdLabel: UILabel!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewInsideViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -53,8 +54,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var chargeAttackSecondLabel: UILabel!
     @IBOutlet weak var chargeAttackDPSLabel: UILabel!
     @IBOutlet weak var chargeAttackEnergyLabel: UILabel!
-    @IBOutlet weak var gymAttackValueLabel: UILabel!
-    @IBOutlet weak var gymDefendValueLabel: UILabel!
+    @IBOutlet weak var gymAttackValueButton: UIButton!
+    @IBOutlet weak var gymDefendValueButton: UIButton!
 
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
@@ -98,6 +99,14 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     private func configureView() {
+        // for ipad autolayout
+        if UIScreen.mainScreen().bounds.height > 826 + 64 {
+            scrollView.scrollEnabled = false
+            let constant = UIScreen.mainScreen().bounds.height - 64 - 596 - 50
+            scrollViewInsideViewHeightConstraint.constant = 826 + (constant - 200)
+            pokemonInfoViewHeightConstraint.constant = constant
+            self.view.layoutIfNeeded()
+        }
         
         // google mobile ad and hide ad Label
         self.bannerView.delegate = self
@@ -138,14 +147,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         self.view.addSubview(shadowView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "tips"), style: .Plain, target: self, action: #selector(pushToTipController))
     
-        // for ipad autolayout
-        if UIScreen.mainScreen().bounds.height > 826 + 64 {
-            scrollView.scrollEnabled = false
-            let constant = UIScreen.mainScreen().bounds.height - 64 - 596
-            pokemonInfoViewHeightConstraint.constant = constant
-            pokemonInfoView.layoutIfNeeded()
-        }
-        
         // background image and emitter
         pokemonInfoView.layer.zPosition = -1
         backgroundImage.image = UIImage(named: "\(pokemon.type[0])")
@@ -385,7 +386,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
                 energy -= chargeAttack.energy
             }
         }
-        gymAttackValueLabel.text = "\(damage)"
+        gymAttackValueButton.setTitle("\(damage)", forState: .Normal)
         damage = 0
         second = 0.0
         energy = 0.0
@@ -403,10 +404,113 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
                 energy -= chargeAttack.energy
             }
         }
-        gymDefendValueLabel.text = "\(damage)"
+        gymDefendValueButton.setTitle("\(damage)", forState: .Normal)
+    }
+    @IBAction func touchUpGymAttackValueButton(sender: AnyObject) {
+        print("show attack details")
+        let fastAttack = FastAttacks[pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]]!
+        let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
+        let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
+        let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
+        let att = (pokemon.baseAtt + pokemon.indiAtt) * pokemon.CPM
+        let def = (108 + 15) * 0.59740001
+        let fastDamage = Int(0.5 * fastPower * att / def) + 1
+        let chargeDamage = Int(0.5 * chargePower * att / def) + 1
+        
+        var damage = 0
+        var fastTime = 0
+        var chargeTime = 0
+        var second = 0.0
+        var energy = 0.0
+        while(true) {
+            if energy < chargeAttack.energy {
+                second += fastAttack.duration
+                if second > 60 { break }
+                damage += fastDamage
+                energy += fastAttack.energy
+                energy = min(energy, 100)
+                fastTime += 1
+            } else {
+                second += chargeAttack.duration + 0.5
+                if second > 60 { break }
+                damage += chargeDamage
+                energy -= chargeAttack.energy
+                chargeTime += 1
+            }
+        }
+        
+        var title = ""
+        var message = ""
+        var confirm = ""
+        switch userLang {
+        case .English:
+            title = "Attack Details"
+            message = "Battle with Lv.20 Pikachu\nFast Attack Damage: \(fastDamage)\tTimes: \(fastTime)\nCharge Attack Damage: \(chargeDamage)\tTimes: \(chargeTime)\n60 seconds total damage: \(damage)"
+            confirm = "OK"
+        case .Chinese, .Austrian:
+            title = "進攻數據"
+            message = "對戰 Lv.20 皮卡丘\n快速攻擊傷害: \(fastDamage)\t次數: \(fastTime)\n蓄力攻擊傷害: \(chargeDamage)\t次數: \(chargeTime)\n60秒總傷害: \(damage)"
+            confirm = "確認"
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: confirm, style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    @IBAction func touchUpGymDefendValueButton(sender: AnyObject) {
+        let fastAttack = FastAttacks[pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]]!
+        let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
+        let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
+        let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
+        let att = (pokemon.baseAtt + pokemon.indiAtt) * pokemon.CPM
+        let def = (108 + 15) * 0.59740001
+        let fastDamage = Int(0.5 * fastPower * att / def) + 1
+        let chargeDamage = Int(0.5 * chargePower * att / def) + 1
+        
+        var damage = 0
+        var fastTime = 0
+        var chargeTime = 0
+        var second = 0.0
+        var energy = 0.0
+        while(true) {
+            if energy < chargeAttack.energy {
+                second += fastAttack.duration + 2.0
+                if second > 60 { break }
+                damage += fastDamage
+                energy += fastAttack.energy
+                energy = min(energy, 100)
+                fastTime += 1
+            } else {
+                second += chargeAttack.duration + 2.0
+                if second > 60 { break }
+                damage += chargeDamage
+                energy -= chargeAttack.energy
+                chargeTime += 1
+            }
+        }
+        
+        var title = ""
+        var message = ""
+        var confirm = ""
+        switch userLang {
+        case .English:
+            title = "Defend Details"
+            message = "Battle with Lv.20 Pikachu\nFast Attack Damage: \(fastDamage)\tTimes: \(fastTime)\nCharge Attack Damage: \(chargeDamage)\tTimes: \(chargeTime)\n60 seconds total damage: \(damage)"
+            confirm = "OK"
+        case .Chinese, .Austrian:
+            title = "防守數據"
+            message = "對戰 Lv.20 皮卡丘\n快速攻擊傷害: \(fastDamage)\t次數: \(fastTime)\n蓄力攻擊傷害: \(chargeDamage)\t次數: \(chargeTime)\n60秒總傷害: \(damage)"
+            confirm = "確認"
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: confirm, style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    var isLeaveApplicationThisPage = false
     func adViewWillLeaveApplication(bannerView: GADBannerView!) {
+        isLeaveApplicationThisPage = true
         // touch ad
         print("has touch ad")
         showAdSpace(isShow: false)
@@ -420,6 +524,13 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     func showAdSpace(isShow isShow: Bool) {
         if isShow { self.bannerView.loadRequest(GADRequest()) }
+        if UIScreen.mainScreen().bounds.height > 826 + 64 && !isLeaveApplicationThisPage{
+            var constant = UIScreen.mainScreen().bounds.height - 64 - 596
+            constant = isShow ? constant - 50 : constant
+            scrollViewInsideViewHeightConstraint.constant = 826 + (constant - 200)
+            pokemonInfoViewHeightConstraint.constant = constant
+            pokemonInfoView.layoutIfNeeded()
+        }
         scrollViewBottomConstraint.constant = isShow ? 50 : 0
         bannerView.hidden = isShow ? false : true
         hideAdLabel.hidden = isShow ? false : true

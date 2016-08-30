@@ -278,16 +278,16 @@ Step 3. Slide your pokemon current CP and HP value.</string>
                                         <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-SS-gIU">
-                                                <rect key="frame" x="47" y="180" width="225" height="208"/>
+                                                <rect key="frame" x="47" y="170" width="225" height="229"/>
                                                 <string key="text">Choose your "Fast attack" and "Charge attack", different combinations let you know that your ability to pekemon.
 
-Attack and Defensive values are calculated from the Gym "60 seconds". Default opponent is LV.20 Pikachu (IV Max).</string>
+Attack and Defensive values are calculated from the Gym "60 seconds", touch the value you can see details. Default opponent is LV.20 Pikachu (IV Max).</string>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                                 <color key="textColor" red="0.33333333329999998" green="0.32010221779999998" blue="0.24503754189999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM ABILITY?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMR-w9-SOB">
-                                                <rect key="frame" x="47" y="132" width="225" height="33"/>
+                                                <rect key="frame" x="47" y="122" width="225" height="33"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                 <color key="textColor" red="0.96402243590000003" green="0.71087669019999999" blue="0.30115629640000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1448,102 +1448,6 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </mask>
                                                 </variation>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFu-nf-0TJ" userLabel="Gym View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="706" width="320" height="120"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sword" translatesAutoresizingMaskIntoConstraints="NO" id="iaQ-D7-iee">
-                                                        <rect key="frame" x="0.0" y="33" width="160" height="50"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-XP-51B">
-                                                        <rect key="frame" x="160" y="33" width="160" height="50"/>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="854" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyJ-od-0GS">
-                                                        <rect key="frame" x="0.0" y="33" width="160" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="kq8-Zg-oki"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="291.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-AG-2xd">
-                                                        <rect key="frame" x="160" y="33" width="160" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="8rQ-1P-CFV"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
-                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATTACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktj-Uq-W6x">
-                                                        <rect key="frame" x="0.0" y="83" width="160" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="hfX-Hw-Bz8"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="nPW-4p-f3G"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEFEND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0k-DI-Ng4">
-                                                        <rect key="frame" x="160" y="83" width="160" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="C8L-MT-gLA"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="RvM-kT-faZ"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM STRENGTH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHq-eE-k3F">
-                                                        <rect key="frame" x="0.0" y="8" width="320" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="0a4-Ac-hCV"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="ntI-AG-2xd" secondAttribute="trailing" id="0ud-Xo-24c"/>
-                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="60C-IG-IBD"/>
-                                                    <constraint firstItem="ntI-AG-2xd" firstAttribute="leading" secondItem="iaQ-D7-iee" secondAttribute="trailing" id="67P-Xp-8vg"/>
-                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="width" secondItem="Ktj-Uq-W6x" secondAttribute="width" id="AlV-eo-02w"/>
-                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="leading" secondItem="TyJ-od-0GS" secondAttribute="trailing" id="Ca2-da-ey6"/>
-                                                    <constraint firstItem="EHq-eE-k3F" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="Iut-SG-J9e"/>
-                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="leading" secondItem="Ktj-Uq-W6x" secondAttribute="trailing" id="M9U-zC-ojW"/>
-                                                    <constraint firstItem="ntI-AG-2xd" firstAttribute="width" secondItem="TyJ-od-0GS" secondAttribute="width" id="MZB-Lk-2oc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="EHq-eE-k3F" secondAttribute="trailing" id="P6Y-vL-S71"/>
-                                                    <constraint firstItem="ntI-AG-2xd" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="R93-pe-lOu"/>
-                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="top" secondItem="TyJ-od-0GS" secondAttribute="bottom" id="Rb5-pC-ZbU"/>
-                                                    <constraint firstAttribute="height" constant="120" id="VHG-Fz-yaf"/>
-                                                    <constraint firstItem="TyJ-od-0GS" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="YKA-41-WAa"/>
-                                                    <constraint firstItem="EHq-eE-k3F" firstAttribute="top" secondItem="uFu-nf-0TJ" secondAttribute="top" constant="8" id="akR-ER-5Ut"/>
-                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="bTH-Gl-DE4"/>
-                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="width" secondItem="iaQ-D7-iee" secondAttribute="width" id="csk-fd-G48"/>
-                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="width" secondItem="Ktj-Uq-W6x" secondAttribute="width" id="fCj-xv-vYs"/>
-                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="top" secondItem="Lpc-XP-51B" secondAttribute="bottom" id="iP5-CY-s4L"/>
-                                                    <constraint firstItem="TyJ-od-0GS" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="kwe-JL-yN6"/>
-                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="mZs-7i-buT"/>
-                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="top" secondItem="iaQ-D7-iee" secondAttribute="bottom" id="mx9-WH-jg9"/>
-                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="leading" secondItem="Ktj-Uq-W6x" secondAttribute="trailing" id="nTE-W8-3ea"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Lpc-XP-51B" secondAttribute="trailing" id="ql8-Ef-vID"/>
-                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="qqX-Rq-wf6"/>
-                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="top" secondItem="ntI-AG-2xd" secondAttribute="bottom" id="shb-fl-Qh9"/>
-                                                    <constraint firstItem="ntI-AG-2xd" firstAttribute="leading" secondItem="TyJ-od-0GS" secondAttribute="trailing" id="vb0-XB-RbO"/>
-                                                    <constraint firstAttribute="trailing" secondItem="C0k-DI-Ng4" secondAttribute="trailing" id="zfN-Ec-TeC"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-my-s8X">
                                                 <rect key="frame" x="0.0" y="826" width="320" height="500"/>
                                                 <subviews>
@@ -1800,6 +1704,135 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                     </mask>
                                                 </variation>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFu-nf-0TJ" userLabel="Gym View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="706" width="320" height="120"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sword" translatesAutoresizingMaskIntoConstraints="NO" id="iaQ-D7-iee">
+                                                        <rect key="frame" x="56" y="33" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="KCZ-Ba-CpB"/>
+                                                            <constraint firstAttribute="height" constant="50" id="i9j-jq-wj1"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-XP-51B">
+                                                        <rect key="frame" x="216" y="33" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="d1D-1q-cyE"/>
+                                                            <constraint firstAttribute="height" constant="50" id="zah-m6-v1c"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATTACK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ktj-Uq-W6x">
+                                                        <rect key="frame" x="0.0" y="83" width="160" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="hfX-Hw-Bz8"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="nPW-4p-f3G"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEFEND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0k-DI-Ng4">
+                                                        <rect key="frame" x="160" y="83" width="160" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="C8L-MT-gLA"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="RvM-kT-faZ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GYM STRENGTH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHq-eE-k3F">
+                                                        <rect key="frame" x="0.0" y="8" width="320" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="0a4-Ac-hCV"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyZ-ql-hYY">
+                                                        <rect key="frame" x="31" y="33" width="100" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="VBi-Un-d6r"/>
+                                                            <constraint firstAttribute="height" constant="50" id="vTD-3T-PcU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                                        <state key="normal" title="358">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpGymAttackValueButton:" destination="d1a-w0-VeU" eventType="touchUpInside" id="gjk-Ue-bz8"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZv-rN-E44">
+                                                        <rect key="frame" x="191" y="33" width="100" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="97V-0R-1jB"/>
+                                                            <constraint firstAttribute="height" constant="50" id="scS-AH-idJ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                                        <state key="normal" title="122">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="touchUpGymDefendValueButton:" destination="d1a-w0-VeU" eventType="touchUpInside" id="14O-NI-dVB"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="60C-IG-IBD"/>
+                                                    <constraint firstItem="WZv-rN-E44" firstAttribute="centerX" secondItem="uFu-nf-0TJ" secondAttribute="centerX" multiplier="1.5" constant="1" id="6hj-wQ-hom"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="top" secondItem="WZv-rN-E44" secondAttribute="bottom" id="8Tf-jq-5np"/>
+                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="top" secondItem="OyZ-ql-hYY" secondAttribute="bottom" id="AOb-YP-a6U"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="width" secondItem="Ktj-Uq-W6x" secondAttribute="width" id="AlV-eo-02w"/>
+                                                    <constraint firstItem="OyZ-ql-hYY" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="Dza-sC-Ck0"/>
+                                                    <constraint firstItem="EHq-eE-k3F" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="Iut-SG-J9e"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WZv-rN-E44" secondAttribute="trailing" id="JNh-Se-YBf"/>
+                                                    <constraint firstItem="WZv-rN-E44" firstAttribute="width" secondItem="OyZ-ql-hYY" secondAttribute="width" id="KOm-In-zRP"/>
+                                                    <constraint firstItem="OyZ-ql-hYY" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="Kuv-2Y-ekT"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="leading" secondItem="Ktj-Uq-W6x" secondAttribute="trailing" id="M9U-zC-ojW"/>
+                                                    <constraint firstItem="WZv-rN-E44" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="NRM-Wg-qnD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="EHq-eE-k3F" secondAttribute="trailing" id="P6Y-vL-S71"/>
+                                                    <constraint firstAttribute="height" constant="120" id="VHG-Fz-yaf"/>
+                                                    <constraint firstItem="EHq-eE-k3F" firstAttribute="top" secondItem="uFu-nf-0TJ" secondAttribute="top" constant="8" id="akR-ER-5Ut"/>
+                                                    <constraint firstItem="OyZ-ql-hYY" firstAttribute="centerX" secondItem="uFu-nf-0TJ" secondAttribute="centerX" multiplier="0.5" constant="1" id="bGv-j1-VuZ"/>
+                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="bTH-Gl-DE4"/>
+                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="width" secondItem="iaQ-D7-iee" secondAttribute="width" id="csk-fd-G48"/>
+                                                    <constraint firstItem="WZv-rN-E44" firstAttribute="leading" secondItem="OyZ-ql-hYY" secondAttribute="trailing" id="dwd-Uo-JeI"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="width" secondItem="Ktj-Uq-W6x" secondAttribute="width" id="fCj-xv-vYs"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="top" secondItem="Lpc-XP-51B" secondAttribute="bottom" id="iP5-CY-s4L"/>
+                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="centerX" secondItem="uFu-nf-0TJ" secondAttribute="centerX" multiplier="1.5" constant="1" id="k0e-Jb-wWQ"/>
+                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="leading" secondItem="uFu-nf-0TJ" secondAttribute="leading" id="mZs-7i-buT"/>
+                                                    <constraint firstItem="Ktj-Uq-W6x" firstAttribute="top" secondItem="iaQ-D7-iee" secondAttribute="bottom" id="mx9-WH-jg9"/>
+                                                    <constraint firstItem="C0k-DI-Ng4" firstAttribute="leading" secondItem="Ktj-Uq-W6x" secondAttribute="trailing" id="nTE-W8-3ea"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Lpc-XP-51B" secondAttribute="trailing" id="ql8-Ef-vID"/>
+                                                    <constraint firstItem="Lpc-XP-51B" firstAttribute="top" secondItem="EHq-eE-k3F" secondAttribute="bottom" id="qqX-Rq-wf6"/>
+                                                    <constraint firstItem="iaQ-D7-iee" firstAttribute="centerX" secondItem="uFu-nf-0TJ" secondAttribute="centerX" multiplier="0.5" constant="1" id="wTW-ue-whz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="C0k-DI-Ng4" secondAttribute="trailing" id="zfN-Ec-TeC"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Dza-sC-Ck0"/>
+                                                        <exclude reference="bTH-Gl-DE4"/>
+                                                        <exclude reference="AOb-YP-a6U"/>
+                                                        <exclude reference="JNh-Se-YBf"/>
+                                                        <exclude reference="KOm-In-zRP"/>
+                                                        <exclude reference="dwd-Uo-JeI"/>
+                                                        <exclude reference="8Tf-jq-5np"/>
+                                                        <exclude reference="csk-fd-G48"/>
+                                                        <exclude reference="ql8-Ef-vID"/>
+                                                    </mask>
+                                                </variation>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1929,8 +1962,8 @@ Here we'll ignore STAB and Effectiveness.</string>
                         <outlet property="fastAttackTypeLabel" destination="TnL-65-ts3" id="nok-Rq-aJY"/>
                         <outlet property="fastAttackTypeTitleLabel" destination="XdI-1Y-PfZ" id="y3X-0I-vl0"/>
                         <outlet property="fastAttacksTitleLabel" destination="Dt5-Pl-KtA" id="Gma-po-xW3"/>
-                        <outlet property="gymAttackValueLabel" destination="TyJ-od-0GS" id="ZFn-qz-eAX"/>
-                        <outlet property="gymDefendValueLabel" destination="ntI-AG-2xd" id="5mJ-l9-unZ"/>
+                        <outlet property="gymAttackValueButton" destination="OyZ-ql-hYY" id="RFz-g1-N4g"/>
+                        <outlet property="gymDefendValueButton" destination="WZv-rN-E44" id="4Kb-C7-B6G"/>
                         <outlet property="hideAdLabel" destination="5yW-KV-raq" id="OC9-YC-CQk"/>
                         <outlet property="hpRangeValueLabel" destination="RFi-Gz-uch" id="YZZ-fj-Zom"/>
                         <outlet property="hpRangeValueLabel2" destination="64z-qr-3os" id="mnD-Bj-XN1"/>
@@ -1947,6 +1980,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                         <outlet property="powerUpTitleLabel" destination="vfg-4f-5Je" id="OYb-4b-058"/>
                         <outlet property="scrollView" destination="b6f-55-7lH" id="ycL-9i-NMZ"/>
                         <outlet property="scrollViewBottomConstraint" destination="a88-il-SH6" id="J5I-5p-KZL"/>
+                        <outlet property="scrollViewInsideViewHeightConstraint" destination="xGd-Iu-hPz" id="pJ6-mr-hnz"/>
                         <outlet property="staValueLabel" destination="ujx-Xi-Afo" id="Ah2-an-xEl"/>
                         <outlet property="stardustLabel" destination="cuN-4v-7z6" id="YnR-Ls-daS"/>
                         <outlet property="stardustTitleLabel" destination="6Y5-i1-cy9" id="pUc-X7-At5"/>
