@@ -99,15 +99,21 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     private func configureView() {
-        // for ipad autolayout
-        if UIScreen.mainScreen().bounds.height > 826 + 64 {
+        // for iPhone autolayout
+        if UIScreen.mainScreen().bounds.height < 826 + 64 {
+            let constant = 100 + UIScreen.mainScreen().bounds.width * 0.8 / 2
+            pokemonInfoViewHeightConstraint.constant = constant
+            scrollViewInsideViewHeightConstraint.constant = 596 + constant
+            self.view.layoutIfNeeded()
+        } else {
+        // for iPad autolayout
             scrollView.scrollEnabled = false
             let constant = UIScreen.mainScreen().bounds.height - 64 - 596 - 50
             scrollViewInsideViewHeightConstraint.constant = 826 + (constant - 200)
             pokemonInfoViewHeightConstraint.constant = constant
             self.view.layoutIfNeeded()
         }
-        
+
         // google mobile ad and hide ad Label
         self.bannerView.delegate = self
         self.bannerView.adUnitID = "ca-app-pub-6777277453719401/7684779573"

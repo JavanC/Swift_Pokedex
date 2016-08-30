@@ -545,10 +545,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="826"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-cB-56x" userLabel="Estimated View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="230" width="161" height="60"/>
+                                                <rect key="frame" x="0.0" y="230" width="160.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n5-yu-ULJ">
-                                                        <rect key="frame" x="0.0" y="20" width="161" height="40"/>
+                                                        <rect key="frame" x="0.0" y="20" width="160.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="d7y-Ul-F5N"/>
                                                         </constraints>
@@ -557,7 +557,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESTIMATED LEVLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-Ao-hFG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="HMV-qS-4k2"/>
                                                         </constraints>
@@ -586,10 +586,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-Qb-icG" userLabel="Power Up View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                                <rect key="frame" x="160" y="230" width="160" height="60"/>
+                                                <rect key="frame" x="159.5" y="230" width="160.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWER UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-4f-5Je">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="dCW-y2-oZ0"/>
                                                         </constraints>
@@ -598,7 +598,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STARDUST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y5-i1-cy9">
-                                                        <rect key="frame" x="0.0" y="45" width="80" height="15"/>
+                                                        <rect key="frame" x="0.0" y="45" width="80.5" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="UNq-qB-4IZ"/>
                                                         </constraints>
@@ -607,7 +607,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CANDY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UQ-3x-b91">
-                                                        <rect key="frame" x="80" y="45" width="80" height="15"/>
+                                                        <rect key="frame" x="80.5" y="45" width="80" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="6Nc-6X-MeH"/>
                                                         </constraints>
@@ -616,7 +616,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuN-4v-7z6">
-                                                        <rect key="frame" x="0.0" y="20" width="80" height="25"/>
+                                                        <rect key="frame" x="0.0" y="20" width="80.5" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="G7E-al-tn8"/>
                                                         </constraints>
@@ -625,7 +625,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dV-l4-8EP">
-                                                        <rect key="frame" x="80" y="20" width="80" height="25"/>
+                                                        <rect key="frame" x="80.5" y="20" width="80" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="cZ1-54-Cwo"/>
                                                         </constraints>
@@ -788,10 +788,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                 <rect key="frame" x="0.0" y="398" width="320" height="90"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-ZO-UUH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="90"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATT+DEF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-7Y-06L">
-                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="byH-1f-SaB"/>
                                                                 </constraints>
@@ -800,7 +800,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 / 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDZ-57-Qoq">
-                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="bXa-uJ-Tjd"/>
                                                                     <constraint firstAttribute="height" constant="30" id="jGG-gF-mWM"/>
@@ -826,10 +826,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-mE-QAJ">
-                                                        <rect key="frame" x="107" y="0.0" width="106" height="90"/>
+                                                        <rect key="frame" x="106.5" y="0.0" width="107" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-86-Eas">
-                                                                <rect key="frame" x="0.0" y="15" width="106" height="20"/>
+                                                                <rect key="frame" x="0.0" y="15" width="107" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="3aB-W3-sLq"/>
                                                                 </constraints>
@@ -838,7 +838,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-wg-Okf">
-                                                                <rect key="frame" x="0.0" y="38" width="106" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="HaR-40-ybg"/>
                                                                     <constraint firstAttribute="height" constant="30" id="rgh-pe-QvE"/>
@@ -870,10 +870,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-HG-HCn">
-                                                        <rect key="frame" x="213" y="0.0" width="107" height="90"/>
+                                                        <rect key="frame" x="213.5" y="0.0" width="106.5" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwv-2z-gZG">
-                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="c2a-D7-yXP"/>
                                                                 </constraints>
@@ -882,7 +882,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 / 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Xi-Afo">
-                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="NyS-Fa-Ol3"/>
                                                                     <constraint firstAttribute="height" constant="30" id="pUv-Eh-OH5"/>
@@ -1643,7 +1643,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </variation>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-50-Tbi" userLabel="pokemon background">
-                                                        <rect key="frame" x="103" y="153" width="115" height="57"/>
+                                                        <rect key="frame" x="103" y="152.5" width="115" height="57.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="A5p-Pm-IMb"/>
                                                             <constraint firstAttribute="width" secondItem="CZY-50-Tbi" secondAttribute="height" multiplier="2:1" id="Z5a-4t-S2F"/>
@@ -1824,10 +1824,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <exclude reference="Dza-sC-Ck0"/>
                                                         <exclude reference="bTH-Gl-DE4"/>
                                                         <exclude reference="AOb-YP-a6U"/>
+                                                        <exclude reference="8Tf-jq-5np"/>
                                                         <exclude reference="JNh-Se-YBf"/>
                                                         <exclude reference="KOm-In-zRP"/>
                                                         <exclude reference="dwd-Uo-JeI"/>
-                                                        <exclude reference="8Tf-jq-5np"/>
                                                         <exclude reference="csk-fd-G48"/>
                                                         <exclude reference="ql8-Ef-vID"/>
                                                     </mask>

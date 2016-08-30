@@ -17,7 +17,6 @@
 		8D83C22B1D6F58A200CE3C51 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C22A1D6F58A200CE3C51 /* EventKitUI.framework */; };
 		8D83C22D1D6F58A800CE3C51 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C22C1D6F58A800CE3C51 /* EventKit.framework */; };
 		8D83C22F1D6F58B000CE3C51 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */; };
-		8D83C2311D6F58B700CE3C51 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2301D6F58B700CE3C51 /* StoreKit.framework */; };
 		8D83C2331D6F58BF00CE3C51 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */; };
 		8D85FF921D649DDD002FD710 /* EmitterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D85FF911D649DDD002FD710 /* EmitterLayer.swift */; };
 		8D85FF941D649DE8002FD710 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D85FF931D649DE8002FD710 /* spark.png */; };
@@ -53,7 +52,6 @@
 		8D83C22A1D6F58A200CE3C51 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		8D83C22C1D6F58A800CE3C51 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		8D83C2301D6F58B700CE3C51 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "Pokedex/Content/GoogleMobileAdsSdkiOS-7.10.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		8D85FF911D649DDD002FD710 /* EmitterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmitterLayer.swift; path = Content/EmitterLayer.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			files = (
 				AEECE4691D74270C0018C4B8 /* GoogleMobileAds.framework in Frameworks */,
 				8D83C2331D6F58BF00CE3C51 /* SystemConfiguration.framework in Frameworks */,
-				8D83C2311D6F58B700CE3C51 /* StoreKit.framework in Frameworks */,
 				8D83C22F1D6F58B000CE3C51 /* MessageUI.framework in Frameworks */,
 				8D83C22D1D6F58A800CE3C51 /* EventKit.framework in Frameworks */,
 				8D83C22B1D6F58A200CE3C51 /* EventKitUI.framework in Frameworks */,
@@ -107,7 +104,6 @@
 			children = (
 				8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */,
 				8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */,
-				8D83C2301D6F58B700CE3C51 /* StoreKit.framework */,
 				8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */,
 				8D83C22C1D6F58A800CE3C51 /* EventKit.framework */,
 				8D83C22A1D6F58A200CE3C51 /* EventKitUI.framework */,
@@ -249,6 +245,11 @@
 					8DB69E0F1D636859006EF766 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5332NKLEL7;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -369,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -409,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,8 +430,9 @@
 					"$(PROJECT_DIR)/Pokedex/Content/GoogleMobileAdsSdkiOS-7.10.0",
 				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.PokeBooklet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JavanLab.PokeBooklet;
 				PRODUCT_NAME = "Poke Booklet";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -444,15 +446,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pokedex/Content/GoogleMobileAdsSdkiOS-7.10.0",
 				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JavanChen.PokeBooklet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JavanLab.PokeBooklet;
 				PRODUCT_NAME = "Poke Booklet";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
