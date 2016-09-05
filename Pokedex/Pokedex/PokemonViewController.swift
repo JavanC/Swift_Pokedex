@@ -36,6 +36,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var hpValueLabel: UILabel!
     @IBOutlet weak var cpRangeValueLabel2: UILabel!
     @IBOutlet weak var hpRangeValueLabel2: UILabel!
+    @IBOutlet weak var cpValueWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var hpValueWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var attDefValueLabel: UILabel!
     @IBOutlet weak var staValueLabel: UILabel!
@@ -170,14 +172,14 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         drawIVValueCircle()
         
         // ruler slider
-        var rulerSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
+        let rulerSliderHeight: CGFloat = 25
+        var rulerSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1 - rulerSliderHeight / 2
         if UIScreen.mainScreen().bounds.height > 826 + 64 {
-            rulerSliderMargin = UIScreen.mainScreen().bounds.width / 2 - pokemonImage.frame.width * 1.2
+            rulerSliderMargin = UIScreen.mainScreen().bounds.width / 2 - pokemonImage.frame.width * 1.2 - rulerSliderHeight / 2
         }
         let rulerSliderWidth = view.bounds.width - 2.0 * rulerSliderMargin
         let pokemonInfoViewHeight = pokemonInfoView.frame.height
-        
-        levelRulerSlider.frame = CGRect(x: rulerSliderMargin, y: pokemonInfoViewHeight - 25, width: rulerSliderWidth, height: 25.0)
+        levelRulerSlider.frame = CGRect(x: rulerSliderMargin, y: pokemonInfoViewHeight - rulerSliderHeight, width: rulerSliderWidth, height: rulerSliderHeight)
         let maxLevel = trainerLevel * 2 + 3 > 80 ? 80 : trainerLevel * 2 + 3
         levelRulerSlider.maximunValue = maxLevel
         levelRulerSlider.currentValue = Double(Int((maxLevel + 4) / 2))
@@ -186,16 +188,17 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         scrollView.addSubview(levelRulerSlider)
         
         // range slider
-        let rangeSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1
+        let rangeSliderHeight: CGFloat = 25
+        let rangeSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1 - rangeSliderHeight / 2
         let rangeSliderWidth = view.bounds.width - 2.0 * rangeSliderMargin
-        pokemonCPSlider.frame = CGRect(x: rangeSliderMargin, y: 28, width: rangeSliderWidth, height: 25.0)
+        pokemonCPSlider.frame = CGRect(x: rangeSliderMargin, y: 28, width: rangeSliderWidth, height: rangeSliderHeight)
         let cpCurrentValue = Double(Int((pokemonCPSlider.minimunValue + pokemonCPSlider.maximunValue) / 2))
         pokemonCPSlider.currentValue = cpCurrentValue
         cpRangeSliderValueChanged(pokemonCPSlider)
         pokemonCPSlider.addTarget(self, action: #selector(self.cpRangeSliderValueChanged), forControlEvents: .ValueChanged)
         CPHPView.addSubview(pokemonCPSlider)
         
-        pokemonHPSlider.frame = CGRect(x: rangeSliderMargin, y: 78, width: rangeSliderWidth, height: 25.0)
+        pokemonHPSlider.frame = CGRect(x: rangeSliderMargin, y: 78, width: rangeSliderWidth, height: rangeSliderHeight)
         let hpCurrentValue = Double(Int((pokemonHPSlider.minimunValue + pokemonHPSlider.maximunValue) / 2))
         pokemonHPSlider.currentValue = hpCurrentValue
         hpRangeSliderValueChanged(pokemonHPSlider)
@@ -316,6 +319,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     func cpRangeSliderValueChanged(rangeSlider: RangeSlider) {
         pokemon.cp = rangeSlider.currentValue
         cpValueLabel.text = "\(Int(pokemon.cp))"
+        let textWidth = UILabel().textSize("\(Int(pokemon.cp))", font: UIFont(name: "Futura-Medium", size: 16)!).width
+        cpValueWidthConstraint.constant = textWidth
         updateIVView()
         updateGymStrength()
     }
@@ -323,8 +328,74 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     func hpRangeSliderValueChanged(rangeSlider: RangeSlider) {
         pokemon.hp = rangeSlider.currentValue
         hpValueLabel.text = "\(Int(pokemon.hp))"
+        let textWidth = UILabel().textSize("\(Int(pokemon.hp))", font: UIFont(name: "Futura-Medium", size: 16)!).width
+        hpValueWidthConstraint.constant = textWidth
         updateIVView()
         updateGymStrength()
+    }
+    
+    @IBAction func cpValueWriteButton(sender: AnyObject) {
+        var title = "", message = "", cancel = "", ok = ""
+        switch userLang {
+        case .English:
+            title = "POKEMON CP"
+            message = "Type the current CP value\n(\(Int(pokemon.minCp)) - \(Int(pokemon.maxCp)))"
+            cancel = "Cancel"
+            ok = "OK"
+        case .Chinese, .Austrian:
+            title = "CP值"
+            message = "請輸入當前的CP值\n(\(Int(pokemon.minCp)) - \(Int(pokemon.maxCp)))"
+            cancel = "取消"
+            ok = "確認"
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.placeholder = "CP"
+            textField.keyboardType = .NumberPad
+        }
+        let cancelAction = UIAlertAction(title: cancel, style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let okAction = UIAlertAction(title: ok, style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            if var cp = Double(((alertController.textFields?.first)! as UITextField).text!) {
+                cp = min(max(cp, Double(self.pokemon.minCp)), Double(self.pokemon.maxCp))
+                self.pokemonCPSlider.currentValue = cp
+                self.cpRangeSliderValueChanged(self.pokemonCPSlider)
+            }
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func hpValueWriteButton(sender: AnyObject) {
+        var title = "", message = "", cancel = "", ok = ""
+        switch userLang {
+        case .English:
+            title = "POKEMON HP"
+            message = "Type the current HP value\n(\(Int(pokemon.minHp)) - \(Int(pokemon.maxHp)))"
+            cancel = "Cancel"
+            ok = "OK"
+        case .Chinese, .Austrian:
+            title = "HP值"
+            message = "請輸入當前的HP值\n(\(Int(pokemon.minHp)) - \(Int(pokemon.maxHp)))"
+            cancel = "取消"
+            ok = "確認"
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            textField.placeholder = "HP"
+            textField.keyboardType = .NumberPad
+        }
+        let cancelAction = UIAlertAction(title: cancel, style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let okAction = UIAlertAction(title: ok, style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -> Void in
+            if var hp = Double(((alertController.textFields?.first)! as UITextField).text!) {
+                hp = min(max(hp, Double(self.pokemon.minHp)), Double(self.pokemon.maxHp))
+                self.pokemonHPSlider.currentValue = hp
+                self.hpRangeSliderValueChanged(self.pokemonHPSlider)
+            }
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func updateIVView() {
@@ -445,9 +516,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             }
         }
         
-        var title = ""
-        var message = ""
-        var confirm = ""
+        var title = "", message = "", confirm = ""
         switch userLang {
         case .English:
             title = "Attack Details"
@@ -495,9 +564,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             }
         }
         
-        var title = ""
-        var message = ""
-        var confirm = ""
+        var title = "", message = "", confirm = ""
         switch userLang {
         case .English:
             title = "Defend Details"

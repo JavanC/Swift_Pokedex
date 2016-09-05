@@ -76,7 +76,7 @@ class RangeSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = bounds.insetBy(dx: 0.0, dy: bounds.height * 2 / 5)
+        trackLayer.frame = bounds.insetBy(dx: thumbWidth / 2, dy: bounds.height * 2 / 5)
         trackLayer.setNeedsDisplay()
         
         let currentThumbCenter = CGFloat(positionForValue(currentValue))
@@ -88,7 +88,7 @@ class RangeSlider: UIControl {
     
     func positionForValue(value: Double) -> Double {
         let inset = maximunValue - minimunValue == 0 ? 1 : maximunValue - minimunValue
-        return Double(bounds.width) * (value - minimunValue) / inset
+        return Double(bounds.width - thumbWidth) * (value - minimunValue) / inset + Double(thumbWidth / 2.0)
     }
     
     override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
@@ -113,8 +113,8 @@ class RangeSlider: UIControl {
         
         // 2. Update the value
         if currentThumbLayer.highlighted {
-            currentValue += Double(Int(deltaValue))
-            currentValue = min(max(currentValue, minimunValue), maximunValue)
+            let newCurrentValue = currentValue + Double(Int(deltaValue))
+            currentValue = min(max(newCurrentValue, minimunValue), maximunValue)
         }
         
         sendActionsForControlEvents(.ValueChanged)

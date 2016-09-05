@@ -74,7 +74,7 @@ class RulerSlider: UIControl {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
-        trackLayer.frame = CGRect(x: 0, y: frame.height / 2, width: frame.width + 1, height: frame.height / 2)
+        trackLayer.frame = CGRect(x: thumbWidth / 2, y: frame.height / 2, width: frame.width + 1 - thumbWidth, height: frame.height / 2)
         trackLayer.setNeedsDisplay()
         
         let currentThumbCenter = CGFloat(positionForValue(currentValue))
@@ -86,7 +86,7 @@ class RulerSlider: UIControl {
     
     func positionForValue(value: Double) -> Double {
         let inset = maximunValue - minimunValue == 0 ? 1 : maximunValue - minimunValue
-        return Double(bounds.width) * (value - minimunValue) / inset
+        return Double(bounds.width - thumbWidth) * (value - minimunValue) / inset + Double(thumbWidth / 2.0)
     }
     
     override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
@@ -111,8 +111,8 @@ class RulerSlider: UIControl {
         
         // 2. Update the value
         if currentThumbLayer.highlighted {
-            currentValue += Double(Int(deltaValue))
-            currentValue = min(max(currentValue, minimunValue), maximunValue)
+            let newCurrentValue = currentValue + Double(Int(deltaValue))
+            currentValue = min(max(newCurrentValue, minimunValue), maximunValue)
         }
         
         sendActionsForControlEvents(.ValueChanged)

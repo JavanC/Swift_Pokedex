@@ -94,11 +94,13 @@ struct Pokemon {
         // 1. calculate indi sta
         var staRange = [Int]()
         for sta in (0...15) {
-            let hp = Double(lround((baseSta + Double(sta)) * CPM))
+            let totalSta = lround((baseSta + Double(sta)) * CPM)
+            let hp = Double(totalSta > 10 ? totalSta : 10)
             if hp == self.hp {
                 staRange.append(sta)
             }
         }
+        
         self.indiSta = staRange.contains(0) ? 0 : Double(staRange.maxElement()!)
         
         // 2. calculate indi att + def
