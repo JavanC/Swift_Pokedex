@@ -407,7 +407,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         ivValueLabel.text = "\(Int(persent * 100))%"
         ivValueCircleLayer.strokeEnd = CGFloat(persent)
     }
-
+    
     @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
         let attack = FastAttacks[pokemon.fastAttacks[sender.selectedSegmentIndex]]!
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
@@ -619,6 +619,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var pokemonCPTitleWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var pokemonHPTitleLabel: UILabel!
     @IBOutlet weak var pokemonHPTitleWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var proButton: UIButton!
     @IBOutlet weak var fastAttacksTitleLabel: UILabel!
     @IBOutlet weak var fastAttackTypeTitleLabel: UILabel!
     @IBOutlet weak var fastAttackPowerTitleLabel: UILabel!
@@ -640,6 +641,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             levelRulerSlider.thubTintColor = colorY
             pokemonCPSlider.trackTintColor = colorY
             pokemonHPSlider.trackTintColor = colorY
+            proButton.tintColor = colorY
             fastAttackSegmented.tintColor = colorY
             chargeAttackSegmented.tintColor = colorY
             self.navigationController?.navigationBar.barTintColor = colorY
@@ -647,6 +649,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             levelRulerSlider.thubTintColor = colorB
             pokemonCPSlider.trackTintColor = colorB
             pokemonHPSlider.trackTintColor = colorB
+            proButton.tintColor = colorB
             fastAttackSegmented.tintColor = colorB
             chargeAttackSegmented.tintColor = colorB
             self.navigationController?.navigationBar.barTintColor = colorB
@@ -654,6 +657,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             levelRulerSlider.thubTintColor = colorR
             pokemonCPSlider.trackTintColor = colorR
             pokemonHPSlider.trackTintColor = colorR
+            proButton.tintColor = colorR
             fastAttackSegmented.tintColor = colorR
             chargeAttackSegmented.tintColor = colorR
             self.navigationController?.navigationBar.barTintColor = colorR
@@ -715,5 +719,22 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             GYMAttackTitleLabel.text = "攻擊方"
             GYMDefendTitleLabel.text = "防守方"
         }
+    }
+}
+
+extension PokemonViewController: pokemonDelegate{
+    
+    // pro iv calculate
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showProIVViewController" {
+            let controller = segue.destinationViewController as! ProIVViewController
+            controller.pokemon = pokemon
+            controller.delegate = self
+        }
+    }
+    
+    func sendPokemonData(pokemon: Pokemon) {
+        self.pokemon = pokemon
+        print(pokemon.cp)
     }
 }
