@@ -13,6 +13,7 @@ class RangeSlider: UIControl {
     let trackLayer = RangeSliderTrackLayer()
     let currentThumbLayer = RangeSliderThumbLayer()
     var previousLocation = CGPoint()
+    var showPoint: Bool = false
     
     var minimunValue: Double = 2.0 {
         didSet {
@@ -29,7 +30,6 @@ class RangeSlider: UIControl {
             updateLayerFrames()
         }
     }
-//    var trackTintColor = UIColor.init(colorLiteralRed: 0.966, green: 0.74, blue: 0.222, alpha: 1.0) {
     var trackTintColor = colorR {
         didSet {
             trackLayer.setNeedsDisplay()

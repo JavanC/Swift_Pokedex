@@ -17,7 +17,7 @@ class RulerSliderTrackLayer: CALayer {
             // Clip
             let number = slider.maximunValue - slider.minimunValue
             let graduationWidth: CGFloat = 1.0
-            let graduationPosition = (frame.width - graduationWidth) / CGFloat(number)
+            let graduationPosition = (frame.width - graduationWidth * 2) / CGFloat(number)
             
             for i in 0...Int(number) {
                 var height = CGFloat()

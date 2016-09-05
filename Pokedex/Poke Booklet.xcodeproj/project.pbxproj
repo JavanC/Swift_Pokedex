@@ -28,6 +28,7 @@
 		8DB69E191D636859006EF766 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB69E171D636859006EF766 /* Main.storyboard */; };
 		8DB69E1E1D636859006EF766 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB69E1C1D636859006EF766 /* LaunchScreen.storyboard */; };
 		8DB69E271D63706F006EF766 /* PokedexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB69E261D63706F006EF766 /* PokedexCollectionViewCell.swift */; };
+		8DD3EBA31D7DA3C200ED9093 /* MyCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD3EBA21D7DA3C200ED9093 /* MyCustomButton.swift */; };
 		AE0415BC1D7D610100924EEA /* ProIVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0415BB1D7D610100924EEA /* ProIVViewController.swift */; };
 		AE23B5641D66A7700002003E /* LevelDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23B5631D66A7700002003E /* LevelDataList.swift */; };
 		AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */; };
@@ -67,6 +68,7 @@
 		8DB69E1D1D636859006EF766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DB69E1F1D636859006EF766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DB69E261D63706F006EF766 /* PokedexCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokedexCollectionViewCell.swift; sourceTree = "<group>"; };
+		8DD3EBA21D7DA3C200ED9093 /* MyCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomButton.swift; sourceTree = "<group>"; };
 		AE0415BB1D7D610100924EEA /* ProIVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProIVViewController.swift; sourceTree = "<group>"; };
 		AE23B5631D66A7700002003E /* LevelDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDataList.swift; sourceTree = "<group>"; };
 		AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovesDataList.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */,
+				8DD3EBA21D7DA3C200ED9093 /* MyCustomButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				8D85FFA61D64A841002FD710 /* RangeSlider.swift in Sources */,
 				AE0415BC1D7D610100924EEA /* ProIVViewController.swift in Sources */,
 				AE922B3F1D6FE7C70015CAC5 /* Reachability.swift in Sources */,
+				8DD3EBA31D7DA3C200ED9093 /* MyCustomButton.swift in Sources */,
 				8D85FFA81D64ADA6002FD710 /* RangeSliderThumbLayer.swift in Sources */,
 				AE9918FA1D6A915900D6996C /* RulerSlider.swift in Sources */,
 				AE9918FB1D6A915900D6996C /* RulerSliderThumbLayer.swift in Sources */,
