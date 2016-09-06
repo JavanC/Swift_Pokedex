@@ -57,8 +57,6 @@ struct Pokemon {
             cp = min(max(cp, Double(minCp)), Double(maxCp))
         }
     }
-
-
     
     init(number:String, baseAtt:Double, baseDef:Double, baseSta:Double, name:[String], type:[Type], fastAttacks:[String], chargeAttacks:[String]){
         self.number = number
@@ -94,14 +92,13 @@ struct Pokemon {
         // 1. calculate indi sta
         var staRange = [Int]()
         for sta in (0...15) {
-            let totalSta = lround((baseSta + Double(sta)) * CPM)
+            let totalSta = Int((baseSta + Double(sta)) * CPM)
             let hp = Double(totalSta > 10 ? totalSta : 10)
             if hp == self.hp {
                 staRange.append(sta)
             }
         }
-        
-        self.indiSta = staRange.contains(0) ? 0 : Double(staRange.maxElement()!)
+        self.indiSta = staRange.count == 0 ? 0 : Double(staRange.maxElement()!)
         
         // 2. calculate indi att + def
         let indiSta = self.indiSta
@@ -110,7 +107,8 @@ struct Pokemon {
         for ad in (0...30) {
             let att = Double(ad) / 2
             let def = Double(ad) / 2
-            let cp = Double(lround((baseAtt + att) * pow((baseDef + def),0.5) * pow((baseSta + indiSta),0.5) * pow(CPM, 2) / 10))
+            var cp = (baseAtt + att) * pow((baseDef + def),0.5) * pow((baseSta + indiSta),0.5) * pow(CPM, 2) / 10
+            cp = Double(Int(cp))
             if abs(cp - self.cp) < closeValue {
                 closeValue = abs(cp - self.cp)
                 adValue = ad
@@ -118,6 +116,38 @@ struct Pokemon {
         }
         self.indiAtt = Double(adValue) / 2
         self.indiDef = Double(adValue) / 2
+    }
+    
+    mutating func possibleIndiValue() -> [[Double]] {
+        let CPM = self.CPM
+        let baseAtt = self.baseAtt
+        let baseDef = self.baseDef
+        let baseSta = self.baseSta
+        
+        // 1. calculate sta range
+        var staRange = [Int]()
+        for sta in (0...15) {
+            let totalSta = Int((baseSta + Double(sta)) * CPM)
+            let hp = Double(totalSta > 10 ? totalSta : 10)
+            if hp == self.hp {
+                staRange.append(sta)
+            }
+        }
+        
+        // 2. calculate atk and def range
+        var posibleDataArray = [[Double]]()
+        for sta in staRange {
+            for atk in (0...15) {
+                for def in (0...15) {
+                    var cp = (baseAtt + Double(atk)) * pow((baseDef + Double(def)),0.5) * pow((baseSta + Double(sta)),0.5) * pow(CPM, 2) / 10
+                    cp = Double(Int(cp))
+                    if self.cp == cp {
+                        posibleDataArray.append([level, Double(atk), Double(def), Double(sta)])
+                    }
+                }
+            }
+        }
+        return posibleDataArray
     }
 }
 
