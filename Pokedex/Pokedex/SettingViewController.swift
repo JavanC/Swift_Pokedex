@@ -16,6 +16,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         campScrollView.delegate = self
+        campScrollView.layoutIfNeeded()
         configureView()
     }
     override func viewWillAppear(animated: Bool) {
@@ -87,7 +88,6 @@ extension SettingViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let width = scrollView.frame.size.width
         let currentPage = Float((scrollView.contentOffset.x) / width)
-        print(currentPage)
         campPageControl.currentPage = Int(currentPage)
         if Int(currentPage) != userTeam.hashValue {
             if let team = Team(rawValue: Int(currentPage)) {

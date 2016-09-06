@@ -18,7 +18,7 @@ struct Pokemon {
     let fastAttacks: [String]
     let chargeAttacks: [String]
     
-    var indiAtt:Double
+    var indiAtk:Double
     var indiDef:Double
     var indiSta:Double
     
@@ -68,7 +68,7 @@ struct Pokemon {
         self.fastAttacks = fastAttacks
         self.chargeAttacks = chargeAttacks
         
-        self.indiAtt = 0
+        self.indiAtk = 0
         self.indiDef = 0
         self.indiSta = 0
         self.CPM = 0.0
@@ -114,7 +114,7 @@ struct Pokemon {
                 adValue = ad
             }
         }
-        self.indiAtt = Double(adValue) / 2
+        self.indiAtk = Double(adValue) / 2
         self.indiDef = Double(adValue) / 2
     }
     

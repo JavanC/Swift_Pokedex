@@ -399,7 +399,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func updateIVView() {
-        let attDef = pokemon.indiAtt + pokemon.indiDef
+        let attDef = pokemon.indiAtk + pokemon.indiDef
         let sta = pokemon.indiSta
         let persent = (attDef + sta) / 45
         attDefValueLabel.text = "\(Int(attDef)) / 30"
@@ -441,7 +441,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
         let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
         let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
-        let att = (pokemon.baseAtt + pokemon.indiAtt) * pokemon.CPM
+        let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
         let def = (108 + 15) * 0.59740001
         let fastDamage = Int(0.5 * fastPower * att / def) + 1
         let chargeDamage = Int(0.5 * chargePower * att / def) + 1
@@ -489,7 +489,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
         let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
         let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
-        let att = (pokemon.baseAtt + pokemon.indiAtt) * pokemon.CPM
+        let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
         let def = (108 + 15) * 0.59740001
         let fastDamage = Int(0.5 * fastPower * att / def) + 1
         let chargeDamage = Int(0.5 * chargePower * att / def) + 1
@@ -537,7 +537,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
         let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
         let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
-        let att = (pokemon.baseAtt + pokemon.indiAtt) * pokemon.CPM
+        let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
         let def = (108 + 15) * 0.59740001
         let fastDamage = Int(0.5 * fastPower * att / def) + 1
         let chargeDamage = Int(0.5 * chargePower * att / def) + 1
@@ -727,6 +727,9 @@ extension PokemonViewController: pokemonDelegate{
     // pro iv calculate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showProIVViewController" {
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            self.navigationItem.backBarButtonItem = backItem
             let controller = segue.destinationViewController as! ProIVViewController
             controller.pokemon = pokemon
             controller.delegate = self
@@ -735,6 +738,24 @@ extension PokemonViewController: pokemonDelegate{
     
     func sendPokemonData(pokemon: Pokemon) {
         self.pokemon = pokemon
-        print(pokemon.cp)
+
+        let level = pokemon.level
+        let indiAtk = pokemon.indiAtk
+        let indiDef = pokemon.indiDef
+        let indiSta = pokemon.indiSta
+        levelRulerSlider.currentValue = level * 2
+        levelRulerSliderValueChanged(levelRulerSlider)
+//        self.pokemon.level = level
+        self.pokemon.indiAtk = indiAtk
+        self.pokemon.indiDef = indiDef
+        self.pokemon.indiSta = indiSta
+        
+        let persent = (indiAtk + indiDef + indiSta) / 45
+        attDefValueLabel.text = "\(Int(indiAtk))+\(Int(indiDef)) / 30"
+        staValueLabel.text = "\(Int(indiSta)) / 15"
+        ivValueLabel.text = "\(Int(persent * 100))%"
+        ivValueCircleLayer.strokeEnd = CGFloat(persent)
+        
+        updateGymStrength()
     }
 }

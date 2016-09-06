@@ -31,6 +31,9 @@ class ProIVViewController: UIViewController {
     @IBOutlet weak var STAButton: MyCustomButton!
     @IBOutlet weak var OKButton: UIButton!
     
+    var cp: Double!
+    var hp: Double!
+    var starDust: Double!
     var pokemon: Pokemon!
     var delegate : pokemonDelegate?
     let analysisSlider = RangeSlider(frame: CGRectZero)
@@ -44,11 +47,28 @@ class ProIVViewController: UIViewController {
         updateTeamColor()
         updateLanguage()
     }
-    
     private func configureView() {
-        stardustLabel.text = "\(Int(pokemon.stardust))"
-        cpValueLabel.text = "\(Int(pokemon.cp))"
-        hpValueLabel.text = "\(Int(pokemon.hp))"
+        // Initial navigation bar
+        title = "IV Calculator Pro"
+        self.navigationController?.navigationBar.translucent = false
+        let navigationBarFrame = self.navigationController!.navigationBar.frame
+        let shadowView = UIView(frame: navigationBarFrame)
+        shadowView.backgroundColor = UIColor.whiteColor()
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowOpacity = 0.4
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        shadowView.layer.shadowRadius =  4
+        shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
+        self.view.addSubview(shadowView)
+        
+        // load data
+        cp = pokemon.cp
+        hp = pokemon.hp
+        starDust = pokemon.stardust
+        
+        stardustLabel.text = "\(Int(starDust))"
+        cpValueLabel.text = "\(Int(cp))"
+        hpValueLabel.text = "\(Int(hp))"
         
         // range slider
         let rangeSliderHeight: CGFloat = 25
@@ -73,9 +93,61 @@ class ProIVViewController: UIViewController {
         bestStatsView.addSubview(statsSlider)        
     }
     func analysisSliderValueChanged(rangeSlider: RangeSlider) {
+        switch userTeam {
+        case .Instinct:
+            switch rangeSlider.currentValue {
+            case 1: analysisLabel.text = "Overall, your \(pokemon.name[0]) looks like it can really battle with the best of them!"
+            case 2: analysisLabel.text = "Overall, your \(pokemon.name[0]) is really strong!"
+            case 3: analysisLabel.text = "Overall, your \(pokemon.name[0]) is pretty decent!"
+            case 4: analysisLabel.text = "Overall, your \(pokemon.name[0]) has room for improvement as far as battling goes."
+            default: print("error")
+            }
+        case .Mystic:
+            switch rangeSlider.currentValue {
+            case 1: analysisLabel.text = "Overall, your \(pokemon.name[0]) is a wonder! What a breathtaking Pokemon!"
+            case 2: analysisLabel.text = "Overall, your \(pokemon.name[0]) has certainly caught my attention."
+            case 3: analysisLabel.text = "Overall, your \(pokemon.name[0]) is above average."
+            case 4: analysisLabel.text = "Overall, your \(pokemon.name[0]) is not likely to make much headway in battle"
+            default: print("error")
+            }
+        case .Valor:
+            switch rangeSlider.currentValue {
+            case 1: analysisLabel.text = "Overall, your \(pokemon.name[0]) simply amazes me. It can accomplish anything!"
+            case 2: analysisLabel.text = "Overall, your \(pokemon.name[0]) is a strong Pokemon. You should be proud!"
+            case 3: analysisLabel.text = "Overall, your \(pokemon.name[0]) is a decent Pokemon"
+            case 4: analysisLabel.text = "Overall, your \(pokemon.name[0]) may not be great in battle, but I still like it!"
+            default: print("error")
+            }
+        }
         calculateIndiValue()
     }
     func statsSliderValueChange(rangeSlider: RangeSlider) {
+        switch userTeam {
+        case .Instinct:
+            switch rangeSlider.currentValue {
+            case 1: bestStatsLabel.text = "Its stats are the best I've ever seen! No doubt about it!"
+            case 2: bestStatsLabel.text = "Its stats are really strong! Impressive."
+            case 3: bestStatsLabel.text = "It's definitely got some good stats. Definitely!"
+            case 4: bestStatsLabel.text = "Its stats are all right, but kinda basic, as far as I can see."
+            default: print("error")
+            }
+        case .Mystic:
+            switch rangeSlider.currentValue {
+            case 1: bestStatsLabel.text = "Its stats exceed my calculations. It's incredible!"
+            case 2: bestStatsLabel.text = "I am certainly impressed by its stats, I must say."
+            case 3: bestStatsLabel.text = "Its stats are noticeably trending to the positive."
+            case 4: bestStatsLabel.text = "Its stats are not out of the norm, in my estimation."
+            default: print("error")
+            }
+        case .Valor:
+            switch rangeSlider.currentValue {
+            case 1: bestStatsLabel.text = "I'm blown away by its stats. WOW!"
+            case 2: bestStatsLabel.text = "It's got excellent stats! How exciting!"
+            case 3: bestStatsLabel.text = "Its stats indicate that in battle, it'll get the job done."
+            case 4: bestStatsLabel.text = "Its stats don't point to greatness in battle."
+            default: print("error")
+            }
+        }
         calculateIndiValue()
     }
     @IBAction func touchUpATKButton(sender: AnyObject) {
@@ -92,8 +164,6 @@ class ProIVViewController: UIViewController {
     }
     func calculateIndiValue() {
         if ATKButton.isSelect || DEFButton.isSelect || STAButton.isSelect {
-            let cp = pokemon.cp
-            let hp = pokemon.hp
             print("now cp: \(cp), hp: \(hp)")
             let levels = stardustLevel[pokemon.stardust]!
             
@@ -104,7 +174,6 @@ class ProIVViewController: UIViewController {
                 pokemon.level = level
                 if cp > pokemon.maxCp || cp < pokemon.minCp || hp > pokemon.maxHp || hp < pokemon.minHp { continue }
                 print("level: \(level)")
-                
                 pokemon.cp = cp
                 pokemon.hp = hp
                 for levelPossibleData in pokemon.possibleIndiValue() {
@@ -190,23 +259,56 @@ class ProIVViewController: UIViewController {
             }
             print("best stats filter data")
             print(possibleData)
+            
             if possibleData.count != 0 {
-                levelLabel.text = "\(Int(possibleData[0][0]))"
-                ATKLabel.text = "\(Int(possibleData[0][1]))"
-                DEFLabel.text = "\(Int(possibleData[0][2]))"
-                STALabel.text = "\(Int(possibleData[0][3]))"
+                var maxValue: Double = 0
+                var maxAtk: Double = 0
+                var maxDef: Double = 0
+                for data in possibleData {
+                    if data[1] + data[2] + data[3] > maxValue && data[1] >= maxAtk && data[2] >= maxDef {
+                        maxValue = data[1] + data[2] + data[3]
+                        maxAtk = data[1]
+                        maxDef = data[2]
+                        levelLabel.text = "\(Int(data[0]))"
+                        ATKLabel.text = "\(Int(data[1]))"
+                        DEFLabel.text = "\(Int(data[2]))"
+                        STALabel.text = "\(Int(data[3]))"
+                        pokemon.level = data[0]
+                        pokemon.cp = cp
+                        pokemon.hp = hp
+                        pokemon.indiAtk = data[1]
+                        pokemon.indiDef = data[2]
+                        pokemon.indiSta = data[3]
+                    }
+                }
+                OKButton.enabled = true
+                if userTeam == .Instinct {
+                    OKButton.backgroundColor = colorY
+                } else if userTeam == .Mystic {
+                    OKButton.backgroundColor = colorB
+                } else {
+                    OKButton.backgroundColor = colorR
+                }
             } else {
                 levelLabel.text = "?"
                 ATKLabel.text = "?"
                 DEFLabel.text = "?"
                 STALabel.text = "?"
+                OKButton.enabled = false
+                OKButton.backgroundColor = UIColor.lightGrayColor()
             }
         } else {
             levelLabel.text = "?"
             ATKLabel.text = "?"
             DEFLabel.text = "?"
             STALabel.text = "?"
+            OKButton.enabled = false
+            OKButton.backgroundColor = UIColor.lightGrayColor()
         }
+    }
+    @IBAction func touchUpOKButton(sender: AnyObject) {
+        delegate?.sendPokemonData(pokemon)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // update team and language
