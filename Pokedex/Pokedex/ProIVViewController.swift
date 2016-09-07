@@ -49,7 +49,6 @@ class ProIVViewController: UIViewController {
     }
     private func configureView() {
         // Initial navigation bar
-        title = "IV Calculator Pro"
         self.navigationController?.navigationBar.translucent = false
         let navigationBarFrame = self.navigationController!.navigationBar.frame
         let shadowView = UIView(frame: navigationBarFrame)
@@ -312,6 +311,12 @@ class ProIVViewController: UIViewController {
     }
     
     // update team and language
+    @IBOutlet weak var stardustTitleLabel: UILabel!
+    @IBOutlet weak var analysisTitleLabel: UILabel!
+    @IBOutlet weak var bestStatsTitleLabel: UILabel!
+    @IBOutlet weak var bestStatusTitleLabel2: UILabel!
+    @IBOutlet weak var accurateDataTitleLabel: UILabel!
+    @IBOutlet weak var levelTitleLabel: UILabel!
     func updateTeamColor() {
         switch userTeam {
         case .Instinct:
@@ -335,6 +340,25 @@ class ProIVViewController: UIViewController {
         }
     }
     func updateLanguage() {
-        
+        switch userLang {
+        case .English:
+            title = "IV Calculator Pro"
+            stardustTitleLabel.text = "STARDUST"
+            analysisTitleLabel.text = "ANALYSIS"
+            bestStatsTitleLabel.text = "BEST STATS"
+            bestStatusTitleLabel2.text = "If matched equally, multiple choice"
+            accurateDataTitleLabel.text = "ACCURATE DATA"
+            levelTitleLabel.text = "LEVEL"
+            OKButton.setTitle("OK, Use this data.", forState: .Normal)
+        case .Chinese, .Austrian:
+            title = "進階IV計算"
+            stardustTitleLabel.text = "星塵"
+            analysisTitleLabel.text = "總體評價"
+            bestStatsTitleLabel.text = "最高屬性"
+            bestStatusTitleLabel2.text = "如果有相同於最高屬性，請複選"
+            accurateDataTitleLabel.text = "符合數值"
+            levelTitleLabel.text = "等級"
+            OKButton.setTitle("確認，使用此數據", forState: .Normal)
+        }
     }
 }
