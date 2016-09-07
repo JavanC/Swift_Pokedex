@@ -72,7 +72,7 @@ class PokedexViewController: UIViewController {
         if !hasTeach { openTimes = 15 }
         openTimes += 1
         print("open time: \(openTimes), no more rate: \(noMoreRate)")
-        if openTimes % 25 == 0 && !noMoreRate{
+        if openTimes % 30 == 0 && !noMoreRate{
             var title = "", message = "", action1Title = "", action2Title = "", action3Title = ""
             switch userLang {
             case .English:
@@ -83,7 +83,7 @@ class PokedexViewController: UIViewController {
                 action3Title = "Rate It Now"
             case .Chinese, .Austrian:
                 title = "覺得好用?"
-                message = "希望可以花您一點點時間評分:D"
+                message = "希望可以花您一點點時間來評分:D"
                 action1Title = "不，謝謝"
                 action2Title = "稍後再提醒我"
                 action3Title = "我要評分"
@@ -96,13 +96,17 @@ class PokedexViewController: UIViewController {
             let action2 = UIAlertAction(title: action2Title, style: .Default, handler: nil)
             alertController.addAction(action2)
             let action3 = UIAlertAction(title: action3Title, style: .Cancel) { (action: UIAlertAction!) -> Void in
-                let appID = "1148520008"
-                if let checkURL = NSURL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") {
-                    if UIApplication.sharedApplication().openURL(checkURL) {
-                        print("url successfully opened")
+                let time: NSTimeInterval = 0.2
+                let delay = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
+                dispatch_after(delay, dispatch_get_main_queue()) {
+                    let appID = "1148520008"
+                    if let checkURL = NSURL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") {
+                        if UIApplication.sharedApplication().openURL(checkURL) {
+                            print("url successfully opened")
+                        }
+                    } else {
+                        print("invalid url")
                     }
-                } else {
-                    print("invalid url")
                 }
             }
             alertController.addAction(action3)
