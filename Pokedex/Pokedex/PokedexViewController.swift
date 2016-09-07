@@ -30,6 +30,7 @@ class PokedexViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         updateTeamColor()
         updateLanguage()
+        checkRateUs()
     }
     
     private func configureView() {
@@ -63,6 +64,51 @@ class PokedexViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    func checkRateUs() {
+        var openTimes = NSUserDefaults.standardUserDefaults().integerForKey("openTimes")
+        let noMoreRate = NSUserDefaults.standardUserDefaults().boolForKey("noMoreRate")
+        if !hasTeach { openTimes = 15 }
+        openTimes += 1
+        print("open time: \(openTimes), no more rate: \(noMoreRate)")
+        if openTimes % 25 == 0 && !noMoreRate{
+            var title = "", message = "", action1Title = "", action2Title = "", action3Title = ""
+            switch userLang {
+            case .English:
+                title = "Feel useful?"
+                message = "Woule you mind rating this app?"
+                action1Title = "No, Thanks"
+                action2Title = "Remind Me Later"
+                action3Title = "Rate It Now"
+            case .Chinese, .Austrian:
+                title = "覺得好用?"
+                message = "希望可以花您一點點時間評分:D"
+                action1Title = "不，謝謝"
+                action2Title = "稍後再提醒我"
+                action3Title = "我要評分"
+            }
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            let action1 = UIAlertAction(title: action1Title, style: .Default) { (action: UIAlertAction!) -> Void in
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "noMoreRate")
+            }
+            alertController.addAction(action1)
+            let action2 = UIAlertAction(title: action2Title, style: .Default, handler: nil)
+            alertController.addAction(action2)
+            let action3 = UIAlertAction(title: action3Title, style: .Cancel) { (action: UIAlertAction!) -> Void in
+                let appID = "1148520008"
+                if let checkURL = NSURL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") {
+                    if UIApplication.sharedApplication().openURL(checkURL) {
+                        print("url successfully opened")
+                    }
+                } else {
+                    print("invalid url")
+                }
+            }
+            alertController.addAction(action3)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        NSUserDefaults.standardUserDefaults().setInteger(openTimes, forKey: "openTimes")
     }
     
     // update team and language
