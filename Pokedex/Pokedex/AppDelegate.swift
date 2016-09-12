@@ -13,6 +13,8 @@ enum Lang : Int { case English, Chinese, Austrian }
 var userTeam = Team.Instinct
 var userLang = Lang.English
 var hasTeach = false
+var isShowFavorite = false
+var favoritePokemonData = [Pokemon]()
 let colorR = UIColor(hex: 0xFF7768, alpha: 1)
 let colorY = UIColor(hex: 0xF9CB11, alpha: 1)
 let colorB = UIColor(hex: 0x0091E5, alpha: 1)
@@ -36,6 +38,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userTeam = Team(rawValue: defaults.integerForKey("userTeam"))!
         userLang = Lang(rawValue: defaults.integerForKey("userLang"))!
         hasTeach = defaults.boolForKey("hasTeach")
+        
+        // load favorite data
+        if let loadDatas = NSUserDefaults.standardUserDefaults().objectForKey("favoritePokemonData") as? [[String:AnyObject]] {
+            for data in loadDatas {
+                var pokemon = pokemonData[data["pokemonDataIndex"] as! Int]
+                pokemon.level = data["level"] as! Double
+                pokemon.cp = data["cp"] as! Double
+                pokemon.hp = data["hp"] as! Double
+                pokemon.indiAtk = data["indiAtk"] as! Double
+                pokemon.indiDef = data["indiDef"] as! Double
+                pokemon.indiSta = data["indiSta"] as! Double
+                pokemon.fastAttackNumber = data["fastAttackNumber"] as! Int
+                pokemon.chargeAttackNumber = data["chargeAttackNumber"] as! Int
+                favoritePokemonData.append(pokemon)
+            }
+        }
     }
     
     func configureAppearance() {

@@ -28,8 +28,33 @@ class PokedexViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        // Sequence favorite data
+        favoritePokemonData.sortInPlace { (pokemon1, pokemon2) -> Bool in
+            return pokemon1.cp > pokemon2.cp
+        }
+        // save favorite data
+        var saveFavoriteDataArray = Array<Dictionary<String,AnyObject>>()
+        for pokemon in favoritePokemonData {
+            var data = Dictionary<String,AnyObject>()
+            let pokemonDataIndex = Int(NSString(string: pokemon.number).substringFromIndex(1))! - 1
+            data["pokemonDataIndex"] = pokemonDataIndex
+            data["level"] = pokemon.level
+            data["cp"] = pokemon.cp
+            data["hp"] = pokemon.hp
+            data["indiAtk"] = pokemon.indiAtk
+            data["indiDef"] = pokemon.indiDef
+            data["indiSta"] = pokemon.indiSta
+            data["fastAttackNumber"] = pokemon.fastAttackNumber
+            data["chargeAttackNumber"] = pokemon.chargeAttackNumber
+            saveFavoriteDataArray.append(data)
+        }
+        NSUserDefaults.standardUserDefaults().setObject(saveFavoriteDataArray, forKey: "favoritePokemonData")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        // reload UI
+        collectionView.reloadData()
         updateTeamColor()
         updateLanguage()
+        // check rate
         checkRateUs()
     }
     
@@ -46,18 +71,27 @@ class PokedexViewController: UIViewController {
         shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
         self.view.addSubview(shadowView)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), style: .Plain, target: self, action: #selector(pushToSettingController))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"), style: .Plain, target: self, action: #selector(showFavorite))
     }
     
     func pushToSettingController() {
         self.performSegueWithIdentifier("toSettingViewController", sender: self)
     }
+    func showFavorite() {
+        print("show favorite")
+        isShowFavorite = !isShowFavorite
+        navigationItem.leftBarButtonItem?.image = UIImage(named: isShowFavorite ? "heart_select" : "heart")
+        collectionView.reloadData()
+        
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let cell = sender as? UICollectionViewCell {
             let indexPath = collectionView.indexPathForCell(cell)!
-            let pokemon = pokemonData[indexPath.row]
+            let pokemon = isShowFavorite ? favoritePokemonData[indexPath.row] : pokemonData[indexPath.row]
             let controller = segue.destinationViewController as! PokemonViewController
             controller.pokemon = pokemon
+            controller.favoritePokemonIndex = indexPath.row
         }
     }
     
@@ -69,10 +103,10 @@ class PokedexViewController: UIViewController {
     func checkRateUs() {
         var openTimes = NSUserDefaults.standardUserDefaults().integerForKey("openTimes")
         let noMoreRate = NSUserDefaults.standardUserDefaults().boolForKey("noMoreRate")
-        if !hasTeach { openTimes = 15 }
+        if !hasTeach { openTimes = 10 }
         openTimes += 1
         print("open time: \(openTimes), no more rate: \(noMoreRate)")
-        if openTimes % 30 == 0 && !noMoreRate{
+        if openTimes % 20 == 0 && !noMoreRate{
             var title = "", message = "", action1Title = "", action2Title = "", action3Title = ""
             switch userLang {
             case .English:
@@ -147,7 +181,7 @@ class PokedexViewController: UIViewController {
 
 extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemonData.count
+        return isShowFavorite ? favoritePokemonData.count : pokemonData.count
     }
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PokedexCollectionViewCell {
@@ -162,7 +196,10 @@ extension PokedexViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath)
         if let cell = cell as? PokedexCollectionViewCell {
-            cell.pokemon = pokemonData[indexPath.row]
+            cell.pokemon = isShowFavorite ? favoritePokemonData[indexPath.row] : pokemonData[indexPath.row]
+            if isShowFavorite {
+                cell.pokeNumber.text = "CP\(Int(favoritePokemonData[indexPath.row].cp))"
+            }
         }
         return cell
     }

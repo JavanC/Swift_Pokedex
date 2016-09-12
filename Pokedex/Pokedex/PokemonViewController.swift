@@ -22,6 +22,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var pokemonInfoView: UIView!
     @IBOutlet weak var pokemonInfoViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var trainerLevelLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var cpRangeValueLabel: UILabel!
     @IBOutlet weak var hpRangeValueLabel: UILabel!
@@ -66,6 +67,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     let cpValueArcLayer = CAShapeLayer()
     
     var pokemon: Pokemon!
+    var favoritePokemonIndex: Int!
     var trainerLevel = 0.0 {
         didSet {
             trainerLevel = min(max(trainerLevel, 1),40)
@@ -82,17 +84,60 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        configureView()
+        if isShowFavorite {
+            loadFavoriteData()
+        } else {
+            loadData()
+            configureView()
+        }
         if !hasTeach { pushToTipController() }
     }
     override func viewWillAppear(animated: Bool) {
         updateTeamColor()
         updateLanguage()
     }
+    override func viewWillDisappear(animated: Bool) {
+        if favoriteButton.selected {
+            favoritePokemonData[favoritePokemonIndex] = pokemon
+        }
+    }
     
     func pushToTipController() {
         self.performSegueWithIdentifier("toTeachViewController", sender: self)
+    }
+    
+    private func loadFavoriteData() {
+        let level = pokemon.level
+        let cp = pokemon.cp
+        let hp = pokemon.hp
+        let indiAtk = pokemon.indiAtk
+        let indiDef = pokemon.indiDef
+        let indiSta = pokemon.indiSta
+        let fastAttackNumber = pokemon.fastAttackNumber
+        let chargeAttackNumber = pokemon.chargeAttackNumber
+        
+        loadData()
+        configureView()
+        
+        levelRulerSlider.currentValue = level * 2
+        levelRulerSliderValueChanged(levelRulerSlider)
+        pokemonCPSlider.currentValue = cp
+        cpRangeSliderValueChanged(pokemonCPSlider)
+        pokemonHPSlider.currentValue = hp
+        hpRangeSliderValueChanged(pokemonHPSlider)
+        pokemon.indiAtk = indiAtk
+        pokemon.indiDef = indiDef
+        pokemon.indiSta = indiSta
+        let persent = (indiAtk + indiDef + indiSta) / 45
+        attDefValueLabel.text = indiAtk != indiDef ? "\(Int(indiAtk))+\(Int(indiDef)) / 30" : "\(Int(indiAtk + indiDef)) / 30"
+        staValueLabel.text = "\(Int(indiSta)) / 15"
+        ivValueLabel.text = "\(Int(persent * 100))%"
+        ivValueCircleLayer.strokeEnd = CGFloat(persent)
+        
+        fastAttackSegmented.selectedSegmentIndex = fastAttackNumber
+        fastAttackSegmentValueChange(fastAttackSegmented)
+        chargeAttackSegmented.selectedSegmentIndex = chargeAttackNumber
+        chargeAttackSegmentValueChange(chargeAttackSegmented)
     }
     
     private func loadData() {
@@ -162,8 +207,9 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let emitter = EmitterLayer(rect: rect)
         backgroundImage.layer.addSublayer(emitter)
         
-        // pokemonImage
+        // pokemonImage and favorite button
         pokemonImage.image = UIImage(named: pokemon.number)
+        favoriteButton.selected = isShowFavorite
         
         // cp value arc
         drawCPValueArc()
@@ -291,6 +337,15 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     @IBAction func trainerLevelMinus(sender: AnyObject) { trainerLevel -= 1 }
     @IBAction func trainerLevelPlus(sender: AnyObject) { trainerLevel += 1 }
+    @IBAction func touchUpFavoriteButton(sender: AnyObject) {
+        favoriteButton.selected = !favoriteButton.selected
+        if favoriteButton.selected {
+            favoritePokemonData.append(pokemon)
+            favoritePokemonIndex = favoritePokemonData.count - 1
+        } else {
+            favoritePokemonData.removeAtIndex(favoritePokemonIndex)
+        }
+    }
     
     func levelRulerSliderValueChanged(rulerSlider: RulerSlider) {
         pokemon.level = rulerSlider.currentValue / 2
@@ -409,6 +464,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
+        pokemon.fastAttackNumber = sender.selectedSegmentIndex
         let attack = FastAttacks[pokemon.fastAttacks[sender.selectedSegmentIndex]]!
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
         let second = attack.duration
@@ -423,6 +479,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     @IBAction func chargeAttackSegmentValueChange(sender: AnyObject) {
+        pokemon.chargeAttackNumber = sender.selectedSegmentIndex
         let attack = ChargeAttacks[pokemon.chargeAttacks[sender.selectedSegmentIndex]]!
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
         let second = attack.duration

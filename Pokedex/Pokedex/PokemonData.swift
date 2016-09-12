@@ -17,6 +17,8 @@ struct Pokemon {
     let type: [Type]
     let fastAttacks: [String]
     let chargeAttacks: [String]
+    var fastAttackNumber: Int
+    var chargeAttackNumber: Int
     
     var indiAtk:Double
     var indiDef:Double
@@ -68,6 +70,8 @@ struct Pokemon {
         self.fastAttacks = fastAttacks
         self.chargeAttacks = chargeAttacks
         
+        self.fastAttackNumber = 0
+        self.chargeAttackNumber = 0
         self.indiAtk = 0
         self.indiDef = 0
         self.indiSta = 0
