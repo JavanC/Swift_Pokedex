@@ -103,7 +103,7 @@ class PokedexViewController: UIViewController {
     func checkRateUs() {
         var openTimes = NSUserDefaults.standardUserDefaults().integerForKey("openTimes")
         let noMoreRate = NSUserDefaults.standardUserDefaults().boolForKey("noMoreRate")
-        if !hasTeach { openTimes = 10 }
+        if !hasTeach { openTimes = 12 }
         openTimes += 1
         print("open time: \(openTimes), no more rate: \(noMoreRate)")
         if openTimes % 20 == 0 && !noMoreRate{
@@ -137,6 +137,7 @@ class PokedexViewController: UIViewController {
                     if let checkURL = NSURL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appID)&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8") {
                         if UIApplication.sharedApplication().openURL(checkURL) {
                             print("url successfully opened")
+                            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "noMoreRate")
                         }
                     } else {
                         print("invalid url")

@@ -431,7 +431,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24e-zW-drV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="1398"/>
+            <point key="canvasLocation" x="1354" y="1534"/>
         </scene>
         <!--Pokedex-->
         <scene sceneID="tne-QT-ifu">
@@ -1905,27 +1905,6 @@ CFBybw
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngV-fs-8aB">
-                                                        <rect key="frame" x="0.0" y="40" width="320" height="30"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.56x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPG-Dp-DnQ">
-                                                                <rect key="frame" x="290" y="15" width="30" height="15"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="30" id="Dtc-F7-Ebj"/>
-                                                                    <constraint firstAttribute="height" constant="15" id="tRa-F0-SYW"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
-                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="FPG-Dp-DnQ" secondAttribute="bottom" id="1aL-PA-KcA"/>
-                                                            <constraint firstAttribute="height" constant="30" id="QDn-Lp-ie3"/>
-                                                            <constraint firstAttribute="trailing" secondItem="FPG-Dp-DnQ" secondAttribute="trailing" id="Xlm-xP-CAd"/>
-                                                        </constraints>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5b-MT-eZC">
                                                         <rect key="frame" x="0.0" y="70" width="320" height="30"/>
                                                         <subviews>
@@ -1940,7 +1919,7 @@ CFBybw
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Gff-zI-X8c"/>
                                                             <constraint firstAttribute="height" constant="30" id="YIb-ZC-8VE"/>
@@ -1962,7 +1941,7 @@ CFBybw
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="hlp-qi-W7x" secondAttribute="bottom" id="3QB-3O-8s6"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="EUu-vc-gC9"/>
@@ -1985,7 +1964,7 @@ CFBybw
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="9yu-Fz-hdk" secondAttribute="trailing" id="AGp-dr-6jj"/>
                                                             <constraint firstAttribute="bottom" secondItem="9yu-Fz-hdk" secondAttribute="bottom" id="IST-bG-8Ar"/>
@@ -2017,6 +1996,27 @@ CFBybw
                                                             </mask>
                                                         </variation>
                                                     </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngV-fs-8aB">
+                                                        <rect key="frame" x="0.0" y="40" width="320" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.56x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPG-Dp-DnQ">
+                                                                <rect key="frame" x="290" y="15" width="30" height="15"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="Dtc-F7-Ebj"/>
+                                                                    <constraint firstAttribute="height" constant="15" id="tRa-F0-SYW"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="10"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="FPG-Dp-DnQ" secondAttribute="bottom" id="1aL-PA-KcA"/>
+                                                            <constraint firstAttribute="height" constant="30" id="QDn-Lp-ie3"/>
+                                                            <constraint firstAttribute="trailing" secondItem="FPG-Dp-DnQ" secondAttribute="trailing" id="Xlm-xP-CAd"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
