@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JhF-4j-Hz3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JhF-4j-Hz3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -727,7 +727,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </variation>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shadow" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-50-Tbi" userLabel="pokemon background">
-                                                        <rect key="frame" x="103" y="153" width="115" height="57"/>
+                                                        <rect key="frame" x="103" y="152.5" width="115" height="57.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="A5p-Pm-IMb"/>
                                                             <constraint firstAttribute="width" secondItem="CZY-50-Tbi" secondAttribute="height" multiplier="2:1" id="Z5a-4t-S2F"/>
@@ -805,10 +805,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                 </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy7-cB-56x" userLabel="Estimated View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="230" width="161" height="60"/>
+                                                <rect key="frame" x="0.0" y="230" width="160.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n5-yu-ULJ">
-                                                        <rect key="frame" x="0.0" y="20" width="161" height="40"/>
+                                                        <rect key="frame" x="0.0" y="20" width="160.5" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="d7y-Ul-F5N"/>
                                                         </constraints>
@@ -817,7 +817,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESTIMATED LEVLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-Ao-hFG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="HMV-qS-4k2"/>
                                                         </constraints>
@@ -846,10 +846,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-Qb-icG" userLabel="Power Up View" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                                <rect key="frame" x="160" y="230" width="160" height="60"/>
+                                                <rect key="frame" x="159.5" y="230" width="160.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWER UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-4f-5Je">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="dCW-y2-oZ0"/>
                                                         </constraints>
@@ -858,7 +858,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STARDUST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Y5-i1-cy9">
-                                                        <rect key="frame" x="0.0" y="45" width="80" height="15"/>
+                                                        <rect key="frame" x="0.0" y="45" width="80.5" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="UNq-qB-4IZ"/>
                                                         </constraints>
@@ -867,7 +867,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CANDY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UQ-3x-b91">
-                                                        <rect key="frame" x="80" y="45" width="80" height="15"/>
+                                                        <rect key="frame" x="80.5" y="45" width="80" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="6Nc-6X-MeH"/>
                                                         </constraints>
@@ -876,7 +876,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuN-4v-7z6">
-                                                        <rect key="frame" x="0.0" y="20" width="80" height="25"/>
+                                                        <rect key="frame" x="0.0" y="20" width="80.5" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="G7E-al-tn8"/>
                                                         </constraints>
@@ -885,7 +885,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dV-l4-8EP">
-                                                        <rect key="frame" x="80" y="20" width="80" height="25"/>
+                                                        <rect key="frame" x="80.5" y="20" width="80" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="cZ1-54-Cwo"/>
                                                         </constraints>
@@ -1076,10 +1076,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                 <rect key="frame" x="0.0" y="398" width="320" height="90"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5q5-ZO-UUH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="90"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATK+DEF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-7Y-06L">
-                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="byH-1f-SaB"/>
                                                                 </constraints>
@@ -1088,7 +1088,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 / 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDZ-57-Qoq">
-                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="bXa-uJ-Tjd"/>
                                                                     <constraint firstAttribute="height" constant="30" id="jGG-gF-mWM"/>
@@ -1115,10 +1115,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-mE-QAJ">
-                                                        <rect key="frame" x="107" y="0.0" width="106" height="90"/>
+                                                        <rect key="frame" x="106.5" y="0.0" width="107" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHo-86-Eas">
-                                                                <rect key="frame" x="0.0" y="15" width="106" height="20"/>
+                                                                <rect key="frame" x="0.0" y="15" width="107" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="3aB-W3-sLq"/>
                                                                 </constraints>
@@ -1127,7 +1127,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-wg-Okf">
-                                                                <rect key="frame" x="0.0" y="38" width="106" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="HaR-40-ybg"/>
                                                                     <constraint firstAttribute="height" constant="30" id="rgh-pe-QvE"/>
@@ -1160,10 +1160,10 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                         </variation>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-HG-HCn">
-                                                        <rect key="frame" x="213" y="0.0" width="107" height="90"/>
+                                                        <rect key="frame" x="213.5" y="0.0" width="106.5" height="90"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwv-2z-gZG">
-                                                                <rect key="frame" x="0.0" y="20" width="107" height="20"/>
+                                                                <rect key="frame" x="0.0" y="20" width="106.5" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="c2a-D7-yXP"/>
                                                                 </constraints>
@@ -1172,7 +1172,7 @@ Here we'll ignore STAB and Effectiveness.</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 / 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujx-Xi-Afo">
-                                                                <rect key="frame" x="0.0" y="38" width="107" height="30"/>
+                                                                <rect key="frame" x="0.0" y="38" width="106.5" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="NyS-Fa-Ol3"/>
                                                                     <constraint firstAttribute="height" constant="30" id="pUv-Eh-OH5"/>
@@ -1919,7 +1919,7 @@ CFBybw
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Gff-zI-X8c"/>
                                                             <constraint firstAttribute="height" constant="30" id="YIb-ZC-8VE"/>
@@ -1941,7 +1941,7 @@ CFBybw
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.050000000000000003" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.2041767884303809" green="0.51817981069045937" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="hlp-qi-W7x" secondAttribute="bottom" id="3QB-3O-8s6"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="EUu-vc-gC9"/>
@@ -1964,7 +1964,7 @@ CFBybw
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.17861376049402911" green="0.3860290643042622" blue="1" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="9yu-Fz-hdk" secondAttribute="trailing" id="AGp-dr-6jj"/>
                                                             <constraint firstAttribute="bottom" secondItem="9yu-Fz-hdk" secondAttribute="bottom" id="IST-bG-8Ar"/>
@@ -2274,10 +2274,10 @@ CFBybw
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJm-ft-mbl">
-                                        <rect key="frame" x="107" y="12" width="106" height="45"/>
+                                        <rect key="frame" x="106.5" y="12" width="107" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="eaA-9C-7FE">
-                                                <rect key="frame" x="0.0" y="0.0" width="106" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="107" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="XGm-Xd-GzO"/>
                                                     <constraint firstAttribute="height" constant="20" id="ZRD-1E-UBr"/>
@@ -2292,7 +2292,7 @@ CFBybw
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Guj-DG-plf">
-                                                <rect key="frame" x="0.0" y="20" width="106" height="25"/>
+                                                <rect key="frame" x="0.0" y="20" width="107" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="WOI-Dp-ENw"/>
                                                     <constraint firstAttribute="height" constant="25" id="hNp-eZ-iTA"/>
@@ -2319,10 +2319,10 @@ CFBybw
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULF-WH-lBe">
-                                        <rect key="frame" x="213" y="12" width="107" height="45"/>
+                                        <rect key="frame" x="213.5" y="12" width="106.5" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="TJG-vM-yXb">
-                                                <rect key="frame" x="0.0" y="0.0" width="107" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="PhV-uo-x9p"/>
                                                     <constraint firstAttribute="height" constant="20" id="T7g-SW-601"/>
@@ -2337,7 +2337,7 @@ CFBybw
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Uy9-gP-OM2">
-                                                <rect key="frame" x="0.0" y="20" width="107" height="25"/>
+                                                <rect key="frame" x="0.0" y="20" width="106.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="VSF-B3-pu6"/>
                                                     <constraint firstAttribute="height" constant="20" id="rX4-FN-Uo3"/>
@@ -2364,10 +2364,10 @@ CFBybw
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FrZ-Nt-Oni">
-                                        <rect key="frame" x="0.0" y="12" width="107" height="45"/>
+                                        <rect key="frame" x="0.0" y="12" width="106.5" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="gqh-LZ-y9C">
-                                                <rect key="frame" x="0.0" y="20" width="107" height="25"/>
+                                                <rect key="frame" x="0.0" y="20" width="106.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="dRj-Xm-U4R"/>
                                                     <constraint firstAttribute="height" constant="25" id="wcW-fC-RuO"/>
@@ -2382,7 +2382,7 @@ CFBybw
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STARDUST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LyI-gj-NJH">
-                                                <rect key="frame" x="0.0" y="0.0" width="107" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="K5z-us-SIG"/>
                                                     <constraint firstAttribute="height" constant="20" id="uFe-Tn-wu1"/>
@@ -2559,14 +2559,14 @@ CFBybw
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2A-Lh-DsV">
-                                                <rect key="frame" x="104" y="45" width="21" height="25"/>
+                                                <rect key="frame" x="104" y="45" width="20.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="C1i-I2-C8c"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feW-jK-zlk" customClass="MyCustomButton" customModule="Poke_Booklet" customModuleProvider="target">
-                                                <rect key="frame" x="125" y="45" width="71" height="25"/>
+                                                <rect key="frame" x="124.5" y="45" width="71" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="0GN-0Y-C6L"/>
                                                     <constraint firstAttribute="height" constant="25" id="NCt-gz-S4S"/>
@@ -2594,7 +2594,7 @@ CFBybw
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcO-FD-9EF">
-                                                <rect key="frame" x="196" y="45" width="20" height="25"/>
+                                                <rect key="frame" x="195.5" y="45" width="20.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="255-mS-WNw"/>
