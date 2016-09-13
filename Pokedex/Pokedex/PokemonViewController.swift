@@ -60,6 +60,11 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var gymAttackValueButton: UIButton!
     @IBOutlet weak var gymDefendValueButton: UIButton!
 
+    @IBOutlet weak var typeView: MyCustomView!
+    @IBOutlet weak var pokemonType1Image: UIImageView!
+    @IBOutlet weak var pokemonType2Image: UIImageView!
+    
+    
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
     let pokemonHPSlider = RangeSlider(frame: CGRectZero)
@@ -146,18 +151,23 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     private func configureView() {
-        // for iPhone autolayout
-        if UIScreen.mainScreen().bounds.height < 826 + 64 {
-            let constant = 100 + UIScreen.mainScreen().bounds.width * 0.8 / 2
+        // for iPhone, iPad2, iPad Air, iPad Air 2, iPad Retina autolayout
+        if UIScreen.mainScreen().bounds.height < 986 + 64 {
+            // iPhone
+            var constant = 100 + UIScreen.mainScreen().bounds.width * 0.8 / 2
+            // iPad
+            if UIScreen.mainScreen().bounds.width > 640 {
+                constant = UIScreen.mainScreen().bounds.height - 64 - (756 - 160) - 50
+            }
             pokemonInfoViewHeightConstraint.constant = constant
-            scrollViewInsideViewHeightConstraint.constant = 596 + constant
+            scrollViewInsideViewHeightConstraint.constant = 756 + constant
             self.view.layoutIfNeeded()
         } else {
-        // for iPad autolayout
+        // for iPad Pro autolayout
             scrollView.scrollEnabled = false
-            let constant = UIScreen.mainScreen().bounds.height - 64 - 596 - 50
-            scrollViewInsideViewHeightConstraint.constant = 826 + (constant - 200)
+            let constant = UIScreen.mainScreen().bounds.height - 64 - 756 - 50
             pokemonInfoViewHeightConstraint.constant = constant
+            scrollViewInsideViewHeightConstraint.constant = 756 + constant
             self.view.layoutIfNeeded()
         }
 
@@ -220,7 +230,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         // ruler slider
         let rulerSliderHeight: CGFloat = 25
         var rulerSliderMargin: CGFloat = UIScreen.mainScreen().bounds.width * 0.1 - rulerSliderHeight / 2
-        if UIScreen.mainScreen().bounds.height > 826 + 64 {
+        if UIScreen.mainScreen().bounds.width > 640 {
             rulerSliderMargin = UIScreen.mainScreen().bounds.width / 2 - pokemonImage.frame.width * 1.2 - rulerSliderHeight / 2
         }
         let rulerSliderWidth = view.bounds.width - 2.0 * rulerSliderMargin
@@ -296,13 +306,46 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         chargeAttackSegmented.selectedSegmentIndex = 0
         chargeAttackSegmentValueChange(chargeAttackSegmented)
         
+        // Type view
+        if pokemon.type.count == 1 {
+            pokemonType1Image.hidden = true
+            pokemonType2Image.image = UIImage(named: "\(pokemon.type[0])_icon")
+        } else {
+            pokemonType1Image.image = UIImage(named: "\(pokemon.type[0])_icon")
+            pokemonType2Image.image = UIImage(named: "\(pokemon.type[1])_icon")
+        }
+        // [[week2x], [week], [resi], [resi2x]]
+        var typeEffecArrays = Array(count: 4, repeatedValue: [Type]())
+        for i in (0...17) {
+            let attackType = Type(rawValue: i)!
+            var effec = 0
+            if typeEffectiveness(attackType)[0].contains(pokemon.type[0]) { effec += 1 }
+            if typeEffectiveness(attackType)[1].contains(pokemon.type[0]) { effec -= 1 }
+            if pokemon.type.count == 2 && typeEffectiveness(attackType)[0].contains(pokemon.type[1]) { effec += 1 }
+            if pokemon.type.count == 2 && typeEffectiveness(attackType)[1].contains(pokemon.type[1]) { effec -= 1 }
+            if effec == 2 { typeEffecArrays[0].append(attackType) }
+            if effec == 1 { typeEffecArrays[1].append(attackType) }
+            if effec == -1 { typeEffecArrays[2].append(attackType) }
+            if effec == -2 { typeEffecArrays[3].append(attackType) }
+        }
+        for (row, typeEffecArray) in typeEffecArrays.enumerate() {
+            let count = typeEffecArray.count
+            let width = count * 30
+            let view = UIView(frame: CGRect(x: (Int(typeView.frame.width) - width) / 2, y: 40 + 30 * row, width: width, height: 30))
+            for (row, type) in typeEffecArray.enumerate() {
+                let image = UIImageView(image: UIImage(named: "\(type)_icon"))
+                image.frame = CGRect(x: 2 + 30 * row, y: 2, width: 26, height: 26)
+                view.addSubview(image)
+            }
+            typeView.addSubview(view)
+        }
     }
     
     private func drawCPValueArc() {
         let arcCenter = CGPoint(x: view.bounds.width / 2, y: pokemonInfoView.bounds.height - 28)
         let StartAngel: CGFloat = CGFloat(M_PI)
         let EndAngel: CGFloat = 0
-        let Radius: CGFloat = UIScreen.mainScreen().bounds.height > 796 + 64 ? pokemonImage.frame.width * 1.2 : view.bounds.width * 0.4
+        let Radius: CGFloat = UIScreen.mainScreen().bounds.width > 640 ? pokemonImage.frame.width * 1.2 : view.bounds.width * 0.4
         let path = UIBezierPath(arcCenter: arcCenter, radius: Radius, startAngle: StartAngel, endAngle: EndAngel, clockwise: true)
     
         let cpArcBackgroundLayer = CAShapeLayer()
@@ -654,11 +697,11 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     func showAdSpace(isShow isShow: Bool) {
         if isShow { self.bannerView.loadRequest(GADRequest()) }
-        if UIScreen.mainScreen().bounds.height > 826 + 64 && !isLeaveApplicationThisPage{
-            var constant = UIScreen.mainScreen().bounds.height - 64 - 596
+        if UIScreen.mainScreen().bounds.height > 986 + 64 && !isLeaveApplicationThisPage{
+            var constant = UIScreen.mainScreen().bounds.height - 64 - 756
             constant = isShow ? constant - 50 : constant
-            scrollViewInsideViewHeightConstraint.constant = 826 + (constant - 200)
             pokemonInfoViewHeightConstraint.constant = constant
+            scrollViewInsideViewHeightConstraint.constant = 756 + constant
             pokemonInfoView.layoutIfNeeded()
         }
         scrollViewBottomConstraint.constant = isShow ? 50 : 0

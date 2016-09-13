@@ -12,6 +12,82 @@ enum Type: Int{
     case Normal, Fire, Water, Electric, Grass, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, Fairy
 }
 
+func typeEffectiveness(type: Type) -> [[Type]] {
+    switch type {
+    case .Normal:
+        let resistance = [Type.Ghost, Type.Rock, Type.Steel]
+        return [[] , resistance]
+    case .Fire:
+        let week = [Type.Grass, Type.Ice, Type.Bug, Type.Steel]
+        let resistance = [Type.Fire, Type.Water, Type.Rock, Type.Dragon]
+        return [week, resistance]
+    case .Water:
+        let week = [Type.Fire, Type.Ground, Type.Rock]
+        let resistance = [Type.Water, Type.Grass, Type.Dragon]
+        return [week, resistance]
+    case .Electric:
+        let week = [Type.Water, Type.Flying]
+        let resistance = [Type.Ground, Type.Electric, Type.Grass, Type.Dragon]
+        return [week, resistance]
+    case .Grass:
+        let week = [Type.Water, Type.Ground, Type.Rock]
+        let resistance = [Type.Fire, Type.Grass, Type.Poison, Type.Flying, Type.Bug, Type.Dragon, Type.Steel]
+        return [week, resistance]
+    case .Ice:
+        let week = [Type.Grass, Type.Ground, Type.Flying, Type.Dragon]
+        let resistance = [Type.Fire, Type.Water, Type.Ice, Type.Steel]
+        return [week, resistance]
+    case .Fighting:
+        let week = [Type.Normal, Type.Ice, Type.Rock, Type.Dark, Type.Steel]
+        let resistance = [Type.Ghost, Type.Poison, Type.Flying, Type.Psychic, Type.Bug, Type.Fairy]
+        return [week, resistance]
+    case .Poison:
+        let week = [Type.Grass, Type.Fairy]
+        let resistance = [Type.Steel, Type.Poison, Type.Ground, Type.Rock, Type.Ghost]
+        return [week, resistance]
+    case .Ground:
+        let week = [Type.Fire, Type.Electric, Type.Poison, Type.Rock, Type.Steel]
+        let resistance = [Type.Flying, Type.Grass, Type.Bug]
+        return [week, resistance]
+    case .Flying:
+        let week = [Type.Grass, Type.Fighting, Type.Bug]
+        let resistance = [Type.Electric, Type.Rock, Type.Steel]
+        return [week, resistance]
+    case .Psychic:
+        let week = [Type.Fighting, Type.Poison]
+        let resistance = [Type.Dark, Type.Psychic, Type.Steel]
+        return [week, resistance]
+    case .Bug:
+        let week = [Type.Grass, Type.Psychic, Type.Dark]
+        let resistance = [Type.Fire, Type.Fighting, Type.Poison, Type.Flying, Type.Ghost, Type.Steel, Type.Fairy]
+        return [week, resistance]
+    case .Rock:
+        let week = [Type.Fire, Type.Ice, Type.Flying, Type.Bug]
+        let resistance = [Type.Fighting, Type.Ground, Type.Steel]
+        return [week, resistance]
+    case .Ghost:
+        let week = [Type.Psychic, Type.Ghost]
+        let resistance = [Type.Normal, Type.Dark]
+        return [week, resistance]
+    case .Dragon:
+        let week = [Type.Dragon]
+        let resistance = [Type.Fairy, Type.Steel]
+        return [week, resistance]
+    case .Dark:
+        let week = [Type.Psychic, Type.Ghost]
+        let resistance = [Type.Fighting, Type.Dark, Type.Fairy]
+        return [week, resistance]
+    case .Steel:
+        let week = [Type.Ice, Type.Rock, Type.Fairy]
+        let resistance = [Type.Fire, Type.Water, Type.Electric, Type.Steel]
+        return [week, resistance]
+    case .Fairy:
+        let week = [Type.Fighting, Type.Dragon, Type.Dark]
+        let resistance = [Type.Fire, Type.Poison, Type.Steel]
+        return [week, resistance]
+    }
+}
+
 struct Attack {
     let name: String
     let type: Type
