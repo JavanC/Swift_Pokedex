@@ -46,7 +46,7 @@ class TeachViewController: UIViewController {
             page3TitleLabel.text = "GYM ABILITY?"
             page3Label.text = "Choose your \"Fast attack\" and \"Charge attack\", different combinations let you know that your ability to pekemon.\n\nAttack and Defensive damage are calculated from the Gym \"60 seconds\", touch the value you can see details. Default opponent is LV.20 Pikachu (IV Max)."
             page4TitleLabel.text = "THE FORMULA?"
-            page4Label.text = "Become attacks: Charge attack Seconds +0.5\nBecome defend: All attacks Seconds +2.0, HP x 2\n\nDamage = Floor(½ Power * Attacker's_Attack/Defender's_Defense * STAB * Effectiveness)+ 1\nHere we'll ignore STAB and Effectiveness."
+            page4Label.text = "Become attacks: Charge attack Seconds +0.5\nBecome defend: All attacks Seconds +2.0, HP x 2\n\nDamage = Floor(½ Power * Attacker's_Attack/Defender's_Defense * STAB * Effectiveness)+ 1\nHere we'll ignore Effectiveness."
             teachDoneButton.setTitle("Okay, I get it!", forState: .Normal)
         case .Chinese, .Austrian:
             page1TitleLabel.text = "什麼是IV值？"
@@ -56,7 +56,7 @@ class TeachViewController: UIViewController {
             page3TitleLabel.text = "道館攻守能力?"
             page3Label.text = "選擇\"快速攻擊\"及\"蓄力攻擊\"，不同的技能組合會影響你的寶可夢在進攻道館跟防守道館的能力。\n\n選擇後會立刻根據能力值及技能計算在進攻道館及防守道館\"60秒總傷害值\"，點擊數值可以查看詳細資訊，預設對手皆為 Lv.20 皮卡丘(IV Max)。"
             page4TitleLabel.text = "計算公式?"
-            page4Label.text = "進攻方: 蓄力攻擊秒數+0.5\n防守方: 所有攻擊秒數+2.0，HP x 2\n\nDamage = Floor(½ Power * Attacker's_Attack/Defender's_Defense * STAB * Effectiveness)+ 1\n在此忽略STAB和Effectiveness影響。"
+            page4Label.text = "進攻方: 蓄力攻擊秒數+0.5\n防守方: 所有攻擊秒數+2.0，HP x 2\n\nDamage = Floor(½ Power * Attacker's_Attack/Defender's_Defense * STAB * Effectiveness)+ 1\n在此忽略Effectiveness影響。"
             teachDoneButton.setTitle("好的，我了解了！", forState: .Normal)
         }
     }

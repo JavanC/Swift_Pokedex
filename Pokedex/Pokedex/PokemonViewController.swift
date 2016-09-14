@@ -845,7 +845,6 @@ extension PokemonViewController: pokemonDelegate{
         let indiSta = pokemon.indiSta
         levelRulerSlider.currentValue = level * 2
         levelRulerSliderValueChanged(levelRulerSlider)
-//        self.pokemon.level = level
         self.pokemon.indiAtk = indiAtk
         self.pokemon.indiDef = indiDef
         self.pokemon.indiSta = indiSta
