@@ -183,10 +183,10 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             print("ad past seconds: \(pastSeconds)")
             if pastSeconds <= 86400 {
                 print("this time need No AD")
-                showAdSpace(isShow: false)
+                showAdSpace(false)
             } else {
                 print("this time need Show AD (if have network)")
-                showAdSpace(isShow: true && Reachability.isConnectedToNetwork())
+                showAdSpace(true && Reachability.isConnectedToNetwork())
             }
         }
         
@@ -661,7 +661,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let def = (108 + 15) * 0.59740001
         let fastDamage = Int(0.5 * fastPower * att / def) + 1
         let chargeDamage = Int(0.5 * chargePower * att / def) + 1
-        
+        let useCharge = Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
         var damage = 0
         var second = 0.0
         var energy = 0.0
@@ -672,6 +672,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
                 damage += fastDamage
                 energy += fastAttack.energy
                 energy = min(energy, 100)
+                energy = useCharge ? energy : 0
             } else {
                 second += chargeAttack.duration + 0.5
                 if second > 60 { break }
@@ -709,7 +710,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let def = (108 + 15) * 0.59740001
         let fastDamage = Int(0.5 * fastPower * att / def) + 1
         let chargeDamage = Int(0.5 * chargePower * att / def) + 1
-        
+        let useCharge = Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
         var damage = 0
         var fastTime = 0
         var chargeTime = 0
@@ -722,6 +723,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
                 damage += fastDamage
                 energy += fastAttack.energy
                 energy = min(energy, 100)
+                energy = useCharge ? energy : 0
                 fastTime += 1
             } else {
                 second += chargeAttack.duration + 0.5
@@ -802,7 +804,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         isLeaveApplicationThisPage = true
         // touch ad
         print("has touch ad")
-        showAdSpace(isShow: false)
+        showAdSpace(false)
         
         // save new ad date
         print("reset ad time")
@@ -811,7 +813,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         defaults.setObject(now, forKey: "adDate")
     }
     
-    func showAdSpace(isShow isShow: Bool) {
+    func showAdSpace(isShow: Bool) {
         if isShow { self.bannerView.loadRequest(GADRequest()) }
         if UIScreen.mainScreen().bounds.height > 986 + 64 && !isLeaveApplicationThisPage{
             var constant = UIScreen.mainScreen().bounds.height - 64 - 756
@@ -954,7 +956,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             GYMPowerTitleLabel.text = "道館攻守傷害"
             GYMAttackTitleLabel.text = "攻擊方"
             GYMDefendTitleLabel.text = "防守方"
-            typeViewTitleLabel.text = "弱點屬性"
+            typeViewTitleLabel.text = "弱點&抗性"
             suggestAttackerTitleLabel.text = "建議攻擊者&技能"
         }
     }
