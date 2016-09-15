@@ -103,7 +103,7 @@ class PokedexViewController: UIViewController {
     func checkRateUs() {
         var openTimes = NSUserDefaults.standardUserDefaults().integerForKey("openTimes")
         let noMoreRate = NSUserDefaults.standardUserDefaults().boolForKey("noMoreRate")
-        if !hasTeach { openTimes = 12 }
+        if !hasTeach { openTimes = 10 }
         openTimes += 1
         print("open time: \(openTimes), no more rate: \(noMoreRate)")
         if openTimes % 20 == 0 && !noMoreRate{

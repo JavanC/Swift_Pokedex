@@ -63,6 +63,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var typeView: MyCustomView!
     @IBOutlet weak var pokemonType1Image: UIImageView!
     @IBOutlet weak var pokemonType2Image: UIImageView!
+    @IBOutlet weak var suggestAttackerView: MyCustomView!
+    @IBOutlet weak var suggestAttackerViewHeightConstraint: NSLayoutConstraint!
     
     
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
@@ -151,25 +153,16 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     private func configureView() {
-        // for iPhone, iPad2, iPad Air, iPad Air 2, iPad Retina autolayout
-        if UIScreen.mainScreen().bounds.height < 986 + 64 {
-            // iPhone
-            var constant = 100 + UIScreen.mainScreen().bounds.width * 0.8 / 2
-            // iPad
-            if UIScreen.mainScreen().bounds.width > 640 {
-                constant = UIScreen.mainScreen().bounds.height - 64 - (756 - 160) - 50
-            }
-            pokemonInfoViewHeightConstraint.constant = constant
-            scrollViewInsideViewHeightConstraint.constant = 756 + constant
-            self.view.layoutIfNeeded()
-        } else {
-        // for iPad Pro autolayout
-            scrollView.scrollEnabled = false
-            let constant = UIScreen.mainScreen().bounds.height - 64 - 756 - 50
-            pokemonInfoViewHeightConstraint.constant = constant
-            scrollViewInsideViewHeightConstraint.constant = 756 + constant
-            self.view.layoutIfNeeded()
+
+        // iPhone
+        var constant = 100 + UIScreen.mainScreen().bounds.width * 0.8 / 2
+        // iPad
+        if UIScreen.mainScreen().bounds.width > 640 {
+            constant = UIScreen.mainScreen().bounds.height - 64 - 596
         }
+        pokemonInfoViewHeightConstraint.constant = constant
+        scrollViewInsideViewHeightConstraint.constant = 596 + 159 + constant
+        self.view.layoutIfNeeded()
 
         // google mobile ad and hide ad Label
         self.bannerView.delegate = self
@@ -338,6 +331,129 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
                 view.addSubview(image)
             }
             typeView.addSubview(view)
+        }
+        
+        // suggest attackers
+        let exclude = ["#132", "#144", "#145", "#146", "#150", "#151"]
+        let excludeStats: Double = 354
+        var suggestSuperAttackers = [Pokemon]()
+        for pokemon in pokemonData {
+            if exclude.contains(pokemon.number) { continue }
+            if (pokemon.baseAtt + pokemon.baseDef + pokemon.baseSta) <= excludeStats { continue }
+            var appendFlag = false
+            for type in typeEffecArrays[0] {
+                if pokemon.type.contains(type) {
+                    for fastAttackName in pokemon.fastAttacks {
+                        if FastAttacks[fastAttackName]?.type == type {
+                            appendFlag = true
+                        }
+                    }
+                    for chargeAttackName in pokemon.chargeAttacks {
+                        if ChargeAttacks[chargeAttackName]?.type == type {
+                            appendFlag = true
+                        }
+                    }
+                }
+            }
+            if appendFlag {
+                suggestSuperAttackers.append(pokemon)
+            }
+        }
+        var suggestAttackers = [Pokemon]()
+        for pokemon in pokemonData {
+            if exclude.contains(pokemon.number) { continue }
+            if (pokemon.baseAtt + pokemon.baseDef + pokemon.baseSta) <= excludeStats { continue }
+            if typeEffecArrays[0].contains(pokemon.type[0]) { continue }
+            if pokemon.type.count == 2 && typeEffecArrays[0].contains(pokemon.type[1]) { continue }
+            var appendFlag = false
+            for type in typeEffecArrays[1] {
+                if pokemon.type.contains(type) {
+                    for fastAttackName in pokemon.fastAttacks {
+                        if FastAttacks[fastAttackName]?.type == type {
+                            appendFlag = true
+                        }
+                    }
+                    for chargeAttackName in pokemon.chargeAttacks {
+                        if ChargeAttacks[chargeAttackName]?.type == type {
+                            appendFlag = true
+                        }
+                    }
+                }
+            }
+            for fastAttackName in pokemon.fastAttacks {
+                if typeEffecArrays[0].contains(FastAttacks[fastAttackName]!.type) {
+                    appendFlag = true
+                }
+            }
+            for chargeAttackName in pokemon.chargeAttacks {
+                if typeEffecArrays[0].contains(ChargeAttacks[chargeAttackName]!.type) {
+                    appendFlag = true
+                }
+            }
+            if appendFlag {
+                suggestAttackers.append(pokemon)
+            }
+        }
+        suggestSuperAttackers.sortInPlace { (pokemon1, pokemon2) -> Bool in
+            let pokemon1Base = pokemon1.baseAtt + pokemon1.baseDef + pokemon1.baseSta
+            let pokemon2Base = pokemon2.baseAtt + pokemon2.baseDef + pokemon2.baseSta
+            return pokemon1Base > pokemon2Base
+        }
+        suggestAttackers.sortInPlace { (pokemon1, pokemon2) -> Bool in
+            let pokemon1Base = pokemon1.baseAtt + pokemon1.baseDef + pokemon1.baseSta
+            let pokemon2Base = pokemon2.baseAtt + pokemon2.baseDef + pokemon2.baseSta
+            return pokemon1Base > pokemon2Base
+        }
+        
+        let isIpad = UIScreen.mainScreen().bounds.width > 640
+        scrollViewInsideViewHeightConstraint.constant = scrollViewInsideViewHeightConstraint.constant + (isIpad ? 154 : 264)
+        suggestAttackerViewHeightConstraint.constant = isIpad ? 155 : 265
+        let showNumber = Int(UIScreen.mainScreen().bounds.width / 80)
+        let gap = (UIScreen.mainScreen().bounds.width - 80 * CGFloat(showNumber)) / CGFloat(showNumber + 1)
+        let suggestPokemons = suggestSuperAttackers + suggestAttackers
+        for (index, pokemon) in suggestPokemons.enumerate() {
+            if index == showNumber * (isIpad ? 1 : 2) { break }
+            let x = gap * CGFloat(index % showNumber + 1) + 80 * CGFloat(index % showNumber)
+            let y: CGFloat = index > showNumber - 1 ? 150 : 40
+            let view = UIView(frame: CGRect(x: x, y: y, width: 80, height: 110))
+            let image = UIImageView(image: UIImage(named: pokemon.number))
+            image.frame = CGRect(x: 10, y: 0, width: 60, height: 60)
+            view.addSubview(image)
+            var types = [Type]()
+            let effectTypes = typeEffecArrays[0] + typeEffecArrays[1]
+            if effectTypes.contains(pokemon.type[0]) {
+                types.append(pokemon.type[0])
+            }
+            if pokemon.type.count == 2 && effectTypes.contains(pokemon.type[1]) {
+                types.append(pokemon.type[1])
+            }
+            for (index, type) in types.enumerate() {
+                let type1Image = UIImageView(image: UIImage(named: "\(type)_icon"))
+                type1Image.frame = CGRect(x: 2, y: 10 + index * 10, width: 10, height: 10)
+                view.addSubview(type1Image)
+            }
+            var attacks = [Attack]()
+            for fastAttackName in pokemon.fastAttacks {
+                if effectTypes.contains(FastAttacks[fastAttackName]!.type) {
+                    attacks.append(FastAttacks[fastAttackName]!)
+                }
+            }
+            for chargeAttackName in pokemon.chargeAttacks {
+                if effectTypes.contains(ChargeAttacks[chargeAttackName]!.type) {
+                    attacks.append(ChargeAttacks[chargeAttackName]!)
+                }
+            }
+            for (index, attack) in attacks.enumerate() {
+                let typeImage = UIImageView(image: UIImage(named: "\(attack.type)_icon"))
+                typeImage.frame = CGRect(x: 2, y: 60 + index * 10, width: 10, height: 10)
+                view.addSubview(typeImage)
+                let label = UILabel(frame: CGRect(x: 14, y: 60 + index * 10, width: 66, height: 10))
+                label.font = UIFont(name: "Futura-Medium", size: 8)
+                label.text = attack.name
+                label.textColor = UIColor.darkGrayColor()
+                view.addSubview(label)
+            }
+            suggestAttackerView.addSubview(view)
         }
     }
     
@@ -735,6 +851,12 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var GYMPowerTitleLabel: UILabel!
     @IBOutlet weak var GYMAttackTitleLabel: UILabel!
     @IBOutlet weak var GYMDefendTitleLabel: UILabel!
+    @IBOutlet weak var typeViewTitleLabel: UILabel!
+    @IBOutlet weak var typeViewBG1: UIView!
+    @IBOutlet weak var typeViewBG2: UIView!
+    @IBOutlet weak var typeViewBG3: UIView!
+    @IBOutlet weak var typeViewBG4: UIView!
+    @IBOutlet weak var suggestAttackerTitleLabel: UILabel!
     func updateTeamColor() {
         switch userTeam {
         case .Instinct:
@@ -744,6 +866,10 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             proButton.tintColor = colorY
             fastAttackSegmented.tintColor = colorY
             chargeAttackSegmented.tintColor = colorY
+            typeViewBG1.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.3)
+            typeViewBG2.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.25)
+            typeViewBG3.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.2)
+            typeViewBG4.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.15)
             self.navigationController?.navigationBar.barTintColor = colorY
         case .Mystic:
             levelRulerSlider.thubTintColor = colorB
@@ -752,6 +878,10 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             proButton.tintColor = colorB
             fastAttackSegmented.tintColor = colorB
             chargeAttackSegmented.tintColor = colorB
+            typeViewBG1.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.3)
+            typeViewBG2.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.25)
+            typeViewBG3.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.2)
+            typeViewBG4.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.15)
             self.navigationController?.navigationBar.barTintColor = colorB
         case .Valor:
             levelRulerSlider.thubTintColor = colorR
@@ -760,6 +890,10 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             proButton.tintColor = colorR
             fastAttackSegmented.tintColor = colorR
             chargeAttackSegmented.tintColor = colorR
+            typeViewBG1.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.3)
+            typeViewBG2.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.25)
+            typeViewBG3.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.2)
+            typeViewBG4.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.15)
             self.navigationController?.navigationBar.barTintColor = colorR
         }
     }
@@ -792,6 +926,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             GYMPowerTitleLabel.text = "GYM STRENGTH"
             GYMAttackTitleLabel.text = "ATTACK"
             GYMDefendTitleLabel.text = "DEFEND"
+            typeViewTitleLabel.text = "WEAKNESS & STRENGTH"
+            suggestAttackerTitleLabel.text = "SUGGEST ATTACKER"
         case .Chinese, .Austrian:
             hideAdLabel.text = "X 點擊可以隱藏廣告24小時"
             trainerLevelTitleLabel.text = "訓練師等級"
@@ -818,6 +954,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             GYMPowerTitleLabel.text = "道館攻守傷害"
             GYMAttackTitleLabel.text = "攻擊方"
             GYMDefendTitleLabel.text = "防守方"
+            typeViewTitleLabel.text = "弱點屬性"
+            suggestAttackerTitleLabel.text = "建議攻擊者&技能"
         }
     }
 }
