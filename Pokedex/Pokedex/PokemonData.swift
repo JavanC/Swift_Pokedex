@@ -15,8 +15,8 @@ struct Pokemon {
     let baseDef:Double
     let baseSta:Double
     let type: [Type]
-    let fastAttacks: [String]
-    let chargeAttacks: [String]
+    var fastAttacks: [Attack]
+    var chargeAttacks: [Attack]
     var fastAttackNumber: Int
     var chargeAttackNumber: Int
     
@@ -67,9 +67,18 @@ struct Pokemon {
         self.baseDef = baseDef
         self.baseSta = baseSta
         self.type = type
-        self.fastAttacks = fastAttacks
-        self.chargeAttacks = chargeAttacks
-        
+        self.fastAttacks = [Attack]()
+        self.chargeAttacks = [Attack]()
+        for fastAttackName in fastAttacks {
+            if let attack = FastAttacks[fastAttackName] {
+                self.fastAttacks.append(attack)
+            }
+        }
+        for chargeAttackName in chargeAttacks {
+            if let attack = ChargeAttacks[chargeAttackName] {
+                self.chargeAttacks.append(attack)
+            }
+        }
         self.fastAttackNumber = 0
         self.chargeAttackNumber = 0
         self.indiAtk = 0

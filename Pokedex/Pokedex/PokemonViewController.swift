@@ -158,10 +158,10 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         var constant = 100 + UIScreen.mainScreen().bounds.width * 0.8 / 2
         // iPad
         if UIScreen.mainScreen().bounds.width > 640 {
-            constant = UIScreen.mainScreen().bounds.height - 64 - 596
+            constant = UIScreen.mainScreen().bounds.height - 64 - 626
         }
         pokemonInfoViewHeightConstraint.constant = constant
-        scrollViewInsideViewHeightConstraint.constant = 596 + 159 + constant
+        scrollViewInsideViewHeightConstraint.constant = 626 + 159 + constant
         self.view.layoutIfNeeded()
 
         // google mobile ad and hide ad Label
@@ -258,7 +258,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         fastAttackSegmented.layoutIfNeeded()
         fastAttackSegmented.removeAllSegments()
         for (index, fastAttack) in pokemon.fastAttacks.enumerate() {
-            let attackName = fastAttack
+            let attackName = fastAttack.name
             let segmementedWidth = fastAttackSegmented.frame.width
             let itemWidth = segmementedWidth / CGFloat(pokemon.fastAttacks.count) - 5
             let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
@@ -280,7 +280,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         chargeAttackSegmented.layoutIfNeeded()
         chargeAttackSegmented.removeAllSegments()
         for (index, chargeAttack) in pokemon.chargeAttacks.enumerate() {
-            let attackName = chargeAttack
+            let attackName = chargeAttack.name
             let segmementedWidth = chargeAttackSegmented.frame.width
             let itemWidth = segmementedWidth / CGFloat(pokemon.chargeAttacks.count) - 5
             let textWidth = UILabel().textSize(attackName, font: UIFont.systemFontOfSize(13)).width
@@ -311,15 +311,11 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         var typeEffecArrays = Array(count: 4, repeatedValue: [Type]())
         for i in (0...17) {
             let attackType = Type(rawValue: i)!
-            var effec = 0
-            if typeEffectiveness(attackType)[0].contains(pokemon.type[0]) { effec += 1 }
-            if typeEffectiveness(attackType)[1].contains(pokemon.type[0]) { effec -= 1 }
-            if pokemon.type.count == 2 && typeEffectiveness(attackType)[0].contains(pokemon.type[1]) { effec += 1 }
-            if pokemon.type.count == 2 && typeEffectiveness(attackType)[1].contains(pokemon.type[1]) { effec -= 1 }
-            if effec == 2 { typeEffecArrays[0].append(attackType) }
-            if effec == 1 { typeEffecArrays[1].append(attackType) }
-            if effec == -1 { typeEffecArrays[2].append(attackType) }
-            if effec == -2 { typeEffecArrays[3].append(attackType) }
+            let effec = effectiveness(attackType, pokemonTypes: pokemon.type)
+            if effec == 1.25 * 1.25 { typeEffecArrays[0].append(attackType) }
+            if effec == 1.25        { typeEffecArrays[1].append(attackType) }
+            if effec == 0.8         { typeEffecArrays[2].append(attackType) }
+            if effec == 0.8 * 0.8   { typeEffecArrays[3].append(attackType) }
         }
         for (row, typeEffecArray) in typeEffecArrays.enumerate() {
             let count = typeEffecArray.count
@@ -343,13 +339,13 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             var appendFlag = false
             for type in typeEffecArrays[0] {
                 if pokemon.type.contains(type) {
-                    for fastAttackName in pokemon.fastAttacks {
-                        if FastAttacks[fastAttackName]?.type == type {
+                    for fastAttack in pokemon.fastAttacks {
+                        if fastAttack.type == type {
                             appendFlag = true
                         }
                     }
-                    for chargeAttackName in pokemon.chargeAttacks {
-                        if ChargeAttacks[chargeAttackName]?.type == type {
+                    for chargeAttack in pokemon.chargeAttacks {
+                        if chargeAttack.type == type {
                             appendFlag = true
                         }
                     }
@@ -368,25 +364,25 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             var appendFlag = false
             for type in typeEffecArrays[1] {
                 if pokemon.type.contains(type) {
-                    for fastAttackName in pokemon.fastAttacks {
-                        if FastAttacks[fastAttackName]?.type == type {
+                    for fastAttack in pokemon.fastAttacks {
+                        if fastAttack.type == type {
                             appendFlag = true
                         }
                     }
-                    for chargeAttackName in pokemon.chargeAttacks {
-                        if ChargeAttacks[chargeAttackName]?.type == type {
+                    for chargeAttack in pokemon.chargeAttacks {
+                        if chargeAttack.type == type {
                             appendFlag = true
                         }
                     }
                 }
             }
-            for fastAttackName in pokemon.fastAttacks {
-                if typeEffecArrays[0].contains(FastAttacks[fastAttackName]!.type) {
+            for fastAttack in pokemon.fastAttacks {
+                if typeEffecArrays[0].contains(fastAttack.type) {
                     appendFlag = true
                 }
             }
-            for chargeAttackName in pokemon.chargeAttacks {
-                if typeEffecArrays[0].contains(ChargeAttacks[chargeAttackName]!.type) {
+            for chargeAttack in pokemon.chargeAttacks {
+                if typeEffecArrays[0].contains(chargeAttack.type) {
                     appendFlag = true
                 }
             }
@@ -433,14 +429,14 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
                 view.addSubview(type1Image)
             }
             var attacks = [Attack]()
-            for fastAttackName in pokemon.fastAttacks {
-                if effectTypes.contains(FastAttacks[fastAttackName]!.type) {
-                    attacks.append(FastAttacks[fastAttackName]!)
+            for fastAttack in pokemon.fastAttacks {
+                if effectTypes.contains(fastAttack.type) {
+                    attacks.append(fastAttack)
                 }
             }
-            for chargeAttackName in pokemon.chargeAttacks {
-                if effectTypes.contains(ChargeAttacks[chargeAttackName]!.type) {
-                    attacks.append(ChargeAttacks[chargeAttackName]!)
+            for chargeAttack in pokemon.chargeAttacks {
+                if effectTypes.contains(chargeAttack.type) {
+                    attacks.append(chargeAttack)
                 }
             }
             for (index, attack) in attacks.enumerate() {
@@ -624,7 +620,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     @IBAction func fastAttackSegmentValueChange(sender: AnyObject) {
         pokemon.fastAttackNumber = sender.selectedSegmentIndex
-        let attack = FastAttacks[pokemon.fastAttacks[sender.selectedSegmentIndex]]!
+        let attack = pokemon.fastAttacks[sender.selectedSegmentIndex]
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
         let second = attack.duration
         let DPS = power / attack.duration
@@ -639,7 +635,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     @IBAction func chargeAttackSegmentValueChange(sender: AnyObject) {
         pokemon.chargeAttackNumber = sender.selectedSegmentIndex
-        let attack = ChargeAttacks[pokemon.chargeAttacks[sender.selectedSegmentIndex]]!
+        let attack = pokemon.chargeAttacks[sender.selectedSegmentIndex]
         let power = pokemon.type.contains(attack.type) ? attack.damage * 1.25 : attack.damage
         let second = attack.duration
         let DPS = power / attack.duration
@@ -653,9 +649,9 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func updateGymStrength() {
-        let fastAttack = FastAttacks[pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]]!
+        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
         let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
-        let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
+        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
         let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
         let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
         let def = (108 + 15) * 0.59740001
@@ -699,12 +695,104 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             }
         }
         gymDefendValueButton.setTitle("\(damage)", forState: .Normal)
+        
+        
+        var opponent = pokemonData[133]
+        opponent.level = 20
+        battleTime(pokemon, opponent: opponent, isAttacker: true)
     }
+    
+    struct BattleDetail {
+        let opponent: Pokemon
+        let battleTime: Double
+        let fastDamage: Int
+        let chargeDamage: Int
+        let fastTime: Int
+        let chargeTime: Int
+        let totalDamage: Int
+        let percent: Int
+    }
+    
+    func battle(myPokemon: Pokemon, opponent: Pokemon, isAttacker: Bool) -> BattleDetail {
+        let time = battleTime(myPokemon, opponent: opponent, isAttacker: isAttacker)
+        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
+        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
+        let atk = (myPokemon.baseAtt + myPokemon.indiAtk) * myPokemon.CPM
+        let def = (opponent.baseDef + opponent.indiDef) * opponent.CPM
+        let fastSTAB = myPokemon.type.contains(fastAttack.type) ? 1.25 : 1
+        let fastEffec = effectiveness(fastAttack.type, pokemonTypes: opponent.type)
+        let fastDamage = Int(0.5 * fastAttack.damage * fastSTAB * fastEffec * atk / def) + 1
+        let chargeSTAB = myPokemon.type.contains(chargeAttack.type) ? 1.25 : 1
+        let chargeEffec = effectiveness(chargeAttack.type, pokemonTypes: opponent.type)
+        let chargeDamage = Int(0.5 * chargeAttack.damage * chargeSTAB * chargeEffec * atk / def) + 1
+        let useCharge = isAttacker || Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
+        var damage = 0
+        var fastTime = 0
+        var chargeTime = 0
+        var second = 0.0
+        var energy = 0.0
+        while(true) {
+            if energy < chargeAttack.energy {
+                second += fastAttack.duration + (isAttacker ? 2.0 : 0)
+                if second > time { break }
+                damage += fastDamage
+                energy += fastAttack.energy
+                energy = min(energy, 100)
+                energy = useCharge ? energy : 0
+                fastTime += 1
+            } else {
+                second += chargeAttack.duration + (isAttacker ? 2.0 : 0.5)
+                if second > time { break }
+                damage += chargeDamage
+                energy -= chargeAttack.energy
+                chargeTime += 1
+            }
+        }
+        let percent = Int(Double(damage) / opponent.hp * 100)
+        return BattleDetail(opponent: opponent, battleTime: time, fastDamage: fastDamage, chargeDamage: chargeDamage, fastTime: fastTime, chargeTime: chargeTime, totalDamage: damage, percent: percent)
+    }
+    
+    func battleTime(myPokemon: Pokemon, opponent: Pokemon, isAttacker: Bool) -> Double {
+        var limitTime = 1000.0
+        for fastAttack in opponent.fastAttacks {
+            for chargeAttack in opponent.chargeAttacks {
+                let atk = (opponent.baseAtt + opponent.indiAtk) * opponent.CPM
+                let def = (myPokemon.baseDef + myPokemon.indiDef) * myPokemon.CPM
+                let fastSTAB = opponent.type.contains(fastAttack.type) ? 1.25 : 1
+                let fastEffec = effectiveness(fastAttack.type, pokemonTypes: pokemon.type)
+                let fastDamage = Int(0.5 * fastAttack.damage * fastSTAB * fastEffec * atk / def) + 1
+                let chargeSTAB = opponent.type.contains(chargeAttack.type) ? 1.25 : 1
+                let chargeEffec = effectiveness(chargeAttack.type, pokemonTypes: pokemon.type)
+                let chargeDamage = Int(0.5 * chargeAttack.damage * chargeSTAB * chargeEffec * atk / def) + 1
+                let useCharge = isAttacker || Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
+                var damage = 0
+                var second = 0.0
+                var energy = 0.0
+                while(true) {
+                    if energy < chargeAttack.energy {
+                        second += fastAttack.duration + (isAttacker ? 2.0 : 0)
+                        damage += fastDamage
+                        energy += fastAttack.energy
+                        energy = min(energy, 100)
+                        energy = useCharge ? energy : 0
+                    } else {
+                        second += chargeAttack.duration + (isAttacker ? 2.0 : 0.5)
+                        damage += chargeDamage
+                        energy -= chargeAttack.energy
+                    }
+                    if Double(damage) > myPokemon.hp { break }
+                }
+                limitTime = min(limitTime, second)
+            }
+        }
+        return limitTime
+    }
+    
     @IBAction func touchUpGymAttackValueButton(sender: AnyObject) {
         print("show attack details")
-        let fastAttack = FastAttacks[pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]]!
+        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
         let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
-        let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
+        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
         let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
         let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
         let def = (108 + 15) * 0.59740001
@@ -751,9 +839,9 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     @IBAction func touchUpGymDefendValueButton(sender: AnyObject) {
-        let fastAttack = FastAttacks[pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]]!
+        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
         let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
-        let chargeAttack = ChargeAttacks[pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]]!
+        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
         let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
         let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
         let def = (108 + 15) * 0.59740001
@@ -815,11 +903,11 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     func showAdSpace(isShow: Bool) {
         if isShow { self.bannerView.loadRequest(GADRequest()) }
-        if UIScreen.mainScreen().bounds.height > 986 + 64 && !isLeaveApplicationThisPage{
-            var constant = UIScreen.mainScreen().bounds.height - 64 - 756
+        if UIScreen.mainScreen().bounds.height > 1016 + 64 && !isLeaveApplicationThisPage{
+            var constant = UIScreen.mainScreen().bounds.height - 64 - 786
             constant = isShow ? constant - 50 : constant
             pokemonInfoViewHeightConstraint.constant = constant
-            scrollViewInsideViewHeightConstraint.constant = 756 + constant
+            scrollViewInsideViewHeightConstraint.constant = 786 + constant
             pokemonInfoView.layoutIfNeeded()
         }
         scrollViewBottomConstraint.constant = isShow ? 50 : 0

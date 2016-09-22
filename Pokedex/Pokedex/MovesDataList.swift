@@ -88,6 +88,15 @@ func typeEffectiveness(type: Type) -> [[Type]] {
     }
 }
 
+func effectiveness(attackType: Type, pokemonTypes: [Type]) -> Double {
+    var effec = 1.0
+    for pokemonType in pokemonTypes {
+        if typeEffectiveness(attackType)[0].contains(pokemonType) { effec *= 1.25 }
+        if typeEffectiveness(attackType)[1].contains(pokemonType) { effec *= 0.8 }
+    }
+    return effec
+}
+
 struct Attack {
     let name: String
     let type: Type
