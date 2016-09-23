@@ -130,7 +130,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         levelRulerSliderValueChanged(levelRulerSlider)
         pokemonCPSlider.currentValue = cp
         cpRangeSliderValueChanged(pokemonCPSlider)
-        pokemonHPSlider.currentValue = hp
+        pokemonHPSlider.currentValue = Double(hp)
         hpRangeSliderValueChanged(pokemonHPSlider)
         pokemon.indiAtk = indiAtk
         pokemon.indiDef = indiDef
@@ -510,9 +510,9 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         
         hpRangeValueLabel.text = "\(Int(pokemon.minHp))-\(Int(pokemon.maxHp))"
         hpRangeValueLabel2.text = "\(Int(pokemon.minHp)) - \(Int(pokemon.maxHp))"
-        pokemonHPSlider.minimunValue = pokemon.minHp
-        pokemonHPSlider.maximunValue = pokemon.maxHp
-        pokemonHPSlider.currentValue = pokemon.hp
+        pokemonHPSlider.minimunValue = Double(pokemon.minHp)
+        pokemonHPSlider.maximunValue = Double(pokemon.maxHp)
+        pokemonHPSlider.currentValue = Double(pokemon.hp)
         hpRangeSliderValueChanged(pokemonHPSlider)
         
         cpRangeValueLabel.text = "\(Int(pokemon.minCp))-\(Int(pokemon.maxCp))"
@@ -536,7 +536,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func hpRangeSliderValueChanged(rangeSlider: RangeSlider) {
-        pokemon.hp = rangeSlider.currentValue
+        pokemon.hp = Int(rangeSlider.currentValue)
         hpValueLabel.text = "\(Int(pokemon.hp))"
         let textWidth = UILabel().textSize("\(Int(pokemon.hp))", font: UIFont(name: "Futura-Medium", size: 16)!).width
         hpValueWidthConstraint.constant = textWidth
@@ -649,188 +649,30 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func updateGymStrength() {
-        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
-        let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
-        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
-        let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
-        let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
-        let def = (108 + 15) * 0.59740001
-        let fastDamage = Int(0.5 * fastPower * att / def) + 1
-        let chargeDamage = Int(0.5 * chargePower * att / def) + 1
-        let useCharge = Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
-        var damage = 0
-        var second = 0.0
-        var energy = 0.0
-        while(true) {
-            if energy < chargeAttack.energy {
-                second += fastAttack.duration
-                if second > 60 { break }
-                damage += fastDamage
-                energy += fastAttack.energy
-                energy = min(energy, 100)
-                energy = useCharge ? energy : 0
-            } else {
-                second += chargeAttack.duration + 0.5
-                if second > 60 { break }
-                damage += chargeDamage
-                energy -= chargeAttack.energy
-            }
-        }
-        gymAttackValueButton.setTitle("\(damage)", forState: .Normal)
-        damage = 0
-        second = 0.0
-        energy = 0.0
-        while(true) {
-            if energy < chargeAttack.energy {
-                second += fastAttack.duration + 2.0
-                if second > 60 { break }
-                damage += fastDamage
-                energy += fastAttack.energy
-                energy = min(energy, 100)
-            } else {
-                second += chargeAttack.duration + 2.0
-                if second > 60 { break }
-                damage += chargeDamage
-                energy -= chargeAttack.energy
-            }
-        }
-        gymDefendValueButton.setTitle("\(damage)", forState: .Normal)
-        
-        
-        var opponent = pokemonData[133]
+        var opponent = pokemonData[148]
         opponent.level = 20
-        battleTime(pokemon, opponent: opponent, isAttacker: true)
-    }
-    
-    struct BattleDetail {
-        let opponent: Pokemon
-        let battleTime: Double
-        let fastDamage: Int
-        let chargeDamage: Int
-        let fastTime: Int
-        let chargeTime: Int
-        let totalDamage: Int
-        let percent: Int
-    }
-    
-    func battle(myPokemon: Pokemon, opponent: Pokemon, isAttacker: Bool) -> BattleDetail {
-        let time = battleTime(myPokemon, opponent: opponent, isAttacker: isAttacker)
-        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
-        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
-        let atk = (myPokemon.baseAtt + myPokemon.indiAtk) * myPokemon.CPM
-        let def = (opponent.baseDef + opponent.indiDef) * opponent.CPM
-        let fastSTAB = myPokemon.type.contains(fastAttack.type) ? 1.25 : 1
-        let fastEffec = effectiveness(fastAttack.type, pokemonTypes: opponent.type)
-        let fastDamage = Int(0.5 * fastAttack.damage * fastSTAB * fastEffec * atk / def) + 1
-        let chargeSTAB = myPokemon.type.contains(chargeAttack.type) ? 1.25 : 1
-        let chargeEffec = effectiveness(chargeAttack.type, pokemonTypes: opponent.type)
-        let chargeDamage = Int(0.5 * chargeAttack.damage * chargeSTAB * chargeEffec * atk / def) + 1
-        let useCharge = isAttacker || Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
-        var damage = 0
-        var fastTime = 0
-        var chargeTime = 0
-        var second = 0.0
-        var energy = 0.0
-        while(true) {
-            if energy < chargeAttack.energy {
-                second += fastAttack.duration + (isAttacker ? 2.0 : 0)
-                if second > time { break }
-                damage += fastDamage
-                energy += fastAttack.energy
-                energy = min(energy, 100)
-                energy = useCharge ? energy : 0
-                fastTime += 1
-            } else {
-                second += chargeAttack.duration + (isAttacker ? 2.0 : 0.5)
-                if second > time { break }
-                damage += chargeDamage
-                energy -= chargeAttack.energy
-                chargeTime += 1
-            }
-        }
-        let percent = Int(Double(damage) / opponent.hp * 100)
-        return BattleDetail(opponent: opponent, battleTime: time, fastDamage: fastDamage, chargeDamage: chargeDamage, fastTime: fastTime, chargeTime: chargeTime, totalDamage: damage, percent: percent)
-    }
-    
-    func battleTime(myPokemon: Pokemon, opponent: Pokemon, isAttacker: Bool) -> Double {
-        var limitTime = 1000.0
-        for fastAttack in opponent.fastAttacks {
-            for chargeAttack in opponent.chargeAttacks {
-                let atk = (opponent.baseAtt + opponent.indiAtk) * opponent.CPM
-                let def = (myPokemon.baseDef + myPokemon.indiDef) * myPokemon.CPM
-                let fastSTAB = opponent.type.contains(fastAttack.type) ? 1.25 : 1
-                let fastEffec = effectiveness(fastAttack.type, pokemonTypes: pokemon.type)
-                let fastDamage = Int(0.5 * fastAttack.damage * fastSTAB * fastEffec * atk / def) + 1
-                let chargeSTAB = opponent.type.contains(chargeAttack.type) ? 1.25 : 1
-                let chargeEffec = effectiveness(chargeAttack.type, pokemonTypes: pokemon.type)
-                let chargeDamage = Int(0.5 * chargeAttack.damage * chargeSTAB * chargeEffec * atk / def) + 1
-                let useCharge = isAttacker || Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
-                var damage = 0
-                var second = 0.0
-                var energy = 0.0
-                while(true) {
-                    if energy < chargeAttack.energy {
-                        second += fastAttack.duration + (isAttacker ? 2.0 : 0)
-                        damage += fastDamage
-                        energy += fastAttack.energy
-                        energy = min(energy, 100)
-                        energy = useCharge ? energy : 0
-                    } else {
-                        second += chargeAttack.duration + (isAttacker ? 2.0 : 0.5)
-                        damage += chargeDamage
-                        energy -= chargeAttack.energy
-                    }
-                    if Double(damage) > myPokemon.hp { break }
-                }
-                limitTime = min(limitTime, second)
-            }
-        }
-        return limitTime
+        
+        let attackDetail = battle(pokemon, opponent: opponent, isAttacker: true)
+        gymAttackValueButton.setTitle("\(attackDetail.percent)", forState: .Normal)
+        let defendDetail = battle(pokemon, opponent: opponent, isAttacker: false)
+        gymDefendValueButton.setTitle("\(defendDetail.percent)", forState: .Normal)
     }
     
     @IBAction func touchUpGymAttackValueButton(sender: AnyObject) {
         print("show attack details")
-        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
-        let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
-        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
-        let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
-        let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
-        let def = (108 + 15) * 0.59740001
-        let fastDamage = Int(0.5 * fastPower * att / def) + 1
-        let chargeDamage = Int(0.5 * chargePower * att / def) + 1
-        let useCharge = Double(chargeDamage) / (chargeAttack.duration + 0.5) > Double(fastDamage) / fastAttack.duration
-        var damage = 0
-        var fastTime = 0
-        var chargeTime = 0
-        var second = 0.0
-        var energy = 0.0
-        while(true) {
-            if energy < chargeAttack.energy {
-                second += fastAttack.duration
-                if second > 60 { break }
-                damage += fastDamage
-                energy += fastAttack.energy
-                energy = min(energy, 100)
-                energy = useCharge ? energy : 0
-                fastTime += 1
-            } else {
-                second += chargeAttack.duration + 0.5
-                if second > 60 { break }
-                damage += chargeDamage
-                energy -= chargeAttack.energy
-                chargeTime += 1
-            }
-        }
+        var opponent = pokemonData[148]
+        opponent.level = 20
         
+        let attackDetail = battle(pokemon, opponent: opponent, isAttacker: true)
         var title = "", message = "", confirm = ""
         switch userLang {
         case .English:
             title = "Attack Details"
-            message = "Battle with Lv.20 Pikachu\nFast Attack Damage: \(fastDamage)\tTimes: \(fastTime)\nCharge Attack Damage: \(chargeDamage)\tTimes: \(chargeTime)\n60 seconds total damage: \(damage)"
+            message = "Battle with CP \(Int(opponent.cp)) \(opponent.name[0])\nFight \(attackDetail.battleTime) seconds before you die\n\nFast Attack Damage: \(attackDetail.fastDamage) Times: \(attackDetail.fastTime)\nCharge Attack Damage: \(attackDetail.chargeDamage) Times: \(attackDetail.chargeTime)\nTotal damage: \(attackDetail.totalDamage)(opponent \(attackDetail.percent)% HP)"
             confirm = "OK"
         case .Chinese, .Austrian:
             title = "進攻數據"
-            message = "對戰 Lv.20 皮卡丘\n快速攻擊傷害: \(fastDamage)\t次數: \(fastTime)\n蓄力攻擊傷害: \(chargeDamage)\t次數: \(chargeTime)\n60秒總傷害: \(damage)"
+            message = "對戰 CP \(Int(opponent.cp)) \(opponent.name[1])\n血量歸零前戰鬥 \(attackDetail.battleTime) 秒\n\n快速攻擊傷害: \(attackDetail.fastDamage) 次數: \(attackDetail.fastTime)\n蓄力攻擊傷害: \(attackDetail.chargeDamage) 次數: \(attackDetail.chargeTime)\n總傷害: \(attackDetail.totalDamage) (對手 \(attackDetail.percent)% HP)"
             confirm = "確認"
         }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
@@ -839,48 +681,34 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     @IBAction func touchUpGymDefendValueButton(sender: AnyObject) {
-        let fastAttack = pokemon.fastAttacks[fastAttackSegmented.selectedSegmentIndex]
-        let fastPower = pokemon.type.contains(fastAttack.type) ? fastAttack.damage * 1.25 : fastAttack.damage
-        let chargeAttack = pokemon.chargeAttacks[chargeAttackSegmented.selectedSegmentIndex]
-        let chargePower = pokemon.type.contains(chargeAttack.type) ? chargeAttack.damage * 1.25 : chargeAttack.damage
-        let att = (pokemon.baseAtt + pokemon.indiAtk) * pokemon.CPM
-        let def = (108 + 15) * 0.59740001
-        let fastDamage = Int(0.5 * fastPower * att / def) + 1
-        let chargeDamage = Int(0.5 * chargePower * att / def) + 1
+        print("show Defend details")
+        var opponent = pokemonData[148]
+        opponent.level = 20
         
-        var damage = 0
-        var fastTime = 0
-        var chargeTime = 0
-        var second = 0.0
-        var energy = 0.0
-        while(true) {
-            if energy < chargeAttack.energy {
-                second += fastAttack.duration + 2.0
-                if second > 60 { break }
-                damage += fastDamage
-                energy += fastAttack.energy
-                energy = min(energy, 100)
-                fastTime += 1
-            } else {
-                second += chargeAttack.duration + 2.0
-                if second > 60 { break }
-                damage += chargeDamage
-                energy -= chargeAttack.energy
-                chargeTime += 1
-            }
-        }
-        
+        let attackDetail = battle(pokemon, opponent: opponent, isAttacker: false)
         var title = "", message = "", confirm = ""
         switch userLang {
         case .English:
             title = "Defend Details"
-            message = "Battle with Lv.20 Pikachu\nFast Attack Damage: \(fastDamage)\tTimes: \(fastTime)\nCharge Attack Damage: \(chargeDamage)\tTimes: \(chargeTime)\n60 seconds total damage: \(damage)"
+            message = "Battle with CP \(Int(opponent.cp)) \(opponent.name[0])\nFight \(attackDetail.battleTime) seconds before you die\n\nFast Attack Damage: \(attackDetail.fastDamage) Times: \(attackDetail.fastTime)\nCharge Attack Damage: \(attackDetail.chargeDamage) Times: \(attackDetail.chargeTime)\nTotal damage: \(attackDetail.totalDamage)(opponent \(attackDetail.percent)% HP)"
             confirm = "OK"
         case .Chinese, .Austrian:
             title = "防守數據"
-            message = "對戰 Lv.20 皮卡丘\n快速攻擊傷害: \(fastDamage)\t次數: \(fastTime)\n蓄力攻擊傷害: \(chargeDamage)\t次數: \(chargeTime)\n60秒總傷害: \(damage)"
+            message = "對戰 CP \(Int(opponent.cp)) \(opponent.name[1])\n血量歸零前戰鬥 \(attackDetail.battleTime) 秒\n\n快速攻擊傷害: \(attackDetail.fastDamage) 次數: \(attackDetail.fastTime)\n蓄力攻擊傷害: \(attackDetail.chargeDamage) 次數: \(attackDetail.chargeTime)\n總傷害: \(attackDetail.totalDamage) (對手 \(attackDetail.percent)% HP)"
             confirm = "確認"
         }
+//        
+//        var title = "", message = "", confirm = ""
+//        switch userLang {
+//        case .English:
+//            title = "Defend Details"
+//            message = "Battle with Lv.20 Pikachu\nFast Attack Damage: \(fastDamage)\tTimes: \(fastTime)\nCharge Attack Damage: \(chargeDamage)\tTimes: \(chargeTime)\n60 seconds total damage: \(damage)"
+//            confirm = "OK"
+//        case .Chinese, .Austrian:
+//            title = "防守數據"
+//            message = "對戰 Lv.20 皮卡丘\n快速攻擊傷害: \(fastDamage)\t次數: \(fastTime)\n蓄力攻擊傷害: \(chargeDamage)\t次數: \(chargeTime)\n60秒總傷害: \(damage)"
+//            confirm = "確認"
+//        }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: confirm, style: .Default, handler: nil)
         alertController.addAction(okAction)

@@ -34,9 +34,9 @@ struct Pokemon {
             calculateIndiValue()
         }
     }
-    var minHp:Double
-    var maxHp:Double
-    var hp:Double {
+    var minHp:Int
+    var maxHp:Int
+    var hp:Int {
         didSet {
             calculateIndiValue()
         }
@@ -47,8 +47,8 @@ struct Pokemon {
             stardust = levelData[level]!["stardust"]!
             candy = levelData[level]!["Candies"]!
             
-            minHp = Double(lround(baseSta * CPM > 10 ? baseSta * CPM : 10))
-            maxHp = Double(lround((baseSta + 15) * CPM > 10 ? (baseSta + 15) * CPM : 10))
+            minHp = lround(baseSta * CPM > 10 ? baseSta * CPM : 10)
+            maxHp = lround((baseSta + 15) * CPM > 10 ? (baseSta + 15) * CPM : 10)
             hp = min(max(hp, minHp),maxHp)
             
             minCp = Double(lround(baseAtt * pow(baseDef,0.5) * pow(baseSta,0.5) * pow(CPM, 2) / 10))
@@ -90,9 +90,9 @@ struct Pokemon {
         self.minCp = 0.0
         self.maxCp = 0.0
         self.cp = 0.0
-        self.minHp = 0.0
-        self.maxHp = 0.0
-        self.hp = 0.0
+        self.minHp = 0
+        self.maxHp = 0
+        self.hp = 0
         self.level = 20.0
     }
     
@@ -106,7 +106,7 @@ struct Pokemon {
         var staRange = [Int]()
         for sta in (0...15) {
             let totalSta = Int((baseSta + Double(sta)) * CPM)
-            let hp = Double(totalSta > 10 ? totalSta : 10)
+            let hp = totalSta > 10 ? totalSta : 10
             if hp == self.hp {
                 staRange.append(sta)
             }
@@ -141,7 +141,7 @@ struct Pokemon {
         var staRange = [Int]()
         for sta in (0...15) {
             let totalSta = Int((baseSta + Double(sta)) * CPM)
-            let hp = Double(totalSta > 10 ? totalSta : 10)
+            let hp = totalSta > 10 ? totalSta : 10
             if hp == self.hp {
                 staRange.append(sta)
             }
