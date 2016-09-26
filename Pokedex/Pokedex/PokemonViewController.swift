@@ -57,6 +57,8 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var chargeAttackSecondLabel: UILabel!
     @IBOutlet weak var chargeAttackDPSLabel: UILabel!
     @IBOutlet weak var chargeAttackEnergyLabel: UILabel!
+    
+    @IBOutlet weak var gymOpponentButton: UIButton!
     @IBOutlet weak var gymAttackValueButton: UIButton!
     @IBOutlet weak var gymDefendValueButton: UIButton!
 
@@ -65,7 +67,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var pokemonType2Image: UIImageView!
     @IBOutlet weak var suggestAttackerView: MyCustomView!
     @IBOutlet weak var suggestAttackerViewHeightConstraint: NSLayoutConstraint!
-    
     
     let levelRulerSlider = RulerSlider(frame: CGRectZero)
     let pokemonCPSlider = RangeSlider(frame: CGRectZero)
@@ -913,6 +914,11 @@ extension PokemonViewController: pokemonDelegate{
             let controller = segue.destinationViewController as! ProIVViewController
             controller.pokemon = pokemon
             controller.delegate = self
+        }
+        if segue.identifier == "showBattleOpponentViewController" {
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            self.navigationItem.backBarButtonItem = backItem
         }
     }
     

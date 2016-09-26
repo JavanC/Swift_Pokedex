@@ -31,6 +31,7 @@
 		8DD3EBA31D7DA3C200ED9093 /* MyCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD3EBA21D7DA3C200ED9093 /* MyCustomButton.swift */; };
 		AE0415BC1D7D610100924EEA /* ProIVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0415BB1D7D610100924EEA /* ProIVViewController.swift */; };
 		AE23B5641D66A7700002003E /* LevelDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23B5631D66A7700002003E /* LevelDataList.swift */; };
+		AE5563C61D9917EA0050955A /* BattleOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5563C51D9917EA0050955A /* BattleOpponentViewController.swift */; };
 		AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */; };
 		AE8C7F381D658E4E00BBE93E /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */; };
 		AE922B3F1D6FE7C70015CAC5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE922B3E1D6FE7C70015CAC5 /* Reachability.swift */; };
@@ -72,6 +73,7 @@
 		8DD3EBA21D7DA3C200ED9093 /* MyCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomButton.swift; sourceTree = "<group>"; };
 		AE0415BB1D7D610100924EEA /* ProIVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProIVViewController.swift; sourceTree = "<group>"; };
 		AE23B5631D66A7700002003E /* LevelDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDataList.swift; sourceTree = "<group>"; };
+		AE5563C51D9917EA0050955A /* BattleOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleOpponentViewController.swift; sourceTree = "<group>"; };
 		AE86ED1B1D6D3CEF00B5E4C0 /* MovesDataList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovesDataList.swift; sourceTree = "<group>"; };
 		AE8C7F371D658E4E00BBE93E /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		AE922B3E1D6FE7C70015CAC5 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				AEF8A2221D6E972600C94E21 /* SettingViewController.swift */,
 				8D5A31DA1D70A52E00B8CE55 /* TeachViewController.swift */,
 				AE0415BB1D7D610100924EEA /* ProIVViewController.swift */,
+				AE5563C51D9917EA0050955A /* BattleOpponentViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				8DB69E161D636859006EF766 /* PokedexViewController.swift in Sources */,
 				AE86ED1C1D6D3CEF00B5E4C0 /* MovesDataList.swift in Sources */,
 				AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */,
+				AE5563C61D9917EA0050955A /* BattleOpponentViewController.swift in Sources */,
 				AEF8A2231D6E972600C94E21 /* SettingViewController.swift in Sources */,
 				AE9265871D95002C0097C064 /* BattleCalculate.swift in Sources */,
 				8DB69E141D636859006EF766 /* AppDelegate.swift in Sources */,
