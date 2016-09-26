@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var pokemon = pokemonData[data["pokemonDataIndex"] as! Int]
                 pokemon.level = data["level"] as! Double
                 pokemon.cp = data["cp"] as! Double
-                pokemon.hp = data["hp"] as! Double
+                pokemon.hp = data["hp"] as! Int
                 pokemon.indiAtk = data["indiAtk"] as! Double
                 pokemon.indiDef = data["indiDef"] as! Double
                 pokemon.indiSta = data["indiSta"] as! Double

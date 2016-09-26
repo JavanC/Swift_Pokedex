@@ -32,7 +32,7 @@ class ProIVViewController: UIViewController {
     @IBOutlet weak var OKButton: UIButton!
     
     var cp: Double!
-    var hp: Double!
+    var hp: Int!
     var starDust: Double!
     var pokemon: Pokemon!
     var delegate : pokemonDelegate?

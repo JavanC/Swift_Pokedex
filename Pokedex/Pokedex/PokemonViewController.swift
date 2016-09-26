@@ -652,9 +652,23 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         var opponent = pokemonData[148]
         opponent.level = 20
         
-        let attackDetail = battle(pokemon, opponent: opponent, isAttacker: true)
+        var attackDetail = battle(pokemon, defender: opponent, stopTrigger: 1)
+        var defendDetail = battle(opponent, defender: pokemon, stopTrigger: 2)
+        for fastNumber in 0...opponent.fastAttacks.count - 1 {
+            for chargeNumber in 0...opponent.chargeAttacks.count - 1 {
+                opponent.fastAttackNumber = fastNumber
+                opponent.chargeAttackNumber = chargeNumber
+                let A_detail = battle(pokemon, defender: opponent, stopTrigger: 1)
+                if A_detail.percent < attackDetail.percent {
+                    attackDetail = A_detail
+                }
+                let D_detail = battle(opponent, defender: pokemon, stopTrigger: 2)
+                if D_detail.percent < defendDetail.percent {
+                    defendDetail = D_detail
+                }
+            }
+        }
         gymAttackValueButton.setTitle("\(attackDetail.percent)", forState: .Normal)
-        let defendDetail = battle(pokemon, opponent: opponent, isAttacker: false)
         gymDefendValueButton.setTitle("\(defendDetail.percent)", forState: .Normal)
     }
     
@@ -663,16 +677,27 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         var opponent = pokemonData[148]
         opponent.level = 20
         
-        let attackDetail = battle(pokemon, opponent: opponent, isAttacker: true)
+        var attackDetail = battle(pokemon, defender: opponent, stopTrigger: 1)
+        for fastNumber in 0...opponent.fastAttacks.count - 1 {
+            for chargeNumber in 0...opponent.chargeAttacks.count - 1 {
+                opponent.fastAttackNumber = fastNumber
+                opponent.chargeAttackNumber = chargeNumber
+                let A_detail = battle(pokemon, defender: opponent, stopTrigger: 1)
+                if A_detail.percent < attackDetail.percent {
+                    attackDetail = A_detail
+                }
+            }
+        }
+        
         var title = "", message = "", confirm = ""
         switch userLang {
         case .English:
             title = "Attack Details"
-            message = "Battle with CP \(Int(opponent.cp)) \(opponent.name[0])\nFight \(attackDetail.battleTime) seconds before you die\n\nFast Attack Damage: \(attackDetail.fastDamage) Times: \(attackDetail.fastTime)\nCharge Attack Damage: \(attackDetail.chargeDamage) Times: \(attackDetail.chargeTime)\nTotal damage: \(attackDetail.totalDamage)(opponent \(attackDetail.percent)% HP)"
+            message = "Battle with CP \(Int(opponent.cp)) \(opponent.name[0])\nFight \(String(format: "%.1f", attackDetail.battleTime)) seconds before you die\n\nFast Attack Damage: \(attackDetail.fastDamage) Times: \(attackDetail.fastTime)\nCharge Attack Damage: \(attackDetail.chargeDamage) Times: \(attackDetail.chargeTime)\nTotal damage: \(attackDetail.totalDamage)(opponent \(attackDetail.percent)% HP)"
             confirm = "OK"
         case .Chinese, .Austrian:
             title = "進攻數據"
-            message = "對戰 CP \(Int(opponent.cp)) \(opponent.name[1])\n血量歸零前戰鬥 \(attackDetail.battleTime) 秒\n\n快速攻擊傷害: \(attackDetail.fastDamage) 次數: \(attackDetail.fastTime)\n蓄力攻擊傷害: \(attackDetail.chargeDamage) 次數: \(attackDetail.chargeTime)\n總傷害: \(attackDetail.totalDamage) (對手 \(attackDetail.percent)% HP)"
+            message = "對戰 CP \(Int(opponent.cp)) \(opponent.name[1])\n血量歸零前戰鬥 \(String(format: "%.1f", attackDetail.battleTime)) 秒\n\n快速攻擊傷害: \(attackDetail.fastDamage) 次數: \(attackDetail.fastTime)\n蓄力攻擊傷害: \(attackDetail.chargeDamage) 次數: \(attackDetail.chargeTime)\n總傷害: \(attackDetail.totalDamage) (對手 \(attackDetail.percent)% HP)"
             confirm = "確認"
         }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
@@ -685,30 +710,29 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         var opponent = pokemonData[148]
         opponent.level = 20
         
-        let attackDetail = battle(pokemon, opponent: opponent, isAttacker: false)
+        var defendDetail = battle(opponent, defender: pokemon, stopTrigger: 2)
+        for fastNumber in 0...opponent.fastAttacks.count - 1 {
+            for chargeNumber in 0...opponent.chargeAttacks.count - 1 {
+                opponent.fastAttackNumber = fastNumber
+                opponent.chargeAttackNumber = chargeNumber
+                let D_detail = battle(opponent, defender: pokemon, stopTrigger: 2)
+                if D_detail.percent < defendDetail.percent {
+                    defendDetail = D_detail
+                }
+            }
+        }
+    
         var title = "", message = "", confirm = ""
         switch userLang {
         case .English:
             title = "Defend Details"
-            message = "Battle with CP \(Int(opponent.cp)) \(opponent.name[0])\nFight \(attackDetail.battleTime) seconds before you die\n\nFast Attack Damage: \(attackDetail.fastDamage) Times: \(attackDetail.fastTime)\nCharge Attack Damage: \(attackDetail.chargeDamage) Times: \(attackDetail.chargeTime)\nTotal damage: \(attackDetail.totalDamage)(opponent \(attackDetail.percent)% HP)"
+            message = "Battle with CP \(Int(opponent.cp)) \(opponent.name[0])\nFight \(String(format: "%.1f", defendDetail.battleTime)) seconds before you die\n\nFast Attack Damage: \(defendDetail.fastDamage) Times: \(defendDetail.fastTime)\nCharge Attack Damage: \(defendDetail.chargeDamage) Times: \(defendDetail.chargeTime)\nTotal damage: \(defendDetail.totalDamage)(opponent \(defendDetail.percent)% HP)"
             confirm = "OK"
         case .Chinese, .Austrian:
             title = "防守數據"
-            message = "對戰 CP \(Int(opponent.cp)) \(opponent.name[1])\n血量歸零前戰鬥 \(attackDetail.battleTime) 秒\n\n快速攻擊傷害: \(attackDetail.fastDamage) 次數: \(attackDetail.fastTime)\n蓄力攻擊傷害: \(attackDetail.chargeDamage) 次數: \(attackDetail.chargeTime)\n總傷害: \(attackDetail.totalDamage) (對手 \(attackDetail.percent)% HP)"
+            message = "對戰 CP \(Int(opponent.cp)) \(opponent.name[1])\n血量歸零前戰鬥 \(String(format: "%.1f", defendDetail.battleTime)) 秒\n\n快速攻擊傷害: \(defendDetail.fastDamage) 次數: \(defendDetail.fastTime)\n蓄力攻擊傷害: \(defendDetail.chargeDamage) 次數: \(defendDetail.chargeTime)\n總傷害: \(defendDetail.totalDamage) (對手 \(defendDetail.percent)% HP)"
             confirm = "確認"
         }
-//        
-//        var title = "", message = "", confirm = ""
-//        switch userLang {
-//        case .English:
-//            title = "Defend Details"
-//            message = "Battle with Lv.20 Pikachu\nFast Attack Damage: \(fastDamage)\tTimes: \(fastTime)\nCharge Attack Damage: \(chargeDamage)\tTimes: \(chargeTime)\n60 seconds total damage: \(damage)"
-//            confirm = "OK"
-//        case .Chinese, .Austrian:
-//            title = "防守數據"
-//            message = "對戰 Lv.20 皮卡丘\n快速攻擊傷害: \(fastDamage)\t次數: \(fastTime)\n蓄力攻擊傷害: \(chargeDamage)\t次數: \(chargeTime)\n60秒總傷害: \(damage)"
-//            confirm = "確認"
-//        }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: confirm, style: .Default, handler: nil)
         alertController.addAction(okAction)

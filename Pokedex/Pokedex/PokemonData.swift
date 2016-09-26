@@ -47,8 +47,8 @@ struct Pokemon {
             stardust = levelData[level]!["stardust"]!
             candy = levelData[level]!["Candies"]!
             
-            minHp = lround(baseSta * CPM > 10 ? baseSta * CPM : 10)
-            maxHp = lround((baseSta + 15) * CPM > 10 ? (baseSta + 15) * CPM : 10)
+            minHp = Int(baseSta * CPM > 10 ? baseSta * CPM : 10)
+            maxHp = Int((baseSta + 15) * CPM > 10 ? (baseSta + 15) * CPM : 10)
             hp = min(max(hp, minHp),maxHp)
             
             minCp = Double(lround(baseAtt * pow(baseDef,0.5) * pow(baseSta,0.5) * pow(CPM, 2) / 10))
