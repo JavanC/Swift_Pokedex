@@ -8,10 +8,21 @@
 
 import UIKit
 
+protocol OpponentDelegate{
+    func sendOpponentData(opponent: Pokemon)
+}
+
 class BattleOpponentViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
     
-     override func viewDidLoad() {
+    @IBOutlet weak var cpTextField: UITextField!
+    @IBOutlet weak var OpponentImage: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var battleButton: UIButton!
+
+    var opponent: Pokemon!
+    var delegate : OpponentDelegate?
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
     }
@@ -33,6 +44,61 @@ class BattleOpponentViewController: UIViewController {
         shadowView.layer.position = CGPoint(x: navigationBarFrame.width / 2, y:  -navigationBarFrame.height / 2)
         self.view.addSubview(shadowView)
         
+        // Initial opponent
+        opponent = pokemonData[24]
+        opponent.level = 20
+        opponent.cp = 500
+        opponent.hp = 50
+        
+        // cpTextField
+        cpTextField.keyboardType = .NumberPad
+        
+        // collection view
+        collectionView.backgroundColor = teamColor(alpha: 0.04)
+        collectionView.allowsMultipleSelection = false
+        let firstIndexPath = NSIndexPath(forItem: 24, inSection: 0)
+        collectionView.selectItemAtIndexPath(firstIndexPath, animated: false, scrollPosition: UICollectionViewScrollPosition.Left)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        view.endEditing(true)
+        calculateOpponentLevel()
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    func calculateOpponentLevel() {
+        // get cp
+        var cp: Double = 10
+        if let str = cpTextField.text {
+            if str == "" {
+                cp = 500
+            } else {
+                cp = Double(str)!
+            }
+        }
+        // get level
+        var posibleLevel = [Double]()
+        for level in 2...80 {
+            opponent.level = Double(level) / 2
+            if cp >= opponent.minCp && cp <= opponent.maxCp {
+                posibleLevel.append(opponent.level)
+            }
+        }
+        // set opponent
+        if posibleLevel.count != 0 {
+            opponent.level = posibleLevel.last!
+            opponent.cp = cp
+            battleButton.enabled = true
+            battleButton.backgroundColor = teamColor(alpha: 1)
+        } else {
+            battleButton.enabled = false
+            battleButton.backgroundColor = UIColor.lightGrayColor()
+        }
+    }
+    
+    @IBAction func battleButtonTouchUp(sender: AnyObject) {
+        delegate?.sendOpponentData(opponent)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // update team and language
@@ -49,9 +115,9 @@ class BattleOpponentViewController: UIViewController {
     func updateLanguage() {
         switch userLang {
         case .English:
-           break
+            title = "Opponent"
         case .Chinese, .Austrian:
-            break
+            title = "對戰對手"
         }
     }
 }
@@ -60,36 +126,21 @@ extension BattleOpponentViewController: UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pokemonData.count
     }
-//    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-//        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PokedexCollectionViewCell {
-//            cell.imageView.frame = CGRect(x: 5, y: 5, width: 70, height: 70)
-//        }
-//    }
-//    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-//        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? PokedexCollectionViewCell {
-//            cell.imageView.frame = CGRect(x: 10, y: 10, width: 60, height: 60)
-//        }
-//    }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        cell.backgroundView?.backgroundColor = UIColor.lightGrayColor()
-        
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath)
-//        if let cell = cell as? PokedexCollectionViewCell {
-//            cell.pokemon = isShowFavorite ? favoritePokemonData[indexPath.row] : pokemonData[indexPath.row]
-//            if isShowFavorite {
-//                cell.pokeNumber.text = "CP\(Int(favoritePokemonData[indexPath.row].cp))"
-//            }
-//        }
-        return cell
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        view.endEditing(true)
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? OpponentCollectionViewCell {
+            OpponentImage.image = cell.imageView.image
+            opponent = cell.pokemon
+            calculateOpponentLevel()
+        }
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-        
-//        print(UIScreen.mainScreen().bounds.size)
-        
-        let frameWidth = UIScreen.mainScreen().bounds.size.width
-        let cellNumber = CGFloat(Int(frameWidth / 50))
-        let inset = (frameWidth % 50) / (cellNumber + 1)
-        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath)
+        if let cell = cell as? OpponentCollectionViewCell {
+            cell.pokemon = pokemonData[indexPath.row]
+        }
+        return cell
     }
 }

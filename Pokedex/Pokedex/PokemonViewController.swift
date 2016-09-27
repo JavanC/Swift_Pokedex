@@ -58,6 +58,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var chargeAttackDPSLabel: UILabel!
     @IBOutlet weak var chargeAttackEnergyLabel: UILabel!
     
+    @IBOutlet weak var gymBattleLabel: UILabel!
     @IBOutlet weak var gymOpponentButton: UIButton!
     @IBOutlet weak var gymAttackValueButton: UIButton!
     @IBOutlet weak var gymDefendValueButton: UIButton!
@@ -75,6 +76,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     let cpValueArcLayer = CAShapeLayer()
     
     var pokemon: Pokemon!
+    var opponent: Pokemon!
     var favoritePokemonIndex: Int!
     var trainerLevel = 0.0 {
         didSet {
@@ -148,9 +150,12 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         chargeAttackSegmentValueChange(chargeAttackSegmented)
     }
     
-    private func loadData() {
+    private func loadData() {        
         let defaults = NSUserDefaults.standardUserDefaults()
         trainerLevel = defaults.doubleForKey("trainerLevel") != 0 ? defaults.doubleForKey("trainerLevel") : 20
+        
+        // initial opponent
+        sendOpponentData(opponent)
     }
     
     private func configureView() {
@@ -650,9 +655,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     
     func updateGymStrength() {
-        var opponent = pokemonData[148]
-        opponent.level = 20
-        
         var attackDetail = battle(pokemon, defender: opponent, stopTrigger: 1)
         var defendDetail = battle(opponent, defender: pokemon, stopTrigger: 2)
         for fastNumber in 0...opponent.fastAttacks.count - 1 {
@@ -675,9 +677,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     
     @IBAction func touchUpGymAttackValueButton(sender: AnyObject) {
         print("show attack details")
-        var opponent = pokemonData[148]
-        opponent.level = 20
-        
         var attackDetail = battle(pokemon, defender: opponent, stopTrigger: 1)
         for fastNumber in 0...opponent.fastAttacks.count - 1 {
             for chargeNumber in 0...opponent.chargeAttacks.count - 1 {
@@ -708,9 +707,6 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     }
     @IBAction func touchUpGymDefendValueButton(sender: AnyObject) {
         print("show Defend details")
-        var opponent = pokemonData[148]
-        opponent.level = 20
-        
         var defendDetail = battle(opponent, defender: pokemon, stopTrigger: 2)
         for fastNumber in 0...opponent.fastAttacks.count - 1 {
             for chargeNumber in 0...opponent.chargeAttacks.count - 1 {
@@ -894,16 +890,16 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
             chargeAttackSecondTitleLabel.text = "攻速"
             chargeAttackDPSTitleLabel.text = "秒傷"
             chargeAttackEnergyTitleLabel.text = "能量"
-            GYMPowerTitleLabel.text = "道館攻守傷害"
-            GYMAttackTitleLabel.text = "攻擊方"
-            GYMDefendTitleLabel.text = "防守方"
-            typeViewTitleLabel.text = "弱點&抗性"
+            GYMPowerTitleLabel.text = "道館攻守表現"
+            GYMAttackTitleLabel.text = "攻擊"
+            GYMDefendTitleLabel.text = "防守"
+            typeViewTitleLabel.text = "遭受攻擊加乘"
             suggestAttackerTitleLabel.text = "建議攻擊者&技能"
         }
     }
 }
 
-extension PokemonViewController: pokemonDelegate{
+extension PokemonViewController: pokemonDelegate, OpponentDelegate{
     
     // pro iv calculate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -919,6 +915,8 @@ extension PokemonViewController: pokemonDelegate{
             let backItem = UIBarButtonItem()
             backItem.title = "Back"
             self.navigationItem.backBarButtonItem = backItem
+            let controller = segue.destinationViewController as! BattleOpponentViewController
+            controller.delegate = self
         }
     }
     
@@ -941,6 +939,20 @@ extension PokemonViewController: pokemonDelegate{
         ivValueLabel.text = "\(Int(persent * 100))%"
         ivValueCircleLayer.strokeEnd = CGFloat(persent)
         
+        updateGymStrength()
+    }
+    
+    func sendOpponentData(opponent: Pokemon) {
+        self.opponent = opponent
+        gymOpponentButton.setBackgroundImage(UIImage(named: opponent.number)!, forState: .Normal)
+        switch userLang {
+        case .English:
+            gymBattleLabel.text = "Battle with cp \(Int(opponent.cp)) \(opponent.name[0])"
+        case .Chinese:
+            gymBattleLabel.text = "對戰 cp \(Int(opponent.cp)) \(opponent.name[1])"
+        case .Austrian:
+            gymBattleLabel.text = "對戰 cp \(Int(opponent.cp)) \(opponent.name[2])"
+        }
         updateGymStrength()
     }
 }

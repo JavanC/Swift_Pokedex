@@ -91,6 +91,11 @@ class PokedexViewController: UIViewController {
             let pokemon = isShowFavorite ? favoritePokemonData[indexPath.row] : pokemonData[indexPath.row]
             let controller = segue.destinationViewController as! PokemonViewController
             controller.pokemon = pokemon
+            var opponent = pokemonData[24]
+            opponent.level = 20
+            opponent.cp = 500
+            opponent.hp = 50
+            controller.opponent = opponent
             controller.favoritePokemonIndex = indexPath.row
         }
     }

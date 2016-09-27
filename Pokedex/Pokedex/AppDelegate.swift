@@ -21,6 +21,16 @@ let colorB = UIColor(hex: 0x0091E5, alpha: 1)
 let colorBGR = UIColor(hex: 0xFF7768, alpha: 0.04)
 let colorBGY = UIColor(hex: 0xF9CB11, alpha: 0.04)
 let colorBGB = UIColor(hex: 0x0091E5, alpha: 0.04)
+func teamColor(alpha alpha: CGFloat) -> UIColor {
+    switch userTeam {
+    case .Instinct:
+        return UIColor(hex: 0xF9CB11, alpha: alpha)
+    case .Mystic:
+        return UIColor(hex: 0x0091E5, alpha: alpha)
+    case .Valor:
+        return UIColor(hex: 0xFF7768, alpha: alpha)
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
