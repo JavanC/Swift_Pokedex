@@ -281,13 +281,7 @@ class ProIVViewController: UIViewController {
                     }
                 }
                 OKButton.enabled = true
-                if userTeam == .Instinct {
-                    OKButton.backgroundColor = colorY
-                } else if userTeam == .Mystic {
-                    OKButton.backgroundColor = colorB
-                } else {
-                    OKButton.backgroundColor = colorR
-                }
+                OKButton.backgroundColor = teamColor(alpha: 1)
             } else {
                 levelLabel.text = "?"
                 ATKLabel.text = "?"
@@ -318,26 +312,11 @@ class ProIVViewController: UIViewController {
     @IBOutlet weak var accurateDataTitleLabel: UILabel!
     @IBOutlet weak var levelTitleLabel: UILabel!
     func updateTeamColor() {
-        switch userTeam {
-        case .Instinct:
-            analysisSlider.trackTintColor = colorY
-            statsSlider.trackTintColor = colorY
-            ATKButton.buttonColor = colorY
-            DEFButton.buttonColor = colorY
-            STAButton.buttonColor = colorY
-        case .Mystic:
-            analysisSlider.trackTintColor = colorB
-            statsSlider.trackTintColor = colorB
-            ATKButton.buttonColor = colorB
-            DEFButton.buttonColor = colorB
-            STAButton.buttonColor = colorB
-        case .Valor:
-            analysisSlider.trackTintColor = colorR
-            statsSlider.trackTintColor = colorR
-            ATKButton.buttonColor = colorR
-            DEFButton.buttonColor = colorR
-            STAButton.buttonColor = colorR
-        }
+        analysisSlider.trackTintColor = teamColor(alpha: 1)
+        statsSlider.trackTintColor = teamColor(alpha: 1)
+        ATKButton.buttonColor = teamColor(alpha: 1)
+        DEFButton.buttonColor = teamColor(alpha: 1)
+        STAButton.buttonColor = teamColor(alpha: 1)
     }
     func updateLanguage() {
         switch userLang {

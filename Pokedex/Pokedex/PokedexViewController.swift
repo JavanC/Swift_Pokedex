@@ -108,10 +108,10 @@ class PokedexViewController: UIViewController {
     func checkRateUs() {
         var openTimes = NSUserDefaults.standardUserDefaults().integerForKey("openTimes")
         let noMoreRate = NSUserDefaults.standardUserDefaults().boolForKey("noMoreRate")
-        if !hasTeach { openTimes = 10 }
+        if !hasTeach { openTimes = 15 }
         openTimes += 1
         print("open time: \(openTimes), no more rate: \(noMoreRate)")
-        if openTimes % 20 == 0 && !noMoreRate{
+        if openTimes % 25 == 0 && !noMoreRate{
             var title = "", message = "", action1Title = "", action2Title = "", action3Title = ""
             switch userLang {
             case .English:
@@ -158,20 +158,9 @@ class PokedexViewController: UIViewController {
     // update team and language
     @IBOutlet weak var backgroundImage: UIImageView!
     func updateTeamColor() {
-        switch userTeam {
-        case .Instinct:
-            backgroundImage.image = UIImage(named: "team-instinct")
-            collectionView.backgroundColor = colorBGY
-            self.navigationController?.navigationBar.barTintColor = colorY
-        case .Mystic:
-            backgroundImage.image = UIImage(named: "team-mystic")
-            collectionView.backgroundColor = colorBGB
-            self.navigationController?.navigationBar.barTintColor = colorB
-        case .Valor:
-            backgroundImage.image = UIImage(named: "team-valor")
-            collectionView.backgroundColor = colorBGR
-            self.navigationController?.navigationBar.barTintColor = colorR
-        }
+        navigationController?.navigationBar.barTintColor = teamColor(alpha: 1)
+        collectionView.backgroundColor = teamColor(alpha: 0.04)
+        backgroundImage.image = teamImage()
     }
     func updateLanguage() {
         switch userLang {

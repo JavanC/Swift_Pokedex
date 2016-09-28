@@ -15,20 +15,18 @@ var userLang = Lang.English
 var hasTeach = false
 var isShowFavorite = false
 var favoritePokemonData = [Pokemon]()
-let colorR = UIColor(hex: 0xFF7768, alpha: 1)
-let colorY = UIColor(hex: 0xF9CB11, alpha: 1)
-let colorB = UIColor(hex: 0x0091E5, alpha: 1)
-let colorBGR = UIColor(hex: 0xFF7768, alpha: 0.04)
-let colorBGY = UIColor(hex: 0xF9CB11, alpha: 0.04)
-let colorBGB = UIColor(hex: 0x0091E5, alpha: 0.04)
 func teamColor(alpha alpha: CGFloat) -> UIColor {
     switch userTeam {
-    case .Instinct:
-        return UIColor(hex: 0xF9CB11, alpha: alpha)
-    case .Mystic:
-        return UIColor(hex: 0x0091E5, alpha: alpha)
-    case .Valor:
-        return UIColor(hex: 0xFF7768, alpha: alpha)
+    case .Instinct: return UIColor(hex: 0xF9CB11, alpha: alpha)
+    case .Mystic:   return UIColor(hex: 0x0091E5, alpha: alpha)
+    case .Valor:    return UIColor(hex: 0xFF7768, alpha: alpha)
+    }
+}
+func teamImage() -> UIImage {
+    switch userTeam {
+    case .Instinct: return UIImage(named: "team-instinct")!
+    case .Mystic:   return UIImage(named: "team-mystic")!
+    case .Valor:    return UIImage(named: "team-valor")!
     }
 }
 

@@ -1725,7 +1725,7 @@ CFBybw
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkC-Ny-84Q" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="4B2-R8-H7R"/>
                                                             <constraint firstAttribute="width" constant="40" id="W5Q-I2-r8r"/>
@@ -1738,16 +1738,19 @@ CFBybw
                                                                 <real key="value" value="2"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ze-ka-ZEr">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ze-ka-ZEr">
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="bkQ-qJ-QpQ"/>
                                                             <constraint firstAttribute="height" constant="30" id="nhf-6m-xJ7"/>
                                                         </constraints>
-                                                        <state key="normal" backgroundImage="#025"/>
+                                                        <state key="normal" backgroundImage="#025">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="highlighted" backgroundImage="#025"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                 <color key="value" cocoaTouchSystemColor="darkTextColor"/>
@@ -2154,6 +2157,7 @@ CFBybw
                     <connections>
                         <outlet property="CPHPView" destination="AHD-Kn-hG7" id="F0C-h1-x9N"/>
                         <outlet property="GYMAttackTitleLabel" destination="Ktj-Uq-W6x" id="JVs-4p-5z6"/>
+                        <outlet property="GYMBattleBGView" destination="RkC-Ny-84Q" id="3Wo-TO-6lt"/>
                         <outlet property="GYMDefendTitleLabel" destination="C0k-DI-Ng4" id="EWl-pP-H8n"/>
                         <outlet property="GYMPowerTitleLabel" destination="EHq-eE-k3F" id="p1O-gb-tRG"/>
                         <outlet property="attDefValueLabel" destination="WDZ-57-Qoq" id="tN8-xM-Jly"/>
@@ -2990,12 +2994,11 @@ CFBybw
                         <viewControllerLayoutGuide type="top" id="By7-DQ-AyP"/>
                         <viewControllerLayoutGuide type="bottom" id="pC5-Yn-aEx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="htW-uU-Dk4" customClass="Batt">
+                    <view key="view" contentMode="scaleToFill" id="htW-uU-Dk4" userLabel="View" customClass="Batt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="576"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuC-uK-Zxa" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
-                                <frame key="frameInset" minY="64" width="320" height="80.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuC-uK-Zxa" customClass="MyCustomView" customModule="Poke_Booklet" customModuleProvider="target">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iA2-Dz-1LM">
                                         <constraints>
@@ -3083,8 +3086,7 @@ CFBybw
                                     <action selector="touchUpOKButton:" destination="Kdn-BL-Csd" eventType="touchUpInside" id="Q4U-4W-fB4"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7IH-Yf-4fh">
-                                <frame key="frameInset" minY="153" width="320" height="374"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7IH-Yf-4fh">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="7qj-5s-tTR">
                                     <size key="itemSize" width="40" height="40"/>

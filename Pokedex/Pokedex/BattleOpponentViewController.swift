@@ -103,21 +103,17 @@ class BattleOpponentViewController: UIViewController {
     
     // update team and language
     func updateTeamColor() {
-        switch userTeam {
-        case .Instinct:
-            break
-        case .Mystic:
-            break
-        case .Valor:
-           break
-        }
+        navigationController?.navigationBar.barTintColor = teamColor(alpha: 1)
+        collectionView.backgroundColor = teamColor(alpha: 0.04)
     }
     func updateLanguage() {
         switch userLang {
         case .English:
             title = "Opponent"
+            battleButton.setTitle("Let's Battle!", forState: .Normal)
         case .Chinese, .Austrian:
             title = "對戰對手"
+            battleButton.setTitle("確認，開始對戰！", forState: .Normal)
         }
     }
 }

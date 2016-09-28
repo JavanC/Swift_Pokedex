@@ -9,7 +9,7 @@
 import UIKit
 
 class MyCustomButton: UIButton {
-    var buttonColor: UIColor = colorY {
+    var buttonColor: UIColor = teamColor(alpha: 1) {
         didSet {
             self.borderColor = buttonColor
             self.tintColor = buttonColor
@@ -37,7 +37,7 @@ class MyCustomButton: UIButton {
             layer.borderWidth = borderWidth
         }
     }
-    @IBInspectable var borderColor: UIColor = colorY {
+    @IBInspectable var borderColor: UIColor = teamColor(alpha: 1) {
         didSet {
             layer.borderColor = borderColor.CGColor
         }

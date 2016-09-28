@@ -30,7 +30,7 @@ class RangeSlider: UIControl {
             updateLayerFrames()
         }
     }
-    var trackTintColor = colorR {
+    var trackTintColor = teamColor(alpha: 1) {
         didSet {
             trackLayer.setNeedsDisplay()
         }

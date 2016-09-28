@@ -485,7 +485,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
         let startAngle: CGFloat = CGFloat(-M_PI_2)
         let endAngle: CGFloat = CGFloat(M_PI_2 * 3)
         let path = UIBezierPath(arcCenter: arcCenter, radius: 29, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        let strokeColor = userTeam == .Instinct ? colorY : userTeam == .Mystic ? colorB : colorR
+        let strokeColor = teamColor(alpha: 1)
         ivValueCircleLayer.path = path.CGPath
         ivValueCircleLayer.lineWidth = 16
         ivValueCircleLayer.fillColor = UIColor.clearColor().CGColor
@@ -788,6 +788,7 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var chargeAttackDPSTitleLabel: UILabel!
     @IBOutlet weak var chargeAttackEnergyTitleLabel: UILabel!
     @IBOutlet weak var GYMPowerTitleLabel: UILabel!
+    @IBOutlet weak var GYMBattleBGView: MyCustomView!
     @IBOutlet weak var GYMAttackTitleLabel: UILabel!
     @IBOutlet weak var GYMDefendTitleLabel: UILabel!
     @IBOutlet weak var typeViewTitleLabel: UILabel!
@@ -797,44 +798,19 @@ class PokemonViewController: UIViewController, GADBannerViewDelegate {
     @IBOutlet weak var typeViewBG4: UIView!
     @IBOutlet weak var suggestAttackerTitleLabel: UILabel!
     func updateTeamColor() {
-        switch userTeam {
-        case .Instinct:
-            levelRulerSlider.thubTintColor = colorY
-            pokemonCPSlider.trackTintColor = colorY
-            pokemonHPSlider.trackTintColor = colorY
-            proButton.tintColor = colorY
-            fastAttackSegmented.tintColor = colorY
-            chargeAttackSegmented.tintColor = colorY
-            typeViewBG1.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.3)
-            typeViewBG2.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.25)
-            typeViewBG3.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.2)
-            typeViewBG4.backgroundColor = UIColor(hex: 0xF9CB11, alpha: 0.15)
-            self.navigationController?.navigationBar.barTintColor = colorY
-        case .Mystic:
-            levelRulerSlider.thubTintColor = colorB
-            pokemonCPSlider.trackTintColor = colorB
-            pokemonHPSlider.trackTintColor = colorB
-            proButton.tintColor = colorB
-            fastAttackSegmented.tintColor = colorB
-            chargeAttackSegmented.tintColor = colorB
-            typeViewBG1.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.3)
-            typeViewBG2.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.25)
-            typeViewBG3.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.2)
-            typeViewBG4.backgroundColor = UIColor(hex: 0x0091E5, alpha: 0.15)
-            self.navigationController?.navigationBar.barTintColor = colorB
-        case .Valor:
-            levelRulerSlider.thubTintColor = colorR
-            pokemonCPSlider.trackTintColor = colorR
-            pokemonHPSlider.trackTintColor = colorR
-            proButton.tintColor = colorR
-            fastAttackSegmented.tintColor = colorR
-            chargeAttackSegmented.tintColor = colorR
-            typeViewBG1.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.3)
-            typeViewBG2.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.25)
-            typeViewBG3.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.2)
-            typeViewBG4.backgroundColor = UIColor(hex: 0xFF7768, alpha: 0.15)
-            self.navigationController?.navigationBar.barTintColor = colorR
-        }
+        navigationController?.navigationBar.barTintColor = teamColor(alpha: 1)
+        levelRulerSlider.thubTintColor = teamColor(alpha: 1)
+        pokemonCPSlider.trackTintColor = teamColor(alpha: 1)
+        pokemonHPSlider.trackTintColor = teamColor(alpha: 1)
+        proButton.tintColor = teamColor(alpha: 1)
+        fastAttackSegmented.tintColor = teamColor(alpha: 1)
+        chargeAttackSegmented.tintColor = teamColor(alpha: 1)
+        GYMBattleBGView.borderColor = teamColor(alpha: 1)
+        GYMBattleBGView.backgroundColor = teamColor(alpha: 0.7)
+        typeViewBG1.backgroundColor = teamColor(alpha: 0.3)
+        typeViewBG2.backgroundColor = teamColor(alpha: 0.25)
+        typeViewBG3.backgroundColor = teamColor(alpha: 0.2)
+        typeViewBG4.backgroundColor = teamColor(alpha: 0.15)
     }
     func updateLanguage() {
         title = pokemon.name[userLang.hashValue]
