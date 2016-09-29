@@ -40,9 +40,9 @@
 		AE9918FA1D6A915900D6996C /* RulerSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F71D6A915900D6996C /* RulerSlider.swift */; };
 		AE9918FB1D6A915900D6996C /* RulerSliderThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */; };
 		AE9918FC1D6A915900D6996C /* RulerSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */; };
+		AEA45D411D9D068100D78826 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA45D401D9D068100D78826 /* GoogleMobileAds.framework */; };
 		AEE7C0CB1D6413DF00DD2480 /* PokemonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7C0CA1D6413DF00DD2480 /* PokemonData.swift */; };
 		AEE7C0CE1D6417B600DD2480 /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */; };
-		AEECE4691D74270C0018C4B8 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */; };
 		AEF8A2231D6E972600C94E21 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF8A2221D6E972600C94E21 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +58,6 @@
 		8D83C22C1D6F58A800CE3C51 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "Pokedex/Content/GoogleMobileAdsSdkiOS-7.10.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		8D85FF911D649DDD002FD710 /* EmitterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmitterLayer.swift; path = Content/EmitterLayer.swift; sourceTree = "<group>"; };
 		8D85FF931D649DE8002FD710 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Content/spark.png; sourceTree = "<group>"; };
 		8D85FFA51D64A841002FD710 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		AE9918F71D6A915900D6996C /* RulerSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSlider.swift; sourceTree = "<group>"; };
 		AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSliderThumbLayer.swift; sourceTree = "<group>"; };
 		AE9918F91D6A915900D6996C /* RulerSliderTrackLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerSliderTrackLayer.swift; sourceTree = "<group>"; };
+		AEA45D401D9D068100D78826 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Pokedex/Content/ADMob/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		AEE7C0CA1D6413DF00DD2480 /* PokemonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonData.swift; sourceTree = "<group>"; };
 		AEE7C0CD1D6417B600DD2480 /* PokemonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonViewController.swift; sourceTree = "<group>"; };
 		AEF8A2221D6E972600C94E21 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEECE4691D74270C0018C4B8 /* GoogleMobileAds.framework in Frameworks */,
+				AEA45D411D9D068100D78826 /* GoogleMobileAds.framework in Frameworks */,
 				8D83C2331D6F58BF00CE3C51 /* SystemConfiguration.framework in Frameworks */,
 				8D83C22F1D6F58B000CE3C51 /* MessageUI.framework in Frameworks */,
 				8D83C22D1D6F58A800CE3C51 /* EventKit.framework in Frameworks */,
@@ -109,23 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D83C2361D6F6DED00CE3C51 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				8D83C2341D6F5C6000CE3C51 /* GoogleMobileAds.framework */,
-				8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */,
-				8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */,
-				8D83C22C1D6F58A800CE3C51 /* EventKit.framework */,
-				8D83C22A1D6F58A200CE3C51 /* EventKitUI.framework */,
-				8D83C2281D6F589800CE3C51 /* CoreTelephony.framework */,
-				8D83C2261D6F588E00CE3C51 /* CoreGraphics.framework */,
-				8D83C2241D6F588400CE3C51 /* AVFoundation.framework */,
-				8D83C2221D6F587B00CE3C51 /* AudioToolbox.framework */,
-				8D83C2201D6F587000CE3C51 /* AdSupport.framework */,
-			);
-			name = Framework;
-			sourceTree = "<group>";
-		};
 		8D85FF9C1D649DFA002FD710 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +127,7 @@
 		8DB69E071D636859006EF766 = {
 			isa = PBXGroup;
 			children = (
-				8D83C2361D6F6DED00CE3C51 /* Framework */,
+				AEA45D3F1D9D067F00D78826 /* Frameworks */,
 				8DB69E121D636859006EF766 /* Poke Booklet */,
 				8D83C21C1D6F1E1A00CE3C51 /* Assets.xcassets */,
 				8DB69E111D636859006EF766 /* Products */,
@@ -212,6 +195,23 @@
 				AE9918F81D6A915900D6996C /* RulerSliderThumbLayer.swift */,
 			);
 			name = RulerSlider;
+			sourceTree = "<group>";
+		};
+		AEA45D3F1D9D067F00D78826 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D83C2321D6F58BE00CE3C51 /* SystemConfiguration.framework */,
+				8D83C22E1D6F58B000CE3C51 /* MessageUI.framework */,
+				8D83C22C1D6F58A800CE3C51 /* EventKit.framework */,
+				8D83C22A1D6F58A200CE3C51 /* EventKitUI.framework */,
+				8D83C2281D6F589800CE3C51 /* CoreTelephony.framework */,
+				8D83C2261D6F588E00CE3C51 /* CoreGraphics.framework */,
+				8D83C2241D6F588400CE3C51 /* AVFoundation.framework */,
+				8D83C2221D6F587B00CE3C51 /* AudioToolbox.framework */,
+				8D83C2201D6F587000CE3C51 /* AdSupport.framework */,
+				AEA45D401D9D068100D78826 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AEE7C0CC1D64173700DD2480 /* View Controllers */ = {
@@ -456,6 +456,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pokedex/Content/GoogleMobileAdsSdkiOS-7.10.0",
+					"$(PROJECT_DIR)/Pokedex/Content/ADMob",
 				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -482,6 +483,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pokedex/Content/GoogleMobileAdsSdkiOS-7.10.0",
+					"$(PROJECT_DIR)/Pokedex/Content/ADMob",
 				);
 				INFOPLIST_FILE = Pokedex/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
